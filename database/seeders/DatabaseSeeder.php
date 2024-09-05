@@ -2,9 +2,21 @@
 
 namespace Database\Seeders;
 
+use App\Models\Address;
+use App\Models\Contact;
+use App\Models\Country;
+use App\Models\Customer;
+use App\Models\Delivery;
+use App\Models\Department;
+use App\Models\PriceBasis;
+use App\Models\Product;
+use App\Models\Quote;
+use App\Models\QuoteItem;
+use App\Models\Supplier;
+use App\Models\Tax;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +25,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        DB::table('price_bases')->insert(PriceBasis::$price_bases);
+        DB::table('deliveries')->insert(Delivery::$deliveries);
+        DB::table('countries')->insert(Country::$countries);
+        DB::table('taxes')->insert(Tax::$taxes);
+        Department::factory(20)->create();
+        Customer::factory(20)->create();
+        Address::factory(20)->create();
+        Contact::factory(20)->create();
+
+        Supplier::factory(20)->create();
+        Product::factory(20)->create();
+
+        Quote::factory(20)->create();
+        QuoteItem::factory(100)->create();
+
+        foreach (Quote::all() as $quote) {
+            $quote->generateReference();
+        }
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Neuvin',
+            'email' => 'info@neuvin.com',
+            'password' => 'Electronics@2024',
         ]);
     }
 }
