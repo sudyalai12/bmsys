@@ -13,9 +13,13 @@ class Supplier extends Model
     protected $hidden = ['created_at', 'updated_at'];
     protected $with = ['country'];
 
-    public function setNameAttribute(?string $value)
+    public function setNameAttribute(string $value)
     {
-        $this->attributes['name'] = $value ? ucwords($value) : null;
+        $this->attributes['name'] = strtolower($value);
+    }
+    public function getNameAttribute(string $value)
+    {
+        return ucwords($value);
     }
 
     public function products()

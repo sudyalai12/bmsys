@@ -15,9 +15,53 @@ class Contact extends Model
     protected $hidden = ['created_at', 'updated_at'];
     protected $with = ['address', 'department', 'tax'];
 
-    public function setNameAttribute(?string $name): void
+    public function setNameAttribute(string $name)
     {
-        $this->attributes['name'] = $name ? ucwords(strtolower($name)) : null;
+        $this->attributes['name'] = strtolower($name);
+    }
+    public function getNameAttribute(string $value)
+    {
+        return ucwords($value);
+    }
+
+    public function setEmailAttribute(string $email)
+    {
+        $this->attributes['email'] = strtolower($email);
+    }
+
+    public function getEmailAttribute(string $value)
+    {
+        return strtolower($value);
+    }
+
+    public function setGstnAttribute(string $gstn)
+    {
+        $this->attributes['gstn'] = strtolower($gstn);
+    }
+
+    public function getGstnAttribute(string $value)
+    {
+        return strtoupper($value);
+    }
+
+    public function setPanAttribute(string $pan)
+    {
+        $this->attributes['pan'] = strtolower($pan);
+    }
+
+    public function getPanAttribute(string $value)
+    {
+        return strtoupper($value);
+    }
+
+    public function setStateCodeAttribute(string $stateCode)
+    {
+        $this->attributes['state_code'] = strtolower($stateCode);
+    }
+
+    public function getStateCodeAttribute(string $value)
+    {
+        return strtoupper($value);
     }
 
     public function department(): BelongsTo

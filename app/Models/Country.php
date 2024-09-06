@@ -850,7 +850,7 @@ class Country extends Model
         ],
         [
             "id" => 106,
-            "name" => "Åland Islands",
+            "name" => "Aland Islands",
             "currency" => "EUR",
             "phone" => 358,
             "code" => "AX",
@@ -2019,9 +2019,13 @@ class Country extends Model
         ],
     ];
 
-
     public function addresses()
     {
         return $this->hasMany(Address::class);
+    }
+
+    public function customers()
+    {
+        return $this->hasMany(Customer::class);
     }
 }

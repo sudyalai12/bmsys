@@ -12,9 +12,14 @@ class Department extends Model
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function setNameAttribute(?string $value)
+    public function setNameAttribute(string $value)
     {
-        $this->attributes['name'] = $value ? ucwords($value) : null;
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    public function getNameAttribute(string $value)
+    {
+        return ucwords($value);
     }
 
     public function contacts()

@@ -14,15 +14,26 @@ class Customer extends Model
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
     protected $with = ['country'];
- 
-    public function setNameAttribute(?string $name): void
+    protected $appends = ['country_name'];
+
+    public function setNameAttribute(string $name)
     {
-        $this->attributes['name'] = $name ? ucwords(strtolower($name)) : null;
+        $this->attributes['name'] = strtolower($name);
     }
 
-    public function setNicknameAttribute(?string $nickname): void
+    public function getNameAttribute(string $value)
     {
-        $this->attributes['nickname'] = $nickname ? strtoupper($nickname) : null;
+        return ucwords($value);
+    }
+
+    public function setNicknameAttribute(string $nickname)
+    {
+        $this->attributes['nickname'] = strtolower($nickname);
+    }
+
+    public function getNicknameAttribute(string $value)
+    {
+        return strtoupper($value);
     }
 
     public function country(): BelongsTo
@@ -36,7 +47,6 @@ class Customer extends Model
     }
 
     public function generateReference(): string
-
     {
         $name = preg_replace('/[^A-Za-z0-9]/', '', $this->name);
         $year = date('Y');

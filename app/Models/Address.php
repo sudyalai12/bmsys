@@ -15,24 +15,40 @@ class Address extends Model
     protected $hidden = ['created_at', 'updated_at'];
     protected $with = ['customer', 'country'];
 
-    public function setAddress1Attribute(?string $address1): void
+    public function setAddress1Attribute(string $address1)
     {
-        $this->attributes['address1'] = $address1 ? ucwords(strtolower($address1)) : null;
+        $this->attributes['address1'] = strtolower($address1);
+    }
+    public function getAddress1Attribute(string $value)
+    {
+        return ucwords($value);
     }
 
-    public function setAddress2Attribute(?string $address2): void
+    public function setAddress2Attribute(string $address2)
     {
-        $this->attributes['address2'] = $address2 ? ucwords(strtolower($address2)) : null;
+        $this->attributes['address2'] = strtolower($address2);
+    }
+    public function getAddress2Attribute(string $value)
+    {
+        return ucwords($value);
     }
 
-    public function setCityAttribute(?string $city): void
+    public function setCityAttribute(string $city)
     {
-        $this->attributes['city'] = $city ? ucwords(strtolower($city)) : null;
+        $this->attributes['city'] = strtolower($city);
+    }
+    public function getCityAttribute(string $value)
+    {
+        return ucwords($value);
     }
 
-    public function setStateAttribute(?string $state): void
+    public function setStateAttribute(string $state)
     {
-        $this->attributes['state'] = $state ? ucwords(strtolower($state)) : null;
+        $this->attributes['state'] = strtolower($state);
+    }
+    public function getStateAttribute(string $value)
+    {
+        return ucwords($value);
     }
 
     public function customer(): BelongsTo
