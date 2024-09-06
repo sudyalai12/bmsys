@@ -48,7 +48,7 @@ class Customer extends Model
 
     public function generateReference(): string
     {
-        $name = preg_replace('/[^A-Za-z0-9]/', '', $this->name);
+        $name = $this->getNicknameAttribute($this->nickname);
         $year = date('Y');
         $yearPlusOne = date('y') + 1;
 
