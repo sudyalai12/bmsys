@@ -23,7 +23,7 @@ class StoreCustomerRequest extends FormRequest
     {
         return [
             'customer' => 'required|min:2|max:50|string',
-            'nickname' => 'required|string|size:4|regex:/^[a-zA-Z]+$/',
+            'nickname' => 'required|min:2|max:5|string|regex:/^[a-zA-Z]+$/',
             'email' => 'required|min:2|max:50|email',
             'contact' => 'required|min:2|max:50|string',
             'department' => 'required|min:2|max:50|string',
@@ -33,8 +33,8 @@ class StoreCustomerRequest extends FormRequest
             'pincode' => 'required|size:6|regex:/^[0-9]+$/',
             'state' => 'required|min:2|max:30|string',
             'country' => 'required|exists:countries,name',
-            'phone' => 'required|min:10|max:15|string|regex:/^[+][0-9 ]+$/',
-            'mobile' => 'required|min:10|max:15|string|regex:/^[+][0-9 ]+$/',
+            'phone' => 'required|min:10|max:18|string|regex:/^[0-9+ ]+$/',
+            'mobile' => 'required|min:10|max:18|string|regex:/^[0-9+ ]+$/',
             'tax_type' => 'required|exists:taxes,type',
             'gstn' => 'required|string|size:15|regex:/^[a-zA-Z0-9]+$/',
             'pan' => 'required|string|size:10|regex:/^[a-zA-Z0-9]+$/',
