@@ -50,11 +50,6 @@ class Quote extends Model
         return $this->belongsTo(HandlingChargesTerm::class);
     }
 
-    public function poPlaceTerm()
-    {
-        return $this->belongsTo(PoPlaceTerm::class);
-    }
-
     public function gstTerm()
     {
         return $this->belongsTo(GstTerm::class);
