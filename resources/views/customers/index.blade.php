@@ -9,7 +9,6 @@
                 <th>CustID</th>
                 <th>CustomerName</th>
                 <th>CustNick</th>
-                <th>Country</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +17,6 @@
                     <td><a href="/customers/{{ $customer->id }}">{{ $customer->id }}</a></td>
                     <td>{{ $customer->name }}</td>
                     <td>{{ $customer->nickname }}</td>
-                    <td>{{ $customer->country->name }}</td>
                 </tr>
             @endforeach
         </tbody>

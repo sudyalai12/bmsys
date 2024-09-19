@@ -14,9 +14,9 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
 
-    public function index(): \Illuminate\View\View
+    public function index()
     {
-        $contacts = Contact::orderBy('updated_at', 'desc')->get();
+        $contacts = Contact::get();
         return view('contacts.index', compact('contacts'));
     }
 
@@ -24,62 +24,43 @@ class ContactController extends Controller
 
     public function store(Request $request) {}
 
-    public function show(Contact $contact): \Illuminate\View\View
+    public function show(Contact $contact)
     {
         return view('contacts.show', compact('contact'));
     }
 
-    public function edit(Contact $contact): \Illuminate\View\View
+    public function edit(Contact $contact)
     {
         return view('contacts.edit', compact('contact'));
     }
 
     public function update(StoreCustomerRequest $request, Contact $contact)
     {
-        $country = Country::where('name', $request->country)->first();
-        $tax = Tax::where('type', $request->tax_type)->first();
-        $customer = Customer::firstOrCreate(
-            [
-                'name' => $request->customer,
-                'nickname' => $request->nickname,
-            ]
-        );
-        if ($customer->country_id == 121) {
-            $customer->update(['country_id' => $country->id]);
-        }
-
         $address = Address::firstOrCreate(
             [
-                'customer_id' => $customer->id,
-                'country_id' => $country->id,
                 'address1' => $request->address1,
                 'address2' => $request->address2,
                 'city' => $request->city,
                 'pincode' => $request->pincode,
                 'state' => $request->state,
+                'country' => $request->country,
             ]
         );
 
-        $department = Department::firstOrCreate(['name' => $request->department]);
         $contact->update(
             [
                 'name' => $request->contact,
                 'email' => $request->email,
-                'department_id' => $department->id,
+                'department' => $request->department,
                 'address_id' => $address->id,
                 'phone' => $request->phone,
                 'mobile' => $request->mobile,
-                'tax_id' => $tax->id,
-                'gstn' => $request->gstn,
-                'pan' => $request->pan,
-                'state_code' => $request->state_code,
             ]
         );
-
         return redirect("/contacts/{$contact->id}");
     }
 
-    public function destroy(Contact $contact): \Illuminate\Http\RedirectResponse
+    public function destroy(Contact $contact)
     {
         $contact->delete();
         return redirect('/contacts');

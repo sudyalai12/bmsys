@@ -10,7 +10,7 @@ class QuoteItem extends Model
     use HasFactory;
     protected $table = 'quote_items';
     protected $guarded = [];
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = [];
     protected $with = ['product'];
 
     public function quote()
@@ -29,11 +29,6 @@ class QuoteItem extends Model
     }
 
     public function tax($tax = 0.18)
-    {
-        return $this->total() * $tax;
-    }
-
-    public function totalWithTax($tax = 0.18)
     {
         return $this->total() * $tax;
     }

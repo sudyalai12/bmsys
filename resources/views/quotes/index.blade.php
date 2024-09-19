@@ -17,7 +17,7 @@
                 <tr>
                     <td><a href="/quotes/{{ $quote->id }}">{{ $quote->id }}</a></td>
                     <td>{{ $quote->reference }}</td>
-                    <td><a href="/customers/{{ $quote->contact->address->customer->id }}">{{ $quote->contact->address->customer->name }}</a></td>
+                    <td><a href="/customers/{{ $quote->contact->customer->id }}">{{ $quote->contact->customer->name }}</a></td>
                     <td><a href="/contacts/{{ $quote->contact->id }}">{{ $quote->contact->name }}</a></td>
                 </tr>
             @endforeach

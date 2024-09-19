@@ -19,7 +19,7 @@ class SupplierFactory extends Factory
     {
         return [
             'name' => fake()->company(),
-            'country_id' => Country::all()->random()->id
+            'country' => Country::all()->random()->name
         ];
     }
 }

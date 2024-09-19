@@ -12,7 +12,7 @@
                 <x-form.field class="fb-500">
                     <x-form.label for="customer">Select Customer</x-form.label>
                     <x-form.input placeholder="Enter Customer Name" id="customer" type="text" name="customer"
-                        value="{{ old('customer', $contact?->address->customer->name) }}" />
+                        value="{{ old('customer', $contact?->customer->name) }}" />
                     <x-form.error name="customer" />
                 </x-form.field>
                 <x-form.field class="fb-500">

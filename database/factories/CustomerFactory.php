@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Country;
+use App\Models\Tax;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,10 @@ class CustomerFactory extends Factory
         return [
             'name' => fake()->company(),
             'nickname' => fake()->regexify('[A-Z]{4}'),
-            'country_id' => Country::all()->random()->id
+            'tax_type' => Tax::all()->random()->type,
+            'gstn' => fake()->regexify('[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}[Z]{1}[0-9A-Z]{1}'),
+            'pan' => fake()->regexify('[A-Z]{5}[0-9]{4}[A-Z]{1}'),
+            'state_code' => fake()->regexify('[0-9]{2}'),
         ];
     }
 }

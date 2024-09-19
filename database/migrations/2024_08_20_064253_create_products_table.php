@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignIdFor(Country::class, 'country_id')->constrained()->default(121);
+            $table->string('country');
             $table->timestamps();
         });
 
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Supplier::class, 'supplier_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Supplier::class, 'supplier_id')->constrained()->cascadeOnDelete();
             $table->string('part_number');
             $table->string('description');
             $table->integer('unit_price');

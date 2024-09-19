@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Country;
 use App\Models\Customer;
+use App\Models\State;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,13 +20,12 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-            'customer_id' => Customer::all()->random()->id,
-            'country_id' => Country::all()->random()->id,
             'address1' => fake()->streetAddress(),
             'address2' => fake()->streetName(),
             'city' => fake()->city(),
             'pincode' => fake()->numberBetween(100000, 999999),
             'state' => fake()->state(),
+            'country' => Country::all()->random()->name,
         ];
     }
 }

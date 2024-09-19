@@ -9,55 +9,18 @@
                 <td>{{ $customer->name }}</td>
             </tr>
             <tr>
-                <th>Country</th>
-                <td>{{ $customer->country->name }}</td>
+                <th>Customer Nick</th>
+                <td>{{ $customer->nickname }}</td>
+            </tr>
+            <tr>
+                <th>Contact Persons</th>
+                <td>
+                    @foreach ($customer->contacts as $contact)
+                        <a href="/contacts/{{ $contact->id }}">{{ $contact->name }}</a>
+                        ,<br>
+                    @endforeach
+                </td>
             </tr>
         </tbody>
     </table>
-    <x-table>
-        <thead>
-            <tr>
-                <th>CPID</th>
-                <th>ContactPersonName</th>
-                <th>Dept/Desig</th>
-                <th>Address1</th>
-                <th>Address2</th>
-                <th>City</th>
-                <th>Pincode</th>
-                <th>State</th>
-                <th>Country</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Mobile</th>
-                <th>TaxType</th>
-                <th>GSTN</th>
-                <th>PAN</th>
-                <th>StateCode</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($customer->addresses as $address)
-                @foreach ($address->contacts as $contact)
-                    <tr>
-                        <td><a href="/contacts/{{ $contact->id }}">{{ $contact->id }}</a></td>
-                        <td>{{ $contact->name }}</td>
-                        <td>{{ $contact->department->name }}</td>
-                        <td>{{ $address->address1 }}</td>
-                        <td>{{ $address->address2 }}</td>
-                        <td>{{ $address->city }}</td>
-                        <td>{{ $address->pincode }}</td>
-                        <td>{{ $address->state }}</td>
-                        <td>{{ $address->country->name }}</td>
-                        <td>{{ $contact->email }}</td>
-                        <td>{{ $contact->phone }}</td>
-                        <td>{{ $contact->mobile }}</td>
-                        <td>{{ $contact->tax->type }}</td>
-                        <td>{{ $contact->gstn }}</td>
-                        <td>{{ $contact->pan }}</td>
-                        <td>{{ $contact->state_code }}</td>
-                    </tr>
-                @endforeach
-            @endforeach
-        </tbody>
-    </x-table>
 @endSection

@@ -12,56 +12,27 @@ class Address extends Model
     use HasFactory;
     protected $table = 'addresses';
     protected $guarded = [];
-    protected $hidden = ['created_at', 'updated_at'];
-    protected $with = ['customer', 'country'];
+    protected $hidden = [];
+    protected $with = [];
 
     public function setAddress1Attribute(string $address1)
     {
-        $this->attributes['address1'] = strtolower($address1);
+        $this->attributes['address1'] = ucwords($address1);
     }
-    public function getAddress1Attribute(string $value)
-    {
-        return ucwords($value);
-    }
-
     public function setAddress2Attribute(string $address2)
     {
-        $this->attributes['address2'] = strtolower($address2);
+        $this->attributes['address2'] = ucwords($address2);
     }
-    public function getAddress2Attribute(string $value)
-    {
-        return ucwords($value);
-    }
-
     public function setCityAttribute(string $city)
     {
-        $this->attributes['city'] = strtolower($city);
+        $this->attributes['city'] = ucwords($city);
     }
-    public function getCityAttribute(string $value)
+    public function setPincodeAttribute(string $pincode)
     {
-        return ucwords($value);
+        $this->attributes['pincode'] = strtoupper($pincode);
     }
 
-    public function setStateAttribute(string $state)
-    {
-        $this->attributes['state'] = strtolower($state);
-    }
-    public function getStateAttribute(string $value)
-    {
-        return ucwords($value);
-    }
-
-    public function customer(): BelongsTo
-    {
-        return $this->belongsTo(Customer::class);
-    }
-
-    public function country(): BelongsTo
-    {
-        return $this->belongsTo(Country::class);
-    }
-
-    public function contacts(): HasMany
+    public function contacts()
     {
         return $this->hasMany(Contact::class);
     }

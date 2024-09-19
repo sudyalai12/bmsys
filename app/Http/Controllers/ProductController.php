@@ -24,10 +24,21 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        $supplier_country = Country::where('name', $request->supplier_country)->first();
+        //     array:9 [▼ // app\Http\Controllers\ProductController.php:27
+        //     "_token" => "SgPd2bLfMGwF6w1trgviLgMBP7bTGdRxFgng3RpQ"
+        //     "part_number" => "24961554"
+        //     "description" => "Ut Qui Fugit Voluptas Maxime Hic Culpa Illo Adipisci."
+        //     "supplier" => "Eichmann-Waelchi"
+        //     "supplier_country" => "Saint Vincent and the Grenadines"
+        //     "hsn_code" => "04578932"
+        //     "unit_price" => "723"
+        //     "purchase_price" => "429"
+        //     "sale_price" => "984"
+        //   ]
+
         $supplier = Supplier::firstOrCreate([
             'name' => $request->supplier,
-            'country_id' => $supplier_country->id
+            'country' => $request->supplier_country
         ]);
 
         $product = Product::firstOrCreate([
@@ -55,14 +66,7 @@ class ProductController extends Controller
 
     public function update(Product $product, StoreProductRequest $request)
     {
-        $supplier_country = Country::where('name', $request->supplier_country)->first();
-        $supplier = Supplier::firstOrCreate([
-            'name' => $request->supplier,
-            'country_id' => $supplier_country->id
-        ]);
-
         $product->update([
-            'supplier_id' => $supplier->id,
             'part_number' => $request->part_number,
             'hsn_code' => $request->hsn_code,
             'unit_price' => $request->unit_price,
@@ -70,7 +74,6 @@ class ProductController extends Controller
             'sale_price' => $request->sale_price,
             'description' => $request->description,
         ]);
-
         return redirect("/products/$product->id");
     }
 

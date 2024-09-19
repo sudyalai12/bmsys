@@ -37,7 +37,7 @@
                     <x-form.error name="contact" />
                 </x-form.field>
                 <x-form.field class="fb-100">
-                    <x-form.label for="department">Department</x-form.label>
+                    <x-form.label for="department">Deptartment/Designation</x-form.label>
                     <x-form.input placeholder="Enter Department Name" id="department" type="text" name="department"
                         value="{{ old('department') }}" />
                     <x-form.error name="department" />
@@ -109,25 +109,26 @@
                 <x-form.field class="fb-100">
                     <x-form.label for="gstn">GST Number</x-form.label>
                     <x-form.input placeholder="Enter GST Number (15 digit)" id="gstn" type="text" name="gstn"
-                        value="{{ old('gstn') }}" />
+                        value="{{ old('gstn') == '' ? 'XXXXXXXXXXXXXXX' : old('gstn') }}" />
                     <x-form.error name="gstn" />
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="pan">PAN</x-form.label>
                     <x-form.input placeholder="Enter PAN (10 digit)" id="pan" type="text" name="pan"
-                        value="{{ old('pan') }}" />
+                        value="{{ old('pan') == '' ? 'XXXXXXXXXX' : old('pan') }}" />
                     <x-form.error name="pan" />
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="state_code">State Code</x-form.label>
                     <x-form.input placeholder="Enter State Code (2 digit)" id="state_code" type="text" name="state_code"
-                        value="{{ old('state_code') }}" />
+                        value="{{ old('state_code') == '' ? '00' : old('state_code') }}" />
                     <x-form.error name="state_code" />
                 </x-form.field>
             </div>
 
             <div class="text-center">
                 <x-button btntype="secondary" type="submit">Save</x-button>
+                <x-button btntype="primary" type="reset">Clear</x-button>
             </div>
         </form>
     </div>

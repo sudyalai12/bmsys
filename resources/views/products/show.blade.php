@@ -9,7 +9,7 @@
             </tr>
             <tr>
                 <th>Supplier / Country</th>
-                <td>{{ $product->supplier->name }} / {{ $product->supplier->country->name }}</td>
+                <td>{{ $product->supplier->name }} / {{ $product->supplier->country }}</td>
             </tr>
             <tr>
                 <th>Description</th>

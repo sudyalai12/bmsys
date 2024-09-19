@@ -11,24 +11,14 @@ class Supplier extends Model
     protected $table = 'suppliers';
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
-    protected $with = ['country'];
+    protected $with = [];
 
-    public function setNameAttribute(string $value)
+    public function setNameAttribute(string $name)
     {
-        $this->attributes['name'] = strtolower($value);
+        $this->attributes['name'] = ucwords($name);
     }
-    public function getNameAttribute(string $value)
-    {
-        return ucwords($value);
-    }
-
     public function products()
     {
         return $this->hasMany(Product::class);
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class);
     }
 }

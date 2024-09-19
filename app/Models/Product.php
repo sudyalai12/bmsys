@@ -13,22 +13,9 @@ class Product extends Model
     protected $hidden = ['created_at', 'updated_at'];
     protected $with = ['supplier'];
 
-    public function setNameAttribute(string $value)
+    public function setDescriptionAttribute(string $description)
     {
-        $this->attributes['name'] = strtolower($value);
-    }
-    public function getNameAttribute(string $value)
-    {
-        return ucwords($value);
-    }
-
-    public function setDescriptionAttribute(string $value)
-    {
-        $this->attributes['description'] = strtolower($value);
-    }
-    public function getDescriptionAttribute(string $value)
-    {
-        return ucwords($value);
+        $this->attributes['description'] = ucwords($description);
     }
 
     public function supplier()

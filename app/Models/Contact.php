@@ -13,74 +13,28 @@ class Contact extends Model
     protected $table = 'contacts';
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
-    protected $with = ['address', 'department', 'tax'];
+    protected $with = ['customer', 'address'];
 
     public function setNameAttribute(string $name)
     {
-        $this->attributes['name'] = strtolower($name);
+        $this->attributes['name'] = ucwords($name);
     }
-    public function getNameAttribute(string $value)
-    {
-        return ucwords($value);
-    }
-
     public function setEmailAttribute(string $email)
     {
         $this->attributes['email'] = strtolower($email);
     }
-
-    public function getEmailAttribute(string $value)
+    public function setDepartmentAttribute(string $department)
     {
-        return strtolower($value);
+        $this->attributes['department'] = ucwords($department);
     }
 
-    public function setGstnAttribute(string $gstn)
+    public function customer()
     {
-        $this->attributes['gstn'] = strtolower($gstn);
+        return $this->belongsTo(Customer::class);
     }
 
-    public function getGstnAttribute(string $value)
-    {
-        return strtoupper($value);
-    }
-
-    public function setPanAttribute(string $pan)
-    {
-        $this->attributes['pan'] = strtolower($pan);
-    }
-
-    public function getPanAttribute(string $value)
-    {
-        return strtoupper($value);
-    }
-
-    public function setStateCodeAttribute(string $stateCode)
-    {
-        $this->attributes['state_code'] = strtolower($stateCode);
-    }
-
-    public function getStateCodeAttribute(string $value)
-    {
-        return strtoupper($value);
-    }
-
-    public function department(): BelongsTo
-    {
-        return $this->belongsTo(Department::class);
-    }
-
-    public function address(): BelongsTo
+    public function address()
     {
         return $this->belongsTo(Address::class);
-    }
-
-    public function tax(): BelongsTo
-    {
-        return $this->belongsTo(Tax::class);
-    }
-
-    public function quotes(): HasMany
-    {
-        return $this->hasMany(Quote::class);
     }
 }

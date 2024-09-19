@@ -11,7 +11,7 @@ class PdfController extends Controller
     {
         $customPaper = array(0, 0, 792, 612);
         $quote->generateReference();
-        $file = "Q-" . date('mdY') . (date('y') + 1) . date('His') . ".pdf";
+        $file = "Q-" . date('mdY') . "-NEPL-" . $quote->contact->customer->nickname . ".pdf";
         return Pdf::loadView('pdf.quote', compact('quote'))->setPaper($customPaper, 'landscape')->stream($file);
     }
 }

@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('content')
+    {{-- {{ $contact }} --}}
     <h1 class="heading">Contact Person Details</h1>
     <table class="table mb-1">
         <tbody>
             <tr>
                 <th>CustomerName</th>
-                <td><a href="/customers/{{ $contact->address->customer->id }}">{{ $contact->address->customer->name }}</a></td>
+                <td><a href="/customers/{{ $contact->customer->id }}">{{ $contact->customer->name }}</a>
+                </td>
             </tr>
             <tr>
                 <th>ContactPersonName</th>
@@ -13,7 +15,7 @@
             </tr>
             <tr>
                 <th>DepartmentName</th>
-                <td>{{ $contact->department->name }}</td>
+                <td>{{ $contact->department }}</td>
             </tr>
             <tr>
                 <th>Address1</th>
@@ -37,7 +39,7 @@
             </tr>
             <tr>
                 <th>Country</th>
-                <td>{{ $contact->address->country->name }}</td>
+                <td>{{ $contact->address->country }}</td>
             </tr>
             <tr>
                 <th>Phone</th>
@@ -53,19 +55,19 @@
             </tr>
             <tr>
                 <th>TaxType</th>
-                <td>{{ $contact->tax->type }}</td>
+                <td>{{ $contact->customer->tax_type }}</td>
             </tr>
             <tr>
                 <th>GSTNumber</th>
-                <td>{{ $contact->gstn }}</td>
+                <td>{{ $contact->customer->gstn }}</td>
             </tr>
             <tr>
                 <th>PAN</th>
-                <td>{{ $contact->pan }}</td>
+                <td>{{ $contact->customer->pan }}</td>
             </tr>
             <tr>
                 <th>StateCode</th>
-                <td>{{ $contact->state_code }}</td>
+                <td>{{ $contact->customer->state_code }}</td>
             </tr>
         </tbody>
     </table>

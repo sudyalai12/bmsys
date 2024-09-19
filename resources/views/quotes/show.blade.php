@@ -1,5 +1,30 @@
 @extends('layouts.app')
-@section('js')
+@section('css')
+    <style>
+        #update-quote-form .form-field {
+            flex-direction: row;
+        }
+
+        #update-quote-form .form-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255);
+            width: 14%;
+            background-color: #6C757D;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding: 0 4px
+        }
+
+        #update-quote-form .autocomplete-items {
+            left: 12.5%;
+        }
+
+        #update-quote-form .form-input {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    </style>
 @endsection
 @php
     $index = 1;
@@ -11,13 +36,13 @@
             <tr>
                 <th>Customer Name</th>
                 <td>
-                    <a href="/customers/{{ $quote->contact->address->customer->id }}">{{ $quote->contact->address->customer->name }}
+                    <a href="/customers/{{ $quote->contact->customer->id }}">{{ $quote->contact->customer->name }}
                     </a>
                 </td>
                 <th>Contact Person Name</th>
                 <td><a href="/contacts/{{ $quote->contact->id }}">{{ $quote->contact->name }}</a></td>
                 <th>Department Name</th>
-                <td>{{ $quote->contact->department->name }}</td>
+                <td>{{ $quote->contact->department }}</td>
             </tr>
             <tr>
                 <th>Address1</th>
@@ -33,7 +58,7 @@
                 <th>State</th>
                 <td>{{ $quote->contact->address->state }}</td>
                 <th>Country</th>
-                <td>{{ $quote->contact->address->country->name }}</td>
+                <td>{{ $quote->contact->address->country }}</td>
             </tr>
             <tr>
                 <th>Phone</th>
@@ -41,21 +66,27 @@
                 <th>Mobile</th>
                 <td>{{ $quote->contact->mobile }}</td>
                 <th>Email</th>
-                <td>{{ $quote->contact->email }}</td>
+                <td><a href="mailto:{{ $quote->contact->email }}">{{ $quote->contact->email }}</a></td>
             </tr>
             <tr>
                 <th>Tax Type</th>
-                <td>{{ $quote->contact->tax->type }}</td>
+                <td>{{ $quote->contact->customer->tax_type }}</td>
                 <th>GST Number</th>
-                <td>{{ $quote->contact->gstn }}</td>
+                <td>{{ $quote->contact->customer->gstn }}</td>
                 <th>PAN</th>
-                <td>{{ $quote->contact->pan }}</td>
+                <td>{{ $quote->contact->customer->pan }}</td>
             </tr>
             <tr>
                 <th>State Code</th>
-                <td>{{ $quote->contact->state_code }}</td>
+                <td>{{ $quote->contact->customer->state_code }}</td>
                 <th>Customer Nickname</th>
-                <td>{{ $quote->contact->address->customer->nickname }}</td>
+                <td>{{ $quote->contact->customer->nickname }}</td>
+                <th>Due Date</th>
+                <td><input value="{{ $quote->due_date }}" id="due_date" type="date"></td>
+            </tr>
+            <tr>
+                <th>Enquiry Date</th>
+                <td><input value="{{ $quote->enquiry_date }}" id="enquiry_date" type="date"></td>
             </tr>
         </tbody>
     </x-table>
@@ -101,12 +132,14 @@
                 <th>Description</th>
                 <th>Quantity</th>
                 <th>UnitPrice(INR)</th>
-                <th>Total(INR)</th>
+                <th>TaxbleAmount(INR)</th>
+                <th>GST(INR)</th>
+                <th>TotalAmount(INR)</th>
                 <th>Remove</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($quote->items as $item)
+            @foreach ($quote->quoteItems as $item)
                 <tr>
                     <td>{{ $index++ }}</td>
                     <td><a href="/products/{{ $item->product->id }}">{{ $item->product->part_number }}</a></td>
@@ -114,6 +147,8 @@
                     <td>{{ $item->quantity }}</td>
                     <td>{{ number_format($item->product->sale_price, 2) }}</td>
                     <td>{{ number_format($item->total(), 2) }}</td>
+                    <td>{{ number_format($item->tax(), 2) }}</td>
+                    <td>{{ number_format($item->total() + $item->tax(), 2) }}</td>
                     <td>
                         <x-button btntype="danger" type="submit" form="delete-form-{{ $item->id }}">Remove</x-button>
                         <form id="delete-form-{{ $item->id }}"
@@ -124,32 +159,16 @@
                     </td>
                 </tr>
             @endforeach
-            <tr class="no-border">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><strong>Total (INR) : </strong></td>
-                <td>{{ number_format($quote->total(), 2) }}</td>
-                <td></td>
-            </tr>
-            <tr class="no-border">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><strong>GST (18%) : </strong></td>
-                <td>{{ number_format($quote->totalWithTax(), 2) }}</td>
-                <td></td>
-            </tr>
-            <tr class="no-border">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><strong>Grand Total (INR) : </strong></td>
-                <td><strong>{{ number_format($quote->grandTotal(), 2) }}</strong></td>
-                <td></td>
+            <tr>
+                <th></th>
+                <th>TOTALS:</th>
+                <th>SUM OF QUOTED ITEMS</th>
+                <th>{{ $quote->quoteItems->sum('quantity') }}</th>
+                <th></th>
+                <th>{{ number_format($quote->total(), 2) }}</th>
+                <th>{{ number_format($quote->tax(), 2) }}</th>
+                <th>{{ number_format($quote->total() + $quote->tax(), 2) }}</th>
+                <th></th>
             </tr>
         </tbody>
     </x-table>
@@ -160,23 +179,121 @@
         <form id="update-quote-form" method="POST" class="form quote-form" action="/quotes/{{ $quote->id }}/update">
             @csrf
             <div class="form-block">
-                <x-form.field class="fb-200">
-                    <select name="price_basis" id="price_basis">
-                        @foreach ($priceBasis as $basis)
-                            <option @if ($quote->priceBasis->description == $basis) selected @endif value="{{ $basis }}">
-                                {{ $basis }}
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="price_basic_term">Price Basis</x-form.label>
+                    <select name="price_basic_term" id="price_basic_term">
+                        @foreach ($priceBasicTerms as $priceBasicTerm)
+                            <option @if ($quote->priceBasicTerm->description == $priceBasicTerm) selected @endif value="{{ $priceBasicTerm }}">
+                                {{ $priceBasicTerm }}
                             </option>
                         @endforeach
                     </select>
+                    <x-form.error name="price_basic_term" />
                 </x-form.field>
-                <x-form.field class="fb-200">
-                    <select name="delivery" id="delivery">
-                        @foreach ($deliveries as $delivery)
-                            <option @if ($quote->delivery->description == $delivery) selected @endif value="{{ $delivery }}">
-                                {{ $delivery }}
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="payment_term">Payment Terms</x-form.label>
+                    <select name="payment_term" id="payment_term">
+                        @foreach ($paymentTerms as $paymentTerm)
+                            <option @if ($quote->paymentTerm->description == $paymentTerm) selected @endif value="{{ $paymentTerm }}">
+                                {{ $paymentTerm }}
                             </option>
                         @endforeach
                     </select>
+                    <x-form.error name="payment_term" />
+                </x-form.field>
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="handling_charges_term">Handling Charges</x-form.label>
+                    <select name="handling_charges_term" id="handling_charges_term">
+                        @foreach ($handlingChargesTerms as $handlingChargesTerm)
+                            <option @if ($quote->handlingChargesTerm->description == $handlingChargesTerm) selected @endif value="{{ $handlingChargesTerm }}">
+                                {{ $handlingChargesTerm }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-form.error name="handling_charges_term" />
+                </x-form.field>
+
+                {{-- <x-form.field class="fb-800">
+                    <x-form.label for="po_place_term">PO to Place</x-form.label>
+                    <select name="" id="">
+                        <option title="Hindi" value="hi">bye</option>
+                    </select>
+                    <x-form.error name="po_place_term" />
+                </x-form.field> --}}
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="gst_term">GST/IGST</x-form.label>
+                    <select name="gst_term" id="gst_term">
+                        @foreach ($gstTerms as $gstTerm)
+                            <option @if ($quote->gstTerm->description == $gstTerm) selected @endif value="{{ $gstTerm }}">
+                                {{ $gstTerm }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-form.error name="gst_term" />
+                </x-form.field>
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="delivery_term">Delivery</x-form.label>
+                    <select name="delivery_term" id="delivery_term">
+                        @foreach ($deliveryTerms as $deliveryTerm)
+                            <option @if ($quote->deliveryTerm->description == $deliveryTerm) selected @endif value="{{ $deliveryTerm }}">
+                                {{ $deliveryTerm }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-form.error name="delivery_term" />
+                </x-form.field>
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="pnf_charges_term">PNF Charges</x-form.label>
+                    <select name="pnf_charges_term" id="pnf_charges_term">
+                        @foreach ($pnfChargesTerms as $pnfChargesTerm)
+                            <option @if ($quote->pnfChargesTerm->description == $pnfChargesTerm) selected @endif value="{{ $pnfChargesTerm }}">
+                                {{ $pnfChargesTerm }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-form.error name="pnf_charges_term" />
+                </x-form.field>
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="freight_charges_term">Freight Charges</x-form.label>
+                    <select name="freight_charges_term" id="freight_charges_term">
+                        @foreach ($freightChargesTerms as $freightChargesTerm)
+                            <option @if ($quote->freightChargesTerm->description == $freightChargesTerm) selected @endif value="{{ $freightChargesTerm }}">
+                                {{ $freightChargesTerm }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-form.error name="freight_charges_term" />
+                </x-form.field>
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="warranty_term">Warranty</x-form.label>
+                    <select name="warranty_term" id="warranty_term">
+                        @foreach ($warrantyTerms as $warrantyTerm)
+                            <option @if ($quote->warrantyTerm->description == $warrantyTerm) selected @endif value="{{ $warrantyTerm }}">
+                                {{ $warrantyTerm }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-form.error name="warranty_term" />
+                </x-form.field>
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="validity_quote_term">Validity of Quote</x-form.label>
+                    <select name="validity_quote_term" id="validity_quote_term">
+                        @foreach ($validityQuoteTerms as $validityQuoteTerm)
+                            <option @if ($quote->validityQuoteTerm->description == $validityQuoteTerm) selected @endif value="{{ $validityQuoteTerm }}">
+                                {{ $validityQuoteTerm }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-form.error name="validity_quote_term" />
                 </x-form.field>
             </div>
         </form>
