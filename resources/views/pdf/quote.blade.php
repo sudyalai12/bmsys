@@ -170,7 +170,7 @@
             </tr>
             <tr>
                 <td>
-                    Thanks for your enquiry with Reference No: {{ $quote->reference }}
+                    Thanks for your enquiry with Reference No: <i class="f-lg">Email Dated: {{ date('d/m/Y', strtotime($quote->enquiry_date)); }}</i>
                     <br>
                     We are pleased to submit our best Offer on behalf our Principal  <strong class="f-lg">{{ strtoupper($quote->quoteItems->first()?->product->supplier->name) }}, {{strtoupper($quote->quoteItems->first()?->product->supplier->country)}}</strong>  with Terms and
                     Conditions as follows:
