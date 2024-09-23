@@ -11,7 +11,7 @@ class Supplier extends Model
     protected $table = 'suppliers';
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
-    protected $with = [];
+    protected $with = ['country'];
 
     public function setNameAttribute(string $name)
     {
@@ -20,5 +20,10 @@ class Supplier extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }

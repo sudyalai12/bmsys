@@ -20,6 +20,7 @@ return new class extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('iso3');
             $table->string('numeric_code');
             $table->integer('phone_code');
             $table->string('currency');
@@ -56,8 +57,8 @@ return new class extends Migration
             $table->string('address2');
             $table->string('city');
             $table->string('pincode');
-            $table->string('state');
-            $table->string('country');
+            $table->foreignIdFor(State::class, 'state_id')->constrained();
+            $table->foreignIdFor(Country::class, 'country_id')->constrained();
             $table->timestamps();
         });
 

@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Customer;
 use App\Models\Department;
+use App\Models\State;
 use App\Models\Tax;
 use Illuminate\Http\Request;
 
@@ -32,6 +33,9 @@ class CustomerController extends Controller
             return back()->withErrors(['contact' => 'contact already present']);
         }
 
+        $state = State::where('name', $request->state)->first();
+        $country = Country::where('name', $request->country)->first();
+
         $customer = Customer::firstOrCreate(
             [
                 'name' => $request->customer,
@@ -48,8 +52,8 @@ class CustomerController extends Controller
                 'address2' => $request->address2,
                 'city' => $request->city,
                 'pincode' => $request->pincode,
-                'state' => $request->state,
-                'country' => $request->country,
+                'state_id' => $state->id,
+                'country_id' => $country->id,
             ]
         );
 

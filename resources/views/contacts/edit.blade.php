@@ -75,13 +75,13 @@
                 <x-form.field class="fb-100">
                     <x-form.label for="state">State</x-form.label>
                     <x-form.input placeholder="Enter State" id="state" type="text" name="state"
-                        value="{{ $contact->address->state }}" />
+                        value="{{ $contact->address->state->name }}" />
                     <x-form.error name="state" />
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="country">Country</x-form.label>
                     <x-form.input placeholder="Enter Country" id="country" type="text" name="country"
-                        value="{{ $contact->address->country }}" />
+                        value="{{ $contact->address->country->name }}" />
                     <x-form.error name="country" />
                 </x-form.field>
             </div>

@@ -17,6 +17,7 @@ class Country extends Model
         [
             "id" => 1,
             "name" => "Afghanistan",
+            "iso3" => "AFG",
             "numeric_code" => "004",
             "phone_code" => "93",
             "currency" => "AFN",
@@ -26,6 +27,7 @@ class Country extends Model
         [
             "id" => 2,
             "name" => "Aland Islands",
+            "iso3" => "ALA",
             "numeric_code" => "248",
             "phone_code" => "358",
             "currency" => "EUR",
@@ -35,6 +37,7 @@ class Country extends Model
         [
             "id" => 3,
             "name" => "Albania",
+            "iso3" => "ALB",
             "numeric_code" => "008",
             "phone_code" => "355",
             "currency" => "ALL",
@@ -44,6 +47,7 @@ class Country extends Model
         [
             "id" => 4,
             "name" => "Algeria",
+            "iso3" => "DZA",
             "numeric_code" => "012",
             "phone_code" => "213",
             "currency" => "DZD",
@@ -53,6 +57,7 @@ class Country extends Model
         [
             "id" => 5,
             "name" => "American Samoa",
+            "iso3" => "ASM",
             "numeric_code" => "016",
             "phone_code" => "1",
             "currency" => "USD",
@@ -62,6 +67,7 @@ class Country extends Model
         [
             "id" => 6,
             "name" => "Andorra",
+            "iso3" => "AND",
             "numeric_code" => "020",
             "phone_code" => "376",
             "currency" => "EUR",
@@ -71,6 +77,7 @@ class Country extends Model
         [
             "id" => 7,
             "name" => "Angola",
+            "iso3" => "AGO",
             "numeric_code" => "024",
             "phone_code" => "244",
             "currency" => "AOA",
@@ -80,6 +87,7 @@ class Country extends Model
         [
             "id" => 8,
             "name" => "Anguilla",
+            "iso3" => "AIA",
             "numeric_code" => "660",
             "phone_code" => "1",
             "currency" => "XCD",
@@ -89,6 +97,7 @@ class Country extends Model
         [
             "id" => 9,
             "name" => "Antarctica",
+            "iso3" => "ATA",
             "numeric_code" => "010",
             "phone_code" => "672",
             "currency" => "AAD",
@@ -98,6 +107,7 @@ class Country extends Model
         [
             "id" => 10,
             "name" => "Antigua and Barbuda",
+            "iso3" => "ATG",
             "numeric_code" => "028",
             "phone_code" => "1",
             "currency" => "XCD",
@@ -107,6 +117,7 @@ class Country extends Model
         [
             "id" => 11,
             "name" => "Argentina",
+            "iso3" => "ARG",
             "numeric_code" => "032",
             "phone_code" => "54",
             "currency" => "ARS",
@@ -116,6 +127,7 @@ class Country extends Model
         [
             "id" => 12,
             "name" => "Armenia",
+            "iso3" => "ARM",
             "numeric_code" => "051",
             "phone_code" => "374",
             "currency" => "AMD",
@@ -125,6 +137,7 @@ class Country extends Model
         [
             "id" => 13,
             "name" => "Aruba",
+            "iso3" => "ABW",
             "numeric_code" => "533",
             "phone_code" => "297",
             "currency" => "AWG",
@@ -134,6 +147,7 @@ class Country extends Model
         [
             "id" => 14,
             "name" => "Australia",
+            "iso3" => "AUS",
             "numeric_code" => "036",
             "phone_code" => "61",
             "currency" => "AUD",
@@ -143,6 +157,7 @@ class Country extends Model
         [
             "id" => 15,
             "name" => "Austria",
+            "iso3" => "AUT",
             "numeric_code" => "040",
             "phone_code" => "43",
             "currency" => "EUR",
@@ -152,6 +167,7 @@ class Country extends Model
         [
             "id" => 16,
             "name" => "Azerbaijan",
+            "iso3" => "AZE",
             "numeric_code" => "031",
             "phone_code" => "994",
             "currency" => "AZN",
@@ -161,6 +177,7 @@ class Country extends Model
         [
             "id" => 18,
             "name" => "Bahrain",
+            "iso3" => "BHR",
             "numeric_code" => "048",
             "phone_code" => "973",
             "currency" => "BHD",
@@ -170,6 +187,7 @@ class Country extends Model
         [
             "id" => 19,
             "name" => "Bangladesh",
+            "iso3" => "BGD",
             "numeric_code" => "050",
             "phone_code" => "880",
             "currency" => "BDT",
@@ -179,6 +197,7 @@ class Country extends Model
         [
             "id" => 20,
             "name" => "Barbados",
+            "iso3" => "BRB",
             "numeric_code" => "052",
             "phone_code" => "1",
             "currency" => "BBD",
@@ -188,6 +207,7 @@ class Country extends Model
         [
             "id" => 21,
             "name" => "Belarus",
+            "iso3" => "BLR",
             "numeric_code" => "112",
             "phone_code" => "375",
             "currency" => "BYN",
@@ -197,6 +217,7 @@ class Country extends Model
         [
             "id" => 22,
             "name" => "Belgium",
+            "iso3" => "BEL",
             "numeric_code" => "056",
             "phone_code" => "32",
             "currency" => "EUR",
@@ -206,6 +227,7 @@ class Country extends Model
         [
             "id" => 23,
             "name" => "Belize",
+            "iso3" => "BLZ",
             "numeric_code" => "084",
             "phone_code" => "501",
             "currency" => "BZD",
@@ -215,6 +237,7 @@ class Country extends Model
         [
             "id" => 24,
             "name" => "Benin",
+            "iso3" => "BEN",
             "numeric_code" => "204",
             "phone_code" => "229",
             "currency" => "XOF",
@@ -224,6 +247,7 @@ class Country extends Model
         [
             "id" => 25,
             "name" => "Bermuda",
+            "iso3" => "BMU",
             "numeric_code" => "060",
             "phone_code" => "1",
             "currency" => "BMD",
@@ -233,6 +257,7 @@ class Country extends Model
         [
             "id" => 26,
             "name" => "Bhutan",
+            "iso3" => "BTN",
             "numeric_code" => "064",
             "phone_code" => "975",
             "currency" => "BTN",
@@ -242,6 +267,7 @@ class Country extends Model
         [
             "id" => 27,
             "name" => "Bolivia",
+            "iso3" => "BOL",
             "numeric_code" => "068",
             "phone_code" => "591",
             "currency" => "BOB",
@@ -251,6 +277,7 @@ class Country extends Model
         [
             "id" => 155,
             "name" => "Bonaire, Sint Eustatius and Saba",
+            "iso3" => "BES",
             "numeric_code" => "535",
             "phone_code" => "599",
             "currency" => "USD",
@@ -260,6 +287,7 @@ class Country extends Model
         [
             "id" => 28,
             "name" => "Bosnia and Herzegovina",
+            "iso3" => "BIH",
             "numeric_code" => "070",
             "phone_code" => "387",
             "currency" => "BAM",
@@ -269,6 +297,7 @@ class Country extends Model
         [
             "id" => 29,
             "name" => "Botswana",
+            "iso3" => "BWA",
             "numeric_code" => "072",
             "phone_code" => "267",
             "currency" => "BWP",
@@ -278,6 +307,7 @@ class Country extends Model
         [
             "id" => 30,
             "name" => "Bouvet Island",
+            "iso3" => "BVT",
             "numeric_code" => "074",
             "phone_code" => "0055",
             "currency" => "NOK",
@@ -287,6 +317,7 @@ class Country extends Model
         [
             "id" => 31,
             "name" => "Brazil",
+            "iso3" => "BRA",
             "numeric_code" => "076",
             "phone_code" => "55",
             "currency" => "BRL",
@@ -296,6 +327,7 @@ class Country extends Model
         [
             "id" => 32,
             "name" => "British Indian Ocean Territory",
+            "iso3" => "IOT",
             "numeric_code" => "086",
             "phone_code" => "246",
             "currency" => "USD",
@@ -305,6 +337,7 @@ class Country extends Model
         [
             "id" => 33,
             "name" => "Brunei",
+            "iso3" => "BRN",
             "numeric_code" => "096",
             "phone_code" => "673",
             "currency" => "BND",
@@ -314,6 +347,7 @@ class Country extends Model
         [
             "id" => 34,
             "name" => "Bulgaria",
+            "iso3" => "BGR",
             "numeric_code" => "100",
             "phone_code" => "359",
             "currency" => "BGN",
@@ -323,6 +357,7 @@ class Country extends Model
         [
             "id" => 35,
             "name" => "Burkina Faso",
+            "iso3" => "BFA",
             "numeric_code" => "854",
             "phone_code" => "226",
             "currency" => "XOF",
@@ -332,6 +367,7 @@ class Country extends Model
         [
             "id" => 36,
             "name" => "Burundi",
+            "iso3" => "BDI",
             "numeric_code" => "108",
             "phone_code" => "257",
             "currency" => "BIF",
@@ -341,6 +377,7 @@ class Country extends Model
         [
             "id" => 37,
             "name" => "Cambodia",
+            "iso3" => "KHM",
             "numeric_code" => "116",
             "phone_code" => "855",
             "currency" => "KHR",
@@ -350,6 +387,7 @@ class Country extends Model
         [
             "id" => 38,
             "name" => "Cameroon",
+            "iso3" => "CMR",
             "numeric_code" => "120",
             "phone_code" => "237",
             "currency" => "XAF",
@@ -359,6 +397,7 @@ class Country extends Model
         [
             "id" => 39,
             "name" => "Canada",
+            "iso3" => "CAN",
             "numeric_code" => "124",
             "phone_code" => "1",
             "currency" => "CAD",
@@ -368,6 +407,7 @@ class Country extends Model
         [
             "id" => 40,
             "name" => "Cape Verde",
+            "iso3" => "CPV",
             "numeric_code" => "132",
             "phone_code" => "238",
             "currency" => "CVE",
@@ -377,6 +417,7 @@ class Country extends Model
         [
             "id" => 41,
             "name" => "Cayman Islands",
+            "iso3" => "CYM",
             "numeric_code" => "136",
             "phone_code" => "1",
             "currency" => "KYD",
@@ -386,6 +427,7 @@ class Country extends Model
         [
             "id" => 42,
             "name" => "Central African Republic",
+            "iso3" => "CAF",
             "numeric_code" => "140",
             "phone_code" => "236",
             "currency" => "XAF",
@@ -395,6 +437,7 @@ class Country extends Model
         [
             "id" => 43,
             "name" => "Chad",
+            "iso3" => "TCD",
             "numeric_code" => "148",
             "phone_code" => "235",
             "currency" => "XAF",
@@ -404,6 +447,7 @@ class Country extends Model
         [
             "id" => 44,
             "name" => "Chile",
+            "iso3" => "CHL",
             "numeric_code" => "152",
             "phone_code" => "56",
             "currency" => "CLP",
@@ -413,6 +457,7 @@ class Country extends Model
         [
             "id" => 45,
             "name" => "China",
+            "iso3" => "CHN",
             "numeric_code" => "156",
             "phone_code" => "86",
             "currency" => "CNY",
@@ -422,6 +467,7 @@ class Country extends Model
         [
             "id" => 46,
             "name" => "Christmas Island",
+            "iso3" => "CXR",
             "numeric_code" => "162",
             "phone_code" => "61",
             "currency" => "AUD",
@@ -431,6 +477,7 @@ class Country extends Model
         [
             "id" => 47,
             "name" => "Cocos (Keeling) Islands",
+            "iso3" => "CCK",
             "numeric_code" => "166",
             "phone_code" => "61",
             "currency" => "AUD",
@@ -440,6 +487,7 @@ class Country extends Model
         [
             "id" => 48,
             "name" => "Colombia",
+            "iso3" => "COL",
             "numeric_code" => "170",
             "phone_code" => "57",
             "currency" => "COP",
@@ -449,6 +497,7 @@ class Country extends Model
         [
             "id" => 49,
             "name" => "Comoros",
+            "iso3" => "COM",
             "numeric_code" => "174",
             "phone_code" => "269",
             "currency" => "KMF",
@@ -458,6 +507,7 @@ class Country extends Model
         [
             "id" => 50,
             "name" => "Congo",
+            "iso3" => "COG",
             "numeric_code" => "178",
             "phone_code" => "242",
             "currency" => "XAF",
@@ -467,6 +517,7 @@ class Country extends Model
         [
             "id" => 52,
             "name" => "Cook Islands",
+            "iso3" => "COK",
             "numeric_code" => "184",
             "phone_code" => "682",
             "currency" => "NZD",
@@ -476,6 +527,7 @@ class Country extends Model
         [
             "id" => 53,
             "name" => "Costa Rica",
+            "iso3" => "CRI",
             "numeric_code" => "188",
             "phone_code" => "506",
             "currency" => "CRC",
@@ -485,6 +537,7 @@ class Country extends Model
         [
             "id" => 54,
             "name" => "Cote D'Ivoire (Ivory Coast)",
+            "iso3" => "CIV",
             "numeric_code" => "384",
             "phone_code" => "225",
             "currency" => "XOF",
@@ -494,6 +547,7 @@ class Country extends Model
         [
             "id" => 55,
             "name" => "Croatia",
+            "iso3" => "HRV",
             "numeric_code" => "191",
             "phone_code" => "385",
             "currency" => "HRK",
@@ -503,6 +557,7 @@ class Country extends Model
         [
             "id" => 56,
             "name" => "Cuba",
+            "iso3" => "CUB",
             "numeric_code" => "192",
             "phone_code" => "53",
             "currency" => "CUP",
@@ -512,6 +567,7 @@ class Country extends Model
         [
             "id" => 249,
             "name" => "Curaçao",
+            "iso3" => "CUW",
             "numeric_code" => "531",
             "phone_code" => "599",
             "currency" => "ANG",
@@ -521,6 +577,7 @@ class Country extends Model
         [
             "id" => 57,
             "name" => "Cyprus",
+            "iso3" => "CYP",
             "numeric_code" => "196",
             "phone_code" => "357",
             "currency" => "EUR",
@@ -530,6 +587,7 @@ class Country extends Model
         [
             "id" => 58,
             "name" => "Czech Republic",
+            "iso3" => "CZE",
             "numeric_code" => "203",
             "phone_code" => "420",
             "currency" => "CZK",
@@ -539,6 +597,7 @@ class Country extends Model
         [
             "id" => 51,
             "name" => "Democratic Republic of the Congo",
+            "iso3" => "COD",
             "numeric_code" => "180",
             "phone_code" => "243",
             "currency" => "CDF",
@@ -548,6 +607,7 @@ class Country extends Model
         [
             "id" => 59,
             "name" => "Denmark",
+            "iso3" => "DNK",
             "numeric_code" => "208",
             "phone_code" => "45",
             "currency" => "DKK",
@@ -557,6 +617,7 @@ class Country extends Model
         [
             "id" => 60,
             "name" => "Djibouti",
+            "iso3" => "DJI",
             "numeric_code" => "262",
             "phone_code" => "253",
             "currency" => "DJF",
@@ -566,6 +627,7 @@ class Country extends Model
         [
             "id" => 61,
             "name" => "Dominica",
+            "iso3" => "DMA",
             "numeric_code" => "212",
             "phone_code" => "1",
             "currency" => "XCD",
@@ -575,6 +637,7 @@ class Country extends Model
         [
             "id" => 62,
             "name" => "Dominican Republic",
+            "iso3" => "DOM",
             "numeric_code" => "214",
             "phone_code" => "1",
             "currency" => "DOP",
@@ -584,6 +647,7 @@ class Country extends Model
         [
             "id" => 64,
             "name" => "Ecuador",
+            "iso3" => "ECU",
             "numeric_code" => "218",
             "phone_code" => "593",
             "currency" => "USD",
@@ -593,6 +657,7 @@ class Country extends Model
         [
             "id" => 65,
             "name" => "Egypt",
+            "iso3" => "EGY",
             "numeric_code" => "818",
             "phone_code" => "20",
             "currency" => "EGP",
@@ -602,6 +667,7 @@ class Country extends Model
         [
             "id" => 66,
             "name" => "El Salvador",
+            "iso3" => "SLV",
             "numeric_code" => "222",
             "phone_code" => "503",
             "currency" => "USD",
@@ -611,6 +677,7 @@ class Country extends Model
         [
             "id" => 67,
             "name" => "Equatorial Guinea",
+            "iso3" => "GNQ",
             "numeric_code" => "226",
             "phone_code" => "240",
             "currency" => "XAF",
@@ -620,6 +687,7 @@ class Country extends Model
         [
             "id" => 68,
             "name" => "Eritrea",
+            "iso3" => "ERI",
             "numeric_code" => "232",
             "phone_code" => "291",
             "currency" => "ERN",
@@ -629,6 +697,7 @@ class Country extends Model
         [
             "id" => 69,
             "name" => "Estonia",
+            "iso3" => "EST",
             "numeric_code" => "233",
             "phone_code" => "372",
             "currency" => "EUR",
@@ -638,6 +707,7 @@ class Country extends Model
         [
             "id" => 212,
             "name" => "Eswatini",
+            "iso3" => "SWZ",
             "numeric_code" => "748",
             "phone_code" => "268",
             "currency" => "SZL",
@@ -647,6 +717,7 @@ class Country extends Model
         [
             "id" => 70,
             "name" => "Ethiopia",
+            "iso3" => "ETH",
             "numeric_code" => "231",
             "phone_code" => "251",
             "currency" => "ETB",
@@ -656,6 +727,7 @@ class Country extends Model
         [
             "id" => 71,
             "name" => "Falkland Islands",
+            "iso3" => "FLK",
             "numeric_code" => "238",
             "phone_code" => "500",
             "currency" => "FKP",
@@ -665,6 +737,7 @@ class Country extends Model
         [
             "id" => 72,
             "name" => "Faroe Islands",
+            "iso3" => "FRO",
             "numeric_code" => "234",
             "phone_code" => "298",
             "currency" => "DKK",
@@ -674,6 +747,7 @@ class Country extends Model
         [
             "id" => 73,
             "name" => "Fiji Islands",
+            "iso3" => "FJI",
             "numeric_code" => "242",
             "phone_code" => "679",
             "currency" => "FJD",
@@ -683,6 +757,7 @@ class Country extends Model
         [
             "id" => 74,
             "name" => "Finland",
+            "iso3" => "FIN",
             "numeric_code" => "246",
             "phone_code" => "358",
             "currency" => "EUR",
@@ -692,6 +767,7 @@ class Country extends Model
         [
             "id" => 75,
             "name" => "France",
+            "iso3" => "FRA",
             "numeric_code" => "250",
             "phone_code" => "33",
             "currency" => "EUR",
@@ -701,6 +777,7 @@ class Country extends Model
         [
             "id" => 76,
             "name" => "French Guiana",
+            "iso3" => "GUF",
             "numeric_code" => "254",
             "phone_code" => "594",
             "currency" => "EUR",
@@ -710,6 +787,7 @@ class Country extends Model
         [
             "id" => 77,
             "name" => "French Polynesia",
+            "iso3" => "PYF",
             "numeric_code" => "258",
             "phone_code" => "689",
             "currency" => "XPF",
@@ -719,6 +797,7 @@ class Country extends Model
         [
             "id" => 78,
             "name" => "French Southern Territories",
+            "iso3" => "ATF",
             "numeric_code" => "260",
             "phone_code" => "262",
             "currency" => "EUR",
@@ -728,6 +807,7 @@ class Country extends Model
         [
             "id" => 79,
             "name" => "Gabon",
+            "iso3" => "GAB",
             "numeric_code" => "266",
             "phone_code" => "241",
             "currency" => "XAF",
@@ -737,6 +817,7 @@ class Country extends Model
         [
             "id" => 81,
             "name" => "Georgia",
+            "iso3" => "GEO",
             "numeric_code" => "268",
             "phone_code" => "995",
             "currency" => "GEL",
@@ -746,6 +827,7 @@ class Country extends Model
         [
             "id" => 82,
             "name" => "Germany",
+            "iso3" => "DEU",
             "numeric_code" => "276",
             "phone_code" => "49",
             "currency" => "EUR",
@@ -755,6 +837,7 @@ class Country extends Model
         [
             "id" => 83,
             "name" => "Ghana",
+            "iso3" => "GHA",
             "numeric_code" => "288",
             "phone_code" => "233",
             "currency" => "GHS",
@@ -764,6 +847,7 @@ class Country extends Model
         [
             "id" => 84,
             "name" => "Gibraltar",
+            "iso3" => "GIB",
             "numeric_code" => "292",
             "phone_code" => "350",
             "currency" => "GIP",
@@ -773,6 +857,7 @@ class Country extends Model
         [
             "id" => 85,
             "name" => "Greece",
+            "iso3" => "GRC",
             "numeric_code" => "300",
             "phone_code" => "30",
             "currency" => "EUR",
@@ -782,6 +867,7 @@ class Country extends Model
         [
             "id" => 86,
             "name" => "Greenland",
+            "iso3" => "GRL",
             "numeric_code" => "304",
             "phone_code" => "299",
             "currency" => "DKK",
@@ -791,6 +877,7 @@ class Country extends Model
         [
             "id" => 87,
             "name" => "Grenada",
+            "iso3" => "GRD",
             "numeric_code" => "308",
             "phone_code" => "1",
             "currency" => "XCD",
@@ -800,6 +887,7 @@ class Country extends Model
         [
             "id" => 88,
             "name" => "Guadeloupe",
+            "iso3" => "GLP",
             "numeric_code" => "312",
             "phone_code" => "590",
             "currency" => "EUR",
@@ -809,6 +897,7 @@ class Country extends Model
         [
             "id" => 89,
             "name" => "Guam",
+            "iso3" => "GUM",
             "numeric_code" => "316",
             "phone_code" => "1",
             "currency" => "USD",
@@ -818,6 +907,7 @@ class Country extends Model
         [
             "id" => 90,
             "name" => "Guatemala",
+            "iso3" => "GTM",
             "numeric_code" => "320",
             "phone_code" => "502",
             "currency" => "GTQ",
@@ -827,6 +917,7 @@ class Country extends Model
         [
             "id" => 91,
             "name" => "Guernsey and Alderney",
+            "iso3" => "GGY",
             "numeric_code" => "831",
             "phone_code" => "44",
             "currency" => "GBP",
@@ -836,6 +927,7 @@ class Country extends Model
         [
             "id" => 92,
             "name" => "Guinea",
+            "iso3" => "GIN",
             "numeric_code" => "324",
             "phone_code" => "224",
             "currency" => "GNF",
@@ -845,6 +937,7 @@ class Country extends Model
         [
             "id" => 93,
             "name" => "Guinea-Bissau",
+            "iso3" => "GNB",
             "numeric_code" => "624",
             "phone_code" => "245",
             "currency" => "XOF",
@@ -854,6 +947,7 @@ class Country extends Model
         [
             "id" => 94,
             "name" => "Guyana",
+            "iso3" => "GUY",
             "numeric_code" => "328",
             "phone_code" => "592",
             "currency" => "GYD",
@@ -863,6 +957,7 @@ class Country extends Model
         [
             "id" => 95,
             "name" => "Haiti",
+            "iso3" => "HTI",
             "numeric_code" => "332",
             "phone_code" => "509",
             "currency" => "HTG",
@@ -872,6 +967,7 @@ class Country extends Model
         [
             "id" => 96,
             "name" => "Heard Island and McDonald Islands",
+            "iso3" => "HMD",
             "numeric_code" => "334",
             "phone_code" => "672",
             "currency" => "AUD",
@@ -881,6 +977,7 @@ class Country extends Model
         [
             "id" => 97,
             "name" => "Honduras",
+            "iso3" => "HND",
             "numeric_code" => "340",
             "phone_code" => "504",
             "currency" => "HNL",
@@ -890,6 +987,7 @@ class Country extends Model
         [
             "id" => 98,
             "name" => "Hong Kong S.A.R.",
+            "iso3" => "HKG",
             "numeric_code" => "344",
             "phone_code" => "852",
             "currency" => "HKD",
@@ -899,6 +997,7 @@ class Country extends Model
         [
             "id" => 99,
             "name" => "Hungary",
+            "iso3" => "HUN",
             "numeric_code" => "348",
             "phone_code" => "36",
             "currency" => "HUF",
@@ -908,6 +1007,7 @@ class Country extends Model
         [
             "id" => 100,
             "name" => "Iceland",
+            "iso3" => "ISL",
             "numeric_code" => "352",
             "phone_code" => "354",
             "currency" => "ISK",
@@ -917,6 +1017,7 @@ class Country extends Model
         [
             "id" => 101,
             "name" => "India",
+            "iso3" => "IND",
             "numeric_code" => "356",
             "phone_code" => "91",
             "currency" => "INR",
@@ -926,6 +1027,7 @@ class Country extends Model
         [
             "id" => 102,
             "name" => "Indonesia",
+            "iso3" => "IDN",
             "numeric_code" => "360",
             "phone_code" => "62",
             "currency" => "IDR",
@@ -935,6 +1037,7 @@ class Country extends Model
         [
             "id" => 103,
             "name" => "Iran",
+            "iso3" => "IRN",
             "numeric_code" => "364",
             "phone_code" => "98",
             "currency" => "IRR",
@@ -944,6 +1047,7 @@ class Country extends Model
         [
             "id" => 104,
             "name" => "Iraq",
+            "iso3" => "IRQ",
             "numeric_code" => "368",
             "phone_code" => "964",
             "currency" => "IQD",
@@ -953,6 +1057,7 @@ class Country extends Model
         [
             "id" => 105,
             "name" => "Ireland",
+            "iso3" => "IRL",
             "numeric_code" => "372",
             "phone_code" => "353",
             "currency" => "EUR",
@@ -962,6 +1067,7 @@ class Country extends Model
         [
             "id" => 106,
             "name" => "Israel",
+            "iso3" => "ISR",
             "numeric_code" => "376",
             "phone_code" => "972",
             "currency" => "ILS",
@@ -971,6 +1077,7 @@ class Country extends Model
         [
             "id" => 107,
             "name" => "Italy",
+            "iso3" => "ITA",
             "numeric_code" => "380",
             "phone_code" => "39",
             "currency" => "EUR",
@@ -980,6 +1087,7 @@ class Country extends Model
         [
             "id" => 108,
             "name" => "Jamaica",
+            "iso3" => "JAM",
             "numeric_code" => "388",
             "phone_code" => "1",
             "currency" => "JMD",
@@ -989,6 +1097,7 @@ class Country extends Model
         [
             "id" => 109,
             "name" => "Japan",
+            "iso3" => "JPN",
             "numeric_code" => "392",
             "phone_code" => "81",
             "currency" => "JPY",
@@ -998,6 +1107,7 @@ class Country extends Model
         [
             "id" => 110,
             "name" => "Jersey",
+            "iso3" => "JEY",
             "numeric_code" => "832",
             "phone_code" => "44",
             "currency" => "GBP",
@@ -1007,6 +1117,7 @@ class Country extends Model
         [
             "id" => 111,
             "name" => "Jordan",
+            "iso3" => "JOR",
             "numeric_code" => "400",
             "phone_code" => "962",
             "currency" => "JOD",
@@ -1016,6 +1127,7 @@ class Country extends Model
         [
             "id" => 112,
             "name" => "Kazakhstan",
+            "iso3" => "KAZ",
             "numeric_code" => "398",
             "phone_code" => "7",
             "currency" => "KZT",
@@ -1025,6 +1137,7 @@ class Country extends Model
         [
             "id" => 113,
             "name" => "Kenya",
+            "iso3" => "KEN",
             "numeric_code" => "404",
             "phone_code" => "254",
             "currency" => "KES",
@@ -1034,6 +1147,7 @@ class Country extends Model
         [
             "id" => 114,
             "name" => "Kiribati",
+            "iso3" => "KIR",
             "numeric_code" => "296",
             "phone_code" => "686",
             "currency" => "AUD",
@@ -1043,6 +1157,7 @@ class Country extends Model
         [
             "id" => 248,
             "name" => "Kosovo",
+            "iso3" => "XKX",
             "numeric_code" => "926",
             "phone_code" => "383",
             "currency" => "EUR",
@@ -1052,6 +1167,7 @@ class Country extends Model
         [
             "id" => 117,
             "name" => "Kuwait",
+            "iso3" => "KWT",
             "numeric_code" => "414",
             "phone_code" => "965",
             "currency" => "KWD",
@@ -1061,6 +1177,7 @@ class Country extends Model
         [
             "id" => 118,
             "name" => "Kyrgyzstan",
+            "iso3" => "KGZ",
             "numeric_code" => "417",
             "phone_code" => "996",
             "currency" => "KGS",
@@ -1070,6 +1187,7 @@ class Country extends Model
         [
             "id" => 119,
             "name" => "Laos",
+            "iso3" => "LAO",
             "numeric_code" => "418",
             "phone_code" => "856",
             "currency" => "LAK",
@@ -1079,6 +1197,7 @@ class Country extends Model
         [
             "id" => 120,
             "name" => "Latvia",
+            "iso3" => "LVA",
             "numeric_code" => "428",
             "phone_code" => "371",
             "currency" => "EUR",
@@ -1088,6 +1207,7 @@ class Country extends Model
         [
             "id" => 121,
             "name" => "Lebanon",
+            "iso3" => "LBN",
             "numeric_code" => "422",
             "phone_code" => "961",
             "currency" => "LBP",
@@ -1097,6 +1217,7 @@ class Country extends Model
         [
             "id" => 122,
             "name" => "Lesotho",
+            "iso3" => "LSO",
             "numeric_code" => "426",
             "phone_code" => "266",
             "currency" => "LSL",
@@ -1106,6 +1227,7 @@ class Country extends Model
         [
             "id" => 123,
             "name" => "Liberia",
+            "iso3" => "LBR",
             "numeric_code" => "430",
             "phone_code" => "231",
             "currency" => "LRD",
@@ -1115,6 +1237,7 @@ class Country extends Model
         [
             "id" => 124,
             "name" => "Libya",
+            "iso3" => "LBY",
             "numeric_code" => "434",
             "phone_code" => "218",
             "currency" => "LYD",
@@ -1124,6 +1247,7 @@ class Country extends Model
         [
             "id" => 125,
             "name" => "Liechtenstein",
+            "iso3" => "LIE",
             "numeric_code" => "438",
             "phone_code" => "423",
             "currency" => "CHF",
@@ -1133,6 +1257,7 @@ class Country extends Model
         [
             "id" => 126,
             "name" => "Lithuania",
+            "iso3" => "LTU",
             "numeric_code" => "440",
             "phone_code" => "370",
             "currency" => "EUR",
@@ -1142,6 +1267,7 @@ class Country extends Model
         [
             "id" => 127,
             "name" => "Luxembourg",
+            "iso3" => "LUX",
             "numeric_code" => "442",
             "phone_code" => "352",
             "currency" => "EUR",
@@ -1151,6 +1277,7 @@ class Country extends Model
         [
             "id" => 128,
             "name" => "Macau S.A.R.",
+            "iso3" => "MAC",
             "numeric_code" => "446",
             "phone_code" => "853",
             "currency" => "MOP",
@@ -1160,6 +1287,7 @@ class Country extends Model
         [
             "id" => 130,
             "name" => "Madagascar",
+            "iso3" => "MDG",
             "numeric_code" => "450",
             "phone_code" => "261",
             "currency" => "MGA",
@@ -1169,6 +1297,7 @@ class Country extends Model
         [
             "id" => 131,
             "name" => "Malawi",
+            "iso3" => "MWI",
             "numeric_code" => "454",
             "phone_code" => "265",
             "currency" => "MWK",
@@ -1178,6 +1307,7 @@ class Country extends Model
         [
             "id" => 132,
             "name" => "Malaysia",
+            "iso3" => "MYS",
             "numeric_code" => "458",
             "phone_code" => "60",
             "currency" => "MYR",
@@ -1187,6 +1317,7 @@ class Country extends Model
         [
             "id" => 133,
             "name" => "Maldives",
+            "iso3" => "MDV",
             "numeric_code" => "462",
             "phone_code" => "960",
             "currency" => "MVR",
@@ -1196,6 +1327,7 @@ class Country extends Model
         [
             "id" => 134,
             "name" => "Mali",
+            "iso3" => "MLI",
             "numeric_code" => "466",
             "phone_code" => "223",
             "currency" => "XOF",
@@ -1205,6 +1337,7 @@ class Country extends Model
         [
             "id" => 135,
             "name" => "Malta",
+            "iso3" => "MLT",
             "numeric_code" => "470",
             "phone_code" => "356",
             "currency" => "EUR",
@@ -1214,6 +1347,7 @@ class Country extends Model
         [
             "id" => 136,
             "name" => "Man (Isle of)",
+            "iso3" => "IMN",
             "numeric_code" => "833",
             "phone_code" => "44",
             "currency" => "GBP",
@@ -1223,6 +1357,7 @@ class Country extends Model
         [
             "id" => 137,
             "name" => "Marshall Islands",
+            "iso3" => "MHL",
             "numeric_code" => "584",
             "phone_code" => "692",
             "currency" => "USD",
@@ -1232,6 +1367,7 @@ class Country extends Model
         [
             "id" => 138,
             "name" => "Martinique",
+            "iso3" => "MTQ",
             "numeric_code" => "474",
             "phone_code" => "596",
             "currency" => "EUR",
@@ -1241,6 +1377,7 @@ class Country extends Model
         [
             "id" => 139,
             "name" => "Mauritania",
+            "iso3" => "MRT",
             "numeric_code" => "478",
             "phone_code" => "222",
             "currency" => "MRO",
@@ -1250,6 +1387,7 @@ class Country extends Model
         [
             "id" => 140,
             "name" => "Mauritius",
+            "iso3" => "MUS",
             "numeric_code" => "480",
             "phone_code" => "230",
             "currency" => "MUR",
@@ -1259,6 +1397,7 @@ class Country extends Model
         [
             "id" => 141,
             "name" => "Mayotte",
+            "iso3" => "MYT",
             "numeric_code" => "175",
             "phone_code" => "262",
             "currency" => "EUR",
@@ -1268,6 +1407,7 @@ class Country extends Model
         [
             "id" => 142,
             "name" => "Mexico",
+            "iso3" => "MEX",
             "numeric_code" => "484",
             "phone_code" => "52",
             "currency" => "MXN",
@@ -1277,6 +1417,7 @@ class Country extends Model
         [
             "id" => 143,
             "name" => "Micronesia",
+            "iso3" => "FSM",
             "numeric_code" => "583",
             "phone_code" => "691",
             "currency" => "USD",
@@ -1286,6 +1427,7 @@ class Country extends Model
         [
             "id" => 144,
             "name" => "Moldova",
+            "iso3" => "MDA",
             "numeric_code" => "498",
             "phone_code" => "373",
             "currency" => "MDL",
@@ -1295,6 +1437,7 @@ class Country extends Model
         [
             "id" => 145,
             "name" => "Monaco",
+            "iso3" => "MCO",
             "numeric_code" => "492",
             "phone_code" => "377",
             "currency" => "EUR",
@@ -1304,6 +1447,7 @@ class Country extends Model
         [
             "id" => 146,
             "name" => "Mongolia",
+            "iso3" => "MNG",
             "numeric_code" => "496",
             "phone_code" => "976",
             "currency" => "MNT",
@@ -1313,6 +1457,7 @@ class Country extends Model
         [
             "id" => 147,
             "name" => "Montenegro",
+            "iso3" => "MNE",
             "numeric_code" => "499",
             "phone_code" => "382",
             "currency" => "EUR",
@@ -1322,6 +1467,7 @@ class Country extends Model
         [
             "id" => 148,
             "name" => "Montserrat",
+            "iso3" => "MSR",
             "numeric_code" => "500",
             "phone_code" => "1",
             "currency" => "XCD",
@@ -1331,6 +1477,7 @@ class Country extends Model
         [
             "id" => 149,
             "name" => "Morocco",
+            "iso3" => "MAR",
             "numeric_code" => "504",
             "phone_code" => "212",
             "currency" => "MAD",
@@ -1340,6 +1487,7 @@ class Country extends Model
         [
             "id" => 150,
             "name" => "Mozambique",
+            "iso3" => "MOZ",
             "numeric_code" => "508",
             "phone_code" => "258",
             "currency" => "MZN",
@@ -1349,6 +1497,7 @@ class Country extends Model
         [
             "id" => 151,
             "name" => "Myanmar",
+            "iso3" => "MMR",
             "numeric_code" => "104",
             "phone_code" => "95",
             "currency" => "MMK",
@@ -1358,6 +1507,7 @@ class Country extends Model
         [
             "id" => 152,
             "name" => "Namibia",
+            "iso3" => "NAM",
             "numeric_code" => "516",
             "phone_code" => "264",
             "currency" => "NAD",
@@ -1367,6 +1517,7 @@ class Country extends Model
         [
             "id" => 153,
             "name" => "Nauru",
+            "iso3" => "NRU",
             "numeric_code" => "520",
             "phone_code" => "674",
             "currency" => "AUD",
@@ -1376,6 +1527,7 @@ class Country extends Model
         [
             "id" => 154,
             "name" => "Nepal",
+            "iso3" => "NPL",
             "numeric_code" => "524",
             "phone_code" => "977",
             "currency" => "NPR",
@@ -1385,6 +1537,7 @@ class Country extends Model
         [
             "id" => 156,
             "name" => "Netherlands",
+            "iso3" => "NLD",
             "numeric_code" => "528",
             "phone_code" => "31",
             "currency" => "EUR",
@@ -1394,6 +1547,7 @@ class Country extends Model
         [
             "id" => 157,
             "name" => "New Caledonia",
+            "iso3" => "NCL",
             "numeric_code" => "540",
             "phone_code" => "687",
             "currency" => "XPF",
@@ -1403,6 +1557,7 @@ class Country extends Model
         [
             "id" => 158,
             "name" => "New Zealand",
+            "iso3" => "NZL",
             "numeric_code" => "554",
             "phone_code" => "64",
             "currency" => "NZD",
@@ -1412,6 +1567,7 @@ class Country extends Model
         [
             "id" => 159,
             "name" => "Nicaragua",
+            "iso3" => "NIC",
             "numeric_code" => "558",
             "phone_code" => "505",
             "currency" => "NIO",
@@ -1421,6 +1577,7 @@ class Country extends Model
         [
             "id" => 160,
             "name" => "Niger",
+            "iso3" => "NER",
             "numeric_code" => "562",
             "phone_code" => "227",
             "currency" => "XOF",
@@ -1430,6 +1587,7 @@ class Country extends Model
         [
             "id" => 161,
             "name" => "Nigeria",
+            "iso3" => "NGA",
             "numeric_code" => "566",
             "phone_code" => "234",
             "currency" => "NGN",
@@ -1439,6 +1597,7 @@ class Country extends Model
         [
             "id" => 162,
             "name" => "Niue",
+            "iso3" => "NIU",
             "numeric_code" => "570",
             "phone_code" => "683",
             "currency" => "NZD",
@@ -1448,6 +1607,7 @@ class Country extends Model
         [
             "id" => 163,
             "name" => "Norfolk Island",
+            "iso3" => "NFK",
             "numeric_code" => "574",
             "phone_code" => "672",
             "currency" => "AUD",
@@ -1457,6 +1617,7 @@ class Country extends Model
         [
             "id" => 115,
             "name" => "North Korea",
+            "iso3" => "PRK",
             "numeric_code" => "408",
             "phone_code" => "850",
             "currency" => "KPW",
@@ -1466,6 +1627,7 @@ class Country extends Model
         [
             "id" => 129,
             "name" => "North Macedonia",
+            "iso3" => "MKD",
             "numeric_code" => "807",
             "phone_code" => "389",
             "currency" => "MKD",
@@ -1475,6 +1637,7 @@ class Country extends Model
         [
             "id" => 164,
             "name" => "Northern Mariana Islands",
+            "iso3" => "MNP",
             "numeric_code" => "580",
             "phone_code" => "1",
             "currency" => "USD",
@@ -1484,6 +1647,7 @@ class Country extends Model
         [
             "id" => 165,
             "name" => "Norway",
+            "iso3" => "NOR",
             "numeric_code" => "578",
             "phone_code" => "47",
             "currency" => "NOK",
@@ -1493,6 +1657,7 @@ class Country extends Model
         [
             "id" => 166,
             "name" => "Oman",
+            "iso3" => "OMN",
             "numeric_code" => "512",
             "phone_code" => "968",
             "currency" => "OMR",
@@ -1502,6 +1667,7 @@ class Country extends Model
         [
             "id" => 167,
             "name" => "Pakistan",
+            "iso3" => "PAK",
             "numeric_code" => "586",
             "phone_code" => "92",
             "currency" => "PKR",
@@ -1511,6 +1677,7 @@ class Country extends Model
         [
             "id" => 168,
             "name" => "Palau",
+            "iso3" => "PLW",
             "numeric_code" => "585",
             "phone_code" => "680",
             "currency" => "USD",
@@ -1520,6 +1687,7 @@ class Country extends Model
         [
             "id" => 169,
             "name" => "Palestinian Territory Occupied",
+            "iso3" => "PSE",
             "numeric_code" => "275",
             "phone_code" => "970",
             "currency" => "ILS",
@@ -1529,6 +1697,7 @@ class Country extends Model
         [
             "id" => 170,
             "name" => "Panama",
+            "iso3" => "PAN",
             "numeric_code" => "591",
             "phone_code" => "507",
             "currency" => "PAB",
@@ -1538,6 +1707,7 @@ class Country extends Model
         [
             "id" => 171,
             "name" => "Papua New Guinea",
+            "iso3" => "PNG",
             "numeric_code" => "598",
             "phone_code" => "675",
             "currency" => "PGK",
@@ -1547,6 +1717,7 @@ class Country extends Model
         [
             "id" => 172,
             "name" => "Paraguay",
+            "iso3" => "PRY",
             "numeric_code" => "600",
             "phone_code" => "595",
             "currency" => "PYG",
@@ -1556,6 +1727,7 @@ class Country extends Model
         [
             "id" => 173,
             "name" => "Peru",
+            "iso3" => "PER",
             "numeric_code" => "604",
             "phone_code" => "51",
             "currency" => "PEN",
@@ -1565,6 +1737,7 @@ class Country extends Model
         [
             "id" => 174,
             "name" => "Philippines",
+            "iso3" => "PHL",
             "numeric_code" => "608",
             "phone_code" => "63",
             "currency" => "PHP",
@@ -1574,6 +1747,7 @@ class Country extends Model
         [
             "id" => 175,
             "name" => "Pitcairn Island",
+            "iso3" => "PCN",
             "numeric_code" => "612",
             "phone_code" => "870",
             "currency" => "NZD",
@@ -1583,6 +1757,7 @@ class Country extends Model
         [
             "id" => 176,
             "name" => "Poland",
+            "iso3" => "POL",
             "numeric_code" => "616",
             "phone_code" => "48",
             "currency" => "PLN",
@@ -1592,6 +1767,7 @@ class Country extends Model
         [
             "id" => 177,
             "name" => "Portugal",
+            "iso3" => "PRT",
             "numeric_code" => "620",
             "phone_code" => "351",
             "currency" => "EUR",
@@ -1601,6 +1777,7 @@ class Country extends Model
         [
             "id" => 178,
             "name" => "Puerto Rico",
+            "iso3" => "PRI",
             "numeric_code" => "630",
             "phone_code" => "1",
             "currency" => "USD",
@@ -1610,6 +1787,7 @@ class Country extends Model
         [
             "id" => 179,
             "name" => "Qatar",
+            "iso3" => "QAT",
             "numeric_code" => "634",
             "phone_code" => "974",
             "currency" => "QAR",
@@ -1619,6 +1797,7 @@ class Country extends Model
         [
             "id" => 180,
             "name" => "Reunion",
+            "iso3" => "REU",
             "numeric_code" => "638",
             "phone_code" => "262",
             "currency" => "EUR",
@@ -1628,6 +1807,7 @@ class Country extends Model
         [
             "id" => 181,
             "name" => "Romania",
+            "iso3" => "ROU",
             "numeric_code" => "642",
             "phone_code" => "40",
             "currency" => "RON",
@@ -1637,6 +1817,7 @@ class Country extends Model
         [
             "id" => 182,
             "name" => "Russia",
+            "iso3" => "RUS",
             "numeric_code" => "643",
             "phone_code" => "7",
             "currency" => "RUB",
@@ -1646,6 +1827,7 @@ class Country extends Model
         [
             "id" => 183,
             "name" => "Rwanda",
+            "iso3" => "RWA",
             "numeric_code" => "646",
             "phone_code" => "250",
             "currency" => "RWF",
@@ -1655,6 +1837,7 @@ class Country extends Model
         [
             "id" => 184,
             "name" => "Saint Helena",
+            "iso3" => "SHN",
             "numeric_code" => "654",
             "phone_code" => "290",
             "currency" => "SHP",
@@ -1664,6 +1847,7 @@ class Country extends Model
         [
             "id" => 185,
             "name" => "Saint Kitts and Nevis",
+            "iso3" => "KNA",
             "numeric_code" => "659",
             "phone_code" => "1",
             "currency" => "XCD",
@@ -1673,6 +1857,7 @@ class Country extends Model
         [
             "id" => 186,
             "name" => "Saint Lucia",
+            "iso3" => "LCA",
             "numeric_code" => "662",
             "phone_code" => "1",
             "currency" => "XCD",
@@ -1682,6 +1867,7 @@ class Country extends Model
         [
             "id" => 187,
             "name" => "Saint Pierre and Miquelon",
+            "iso3" => "SPM",
             "numeric_code" => "666",
             "phone_code" => "508",
             "currency" => "EUR",
@@ -1691,6 +1877,7 @@ class Country extends Model
         [
             "id" => 188,
             "name" => "Saint Vincent and the Grenadines",
+            "iso3" => "VCT",
             "numeric_code" => "670",
             "phone_code" => "1",
             "currency" => "XCD",
@@ -1700,6 +1887,7 @@ class Country extends Model
         [
             "id" => 189,
             "name" => "Saint-Barthelemy",
+            "iso3" => "BLM",
             "numeric_code" => "652",
             "phone_code" => "590",
             "currency" => "EUR",
@@ -1709,6 +1897,7 @@ class Country extends Model
         [
             "id" => 190,
             "name" => "Saint-Martin (French part)",
+            "iso3" => "MAF",
             "numeric_code" => "663",
             "phone_code" => "590",
             "currency" => "EUR",
@@ -1718,6 +1907,7 @@ class Country extends Model
         [
             "id" => 191,
             "name" => "Samoa",
+            "iso3" => "WSM",
             "numeric_code" => "882",
             "phone_code" => "685",
             "currency" => "WST",
@@ -1727,6 +1917,7 @@ class Country extends Model
         [
             "id" => 192,
             "name" => "San Marino",
+            "iso3" => "SMR",
             "numeric_code" => "674",
             "phone_code" => "378",
             "currency" => "EUR",
@@ -1736,6 +1927,7 @@ class Country extends Model
         [
             "id" => 193,
             "name" => "Sao Tome and Principe",
+            "iso3" => "STP",
             "numeric_code" => "678",
             "phone_code" => "239",
             "currency" => "STD",
@@ -1745,6 +1937,7 @@ class Country extends Model
         [
             "id" => 194,
             "name" => "Saudi Arabia",
+            "iso3" => "SAU",
             "numeric_code" => "682",
             "phone_code" => "966",
             "currency" => "SAR",
@@ -1754,6 +1947,7 @@ class Country extends Model
         [
             "id" => 195,
             "name" => "Senegal",
+            "iso3" => "SEN",
             "numeric_code" => "686",
             "phone_code" => "221",
             "currency" => "XOF",
@@ -1763,6 +1957,7 @@ class Country extends Model
         [
             "id" => 196,
             "name" => "Serbia",
+            "iso3" => "SRB",
             "numeric_code" => "688",
             "phone_code" => "381",
             "currency" => "RSD",
@@ -1772,6 +1967,7 @@ class Country extends Model
         [
             "id" => 197,
             "name" => "Seychelles",
+            "iso3" => "SYC",
             "numeric_code" => "690",
             "phone_code" => "248",
             "currency" => "SCR",
@@ -1781,6 +1977,7 @@ class Country extends Model
         [
             "id" => 198,
             "name" => "Sierra Leone",
+            "iso3" => "SLE",
             "numeric_code" => "694",
             "phone_code" => "232",
             "currency" => "SLL",
@@ -1790,6 +1987,7 @@ class Country extends Model
         [
             "id" => 199,
             "name" => "Singapore",
+            "iso3" => "SGP",
             "numeric_code" => "702",
             "phone_code" => "65",
             "currency" => "SGD",
@@ -1799,6 +1997,7 @@ class Country extends Model
         [
             "id" => 250,
             "name" => "Sint Maarten (Dutch part)",
+            "iso3" => "SXM",
             "numeric_code" => "534",
             "phone_code" => "1721",
             "currency" => "ANG",
@@ -1808,6 +2007,7 @@ class Country extends Model
         [
             "id" => 200,
             "name" => "Slovakia",
+            "iso3" => "SVK",
             "numeric_code" => "703",
             "phone_code" => "421",
             "currency" => "EUR",
@@ -1817,6 +2017,7 @@ class Country extends Model
         [
             "id" => 201,
             "name" => "Slovenia",
+            "iso3" => "SVN",
             "numeric_code" => "705",
             "phone_code" => "386",
             "currency" => "EUR",
@@ -1826,6 +2027,7 @@ class Country extends Model
         [
             "id" => 202,
             "name" => "Solomon Islands",
+            "iso3" => "SLB",
             "numeric_code" => "090",
             "phone_code" => "677",
             "currency" => "SBD",
@@ -1835,6 +2037,7 @@ class Country extends Model
         [
             "id" => 203,
             "name" => "Somalia",
+            "iso3" => "SOM",
             "numeric_code" => "706",
             "phone_code" => "252",
             "currency" => "SOS",
@@ -1844,6 +2047,7 @@ class Country extends Model
         [
             "id" => 204,
             "name" => "South Africa",
+            "iso3" => "ZAF",
             "numeric_code" => "710",
             "phone_code" => "27",
             "currency" => "ZAR",
@@ -1853,6 +2057,7 @@ class Country extends Model
         [
             "id" => 205,
             "name" => "South Georgia",
+            "iso3" => "SGS",
             "numeric_code" => "239",
             "phone_code" => "500",
             "currency" => "GBP",
@@ -1862,6 +2067,7 @@ class Country extends Model
         [
             "id" => 116,
             "name" => "South Korea",
+            "iso3" => "KOR",
             "numeric_code" => "410",
             "phone_code" => "82",
             "currency" => "KRW",
@@ -1871,6 +2077,7 @@ class Country extends Model
         [
             "id" => 206,
             "name" => "South Sudan",
+            "iso3" => "SSD",
             "numeric_code" => "728",
             "phone_code" => "211",
             "currency" => "SSP",
@@ -1880,6 +2087,7 @@ class Country extends Model
         [
             "id" => 207,
             "name" => "Spain",
+            "iso3" => "ESP",
             "numeric_code" => "724",
             "phone_code" => "34",
             "currency" => "EUR",
@@ -1889,6 +2097,7 @@ class Country extends Model
         [
             "id" => 208,
             "name" => "Sri Lanka",
+            "iso3" => "LKA",
             "numeric_code" => "144",
             "phone_code" => "94",
             "currency" => "LKR",
@@ -1898,6 +2107,7 @@ class Country extends Model
         [
             "id" => 209,
             "name" => "Sudan",
+            "iso3" => "SDN",
             "numeric_code" => "729",
             "phone_code" => "249",
             "currency" => "SDG",
@@ -1907,6 +2117,7 @@ class Country extends Model
         [
             "id" => 210,
             "name" => "Suriname",
+            "iso3" => "SUR",
             "numeric_code" => "740",
             "phone_code" => "597",
             "currency" => "SRD",
@@ -1916,6 +2127,7 @@ class Country extends Model
         [
             "id" => 211,
             "name" => "Svalbard and Jan Mayen Islands",
+            "iso3" => "SJM",
             "numeric_code" => "744",
             "phone_code" => "47",
             "currency" => "NOK",
@@ -1925,6 +2137,7 @@ class Country extends Model
         [
             "id" => 213,
             "name" => "Sweden",
+            "iso3" => "SWE",
             "numeric_code" => "752",
             "phone_code" => "46",
             "currency" => "SEK",
@@ -1934,6 +2147,7 @@ class Country extends Model
         [
             "id" => 214,
             "name" => "Switzerland",
+            "iso3" => "CHE",
             "numeric_code" => "756",
             "phone_code" => "41",
             "currency" => "CHF",
@@ -1943,6 +2157,7 @@ class Country extends Model
         [
             "id" => 215,
             "name" => "Syria",
+            "iso3" => "SYR",
             "numeric_code" => "760",
             "phone_code" => "963",
             "currency" => "SYP",
@@ -1952,6 +2167,7 @@ class Country extends Model
         [
             "id" => 216,
             "name" => "Taiwan",
+            "iso3" => "TWN",
             "numeric_code" => "158",
             "phone_code" => "886",
             "currency" => "TWD",
@@ -1961,6 +2177,7 @@ class Country extends Model
         [
             "id" => 217,
             "name" => "Tajikistan",
+            "iso3" => "TJK",
             "numeric_code" => "762",
             "phone_code" => "992",
             "currency" => "TJS",
@@ -1970,6 +2187,7 @@ class Country extends Model
         [
             "id" => 218,
             "name" => "Tanzania",
+            "iso3" => "TZA",
             "numeric_code" => "834",
             "phone_code" => "255",
             "currency" => "TZS",
@@ -1979,6 +2197,7 @@ class Country extends Model
         [
             "id" => 219,
             "name" => "Thailand",
+            "iso3" => "THA",
             "numeric_code" => "764",
             "phone_code" => "66",
             "currency" => "THB",
@@ -1988,6 +2207,7 @@ class Country extends Model
         [
             "id" => 17,
             "name" => "The Bahamas",
+            "iso3" => "BHS",
             "numeric_code" => "044",
             "phone_code" => "1",
             "currency" => "BSD",
@@ -1997,6 +2217,7 @@ class Country extends Model
         [
             "id" => 80,
             "name" => "The Gambia ",
+            "iso3" => "GMB",
             "numeric_code" => "270",
             "phone_code" => "220",
             "currency" => "GMD",
@@ -2006,6 +2227,7 @@ class Country extends Model
         [
             "id" => 63,
             "name" => "Timor-Leste",
+            "iso3" => "TLS",
             "numeric_code" => "626",
             "phone_code" => "670",
             "currency" => "USD",
@@ -2015,6 +2237,7 @@ class Country extends Model
         [
             "id" => 220,
             "name" => "Togo",
+            "iso3" => "TGO",
             "numeric_code" => "768",
             "phone_code" => "228",
             "currency" => "XOF",
@@ -2024,6 +2247,7 @@ class Country extends Model
         [
             "id" => 221,
             "name" => "Tokelau",
+            "iso3" => "TKL",
             "numeric_code" => "772",
             "phone_code" => "690",
             "currency" => "NZD",
@@ -2033,6 +2257,7 @@ class Country extends Model
         [
             "id" => 222,
             "name" => "Tonga",
+            "iso3" => "TON",
             "numeric_code" => "776",
             "phone_code" => "676",
             "currency" => "TOP",
@@ -2042,6 +2267,7 @@ class Country extends Model
         [
             "id" => 223,
             "name" => "Trinidad and Tobago",
+            "iso3" => "TTO",
             "numeric_code" => "780",
             "phone_code" => "1",
             "currency" => "TTD",
@@ -2051,6 +2277,7 @@ class Country extends Model
         [
             "id" => 224,
             "name" => "Tunisia",
+            "iso3" => "TUN",
             "numeric_code" => "788",
             "phone_code" => "216",
             "currency" => "TND",
@@ -2060,6 +2287,7 @@ class Country extends Model
         [
             "id" => 225,
             "name" => "Turkey",
+            "iso3" => "TUR",
             "numeric_code" => "792",
             "phone_code" => "90",
             "currency" => "TRY",
@@ -2069,6 +2297,7 @@ class Country extends Model
         [
             "id" => 226,
             "name" => "Turkmenistan",
+            "iso3" => "TKM",
             "numeric_code" => "795",
             "phone_code" => "993",
             "currency" => "TMT",
@@ -2078,6 +2307,7 @@ class Country extends Model
         [
             "id" => 227,
             "name" => "Turks and Caicos Islands",
+            "iso3" => "TCA",
             "numeric_code" => "796",
             "phone_code" => "1",
             "currency" => "USD",
@@ -2087,6 +2317,7 @@ class Country extends Model
         [
             "id" => 228,
             "name" => "Tuvalu",
+            "iso3" => "TUV",
             "numeric_code" => "798",
             "phone_code" => "688",
             "currency" => "AUD",
@@ -2096,6 +2327,7 @@ class Country extends Model
         [
             "id" => 229,
             "name" => "Uganda",
+            "iso3" => "UGA",
             "numeric_code" => "800",
             "phone_code" => "256",
             "currency" => "UGX",
@@ -2105,6 +2337,7 @@ class Country extends Model
         [
             "id" => 230,
             "name" => "Ukraine",
+            "iso3" => "UKR",
             "numeric_code" => "804",
             "phone_code" => "380",
             "currency" => "UAH",
@@ -2114,6 +2347,7 @@ class Country extends Model
         [
             "id" => 231,
             "name" => "United Arab Emirates",
+            "iso3" => "ARE",
             "numeric_code" => "784",
             "phone_code" => "971",
             "currency" => "AED",
@@ -2123,6 +2357,7 @@ class Country extends Model
         [
             "id" => 232,
             "name" => "United Kingdom",
+            "iso3" => "GBR",
             "numeric_code" => "826",
             "phone_code" => "44",
             "currency" => "GBP",
@@ -2132,6 +2367,7 @@ class Country extends Model
         [
             "id" => 233,
             "name" => "United States",
+            "iso3" => "USA",
             "numeric_code" => "840",
             "phone_code" => "1",
             "currency" => "USD",
@@ -2141,6 +2377,7 @@ class Country extends Model
         [
             "id" => 234,
             "name" => "United States Minor Outlying Islands",
+            "iso3" => "UMI",
             "numeric_code" => "581",
             "phone_code" => "1",
             "currency" => "USD",
@@ -2150,6 +2387,7 @@ class Country extends Model
         [
             "id" => 235,
             "name" => "Uruguay",
+            "iso3" => "URY",
             "numeric_code" => "858",
             "phone_code" => "598",
             "currency" => "UYU",
@@ -2159,6 +2397,7 @@ class Country extends Model
         [
             "id" => 236,
             "name" => "Uzbekistan",
+            "iso3" => "UZB",
             "numeric_code" => "860",
             "phone_code" => "998",
             "currency" => "UZS",
@@ -2168,6 +2407,7 @@ class Country extends Model
         [
             "id" => 237,
             "name" => "Vanuatu",
+            "iso3" => "VUT",
             "numeric_code" => "548",
             "phone_code" => "678",
             "currency" => "VUV",
@@ -2177,6 +2417,7 @@ class Country extends Model
         [
             "id" => 238,
             "name" => "Vatican City State (Holy See)",
+            "iso3" => "VAT",
             "numeric_code" => "336",
             "phone_code" => "379",
             "currency" => "EUR",
@@ -2186,6 +2427,7 @@ class Country extends Model
         [
             "id" => 239,
             "name" => "Venezuela",
+            "iso3" => "VEN",
             "numeric_code" => "862",
             "phone_code" => "58",
             "currency" => "VES",
@@ -2195,6 +2437,7 @@ class Country extends Model
         [
             "id" => 240,
             "name" => "Vietnam",
+            "iso3" => "VNM",
             "numeric_code" => "704",
             "phone_code" => "84",
             "currency" => "VND",
@@ -2204,6 +2447,7 @@ class Country extends Model
         [
             "id" => 241,
             "name" => "Virgin Islands (British)",
+            "iso3" => "VGB",
             "numeric_code" => "092",
             "phone_code" => "1",
             "currency" => "USD",
@@ -2213,6 +2457,7 @@ class Country extends Model
         [
             "id" => 242,
             "name" => "Virgin Islands (US)",
+            "iso3" => "VIR",
             "numeric_code" => "850",
             "phone_code" => "1",
             "currency" => "USD",
@@ -2222,6 +2467,7 @@ class Country extends Model
         [
             "id" => 243,
             "name" => "Wallis and Futuna Islands",
+            "iso3" => "WLF",
             "numeric_code" => "876",
             "phone_code" => "681",
             "currency" => "XPF",
@@ -2231,6 +2477,7 @@ class Country extends Model
         [
             "id" => 244,
             "name" => "Western Sahara",
+            "iso3" => "ESH",
             "numeric_code" => "732",
             "phone_code" => "212",
             "currency" => "MAD",
@@ -2240,6 +2487,7 @@ class Country extends Model
         [
             "id" => 245,
             "name" => "Yemen",
+            "iso3" => "YEM",
             "numeric_code" => "887",
             "phone_code" => "967",
             "currency" => "YER",
@@ -2249,6 +2497,7 @@ class Country extends Model
         [
             "id" => 246,
             "name" => "Zambia",
+            "iso3" => "ZMB",
             "numeric_code" => "894",
             "phone_code" => "260",
             "currency" => "ZMW",
@@ -2258,6 +2507,7 @@ class Country extends Model
         [
             "id" => 247,
             "name" => "Zimbabwe",
+            "iso3" => "ZWE",
             "numeric_code" => "716",
             "phone_code" => "263",
             "currency" => "ZWL",

@@ -20,8 +20,9 @@
 
     $index = 1;
     $company = 'Neuvin Electronics Private Limited';
-    $phone1 = '+91 1125081947';
+    $phone1 = '+91 1146767788';
     $phone2 = '+91 9910584666';
+    $phone3 = '+91 1125081947';
     $email = 'info@neuvin.com';
     $website = 'www.neuvin.com';
     $bank = 'Bank of Maharashtra';
@@ -103,7 +104,7 @@
                             </tr>
                             <tr>
                                 <td class="p-2px">
-                                    <strong class="bg text-center">{{ date('Ym') . '-' . $quote->id }}</strong>
+                                    <strong class="bg text-center">{{ date('Ym') . '-' . ($quote->id < 10 ? '00' . $quote->id : ($quote->id < 100 ? '0' . $quote->id : $quote->id)) }}</strong>
                                 </td>
                             </tr>
                         </table>
@@ -129,19 +130,21 @@
             <tr>
                 <td style="width: 60%"><strong
                         class="f-lg">{{ Str::upper($quote->contact->customer->name) }}</strong></td>
-                <td><strong class="f-lg">Enquiry REF: EMAIL DATED: {{ date('d/m/Y', strtotime($quote->enquiry_date)); }}</strong></td>
+                <td><strong class="f-lg">Enquiry REF: EMAIL DATED:
+                        {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</strong></td>
             </tr>
             <tr>
                 <td>{{ $quote->contact->address->address1 }}</td>
-                <td><strong class="f-lg">Enquiry Date: {{ date('d/m/Y', strtotime($quote->enquiry_date)); }}</strong></td>
+                <td><strong class="f-lg">Enquiry Date: {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</strong>
+                </td>
             </tr>
             <tr>
                 <td>{{ $quote->contact->address->address2 }}</td>
-                <td><strong class="f-lg">DUE DATE: {{ date('d/m/Y', strtotime($quote->due_date)); }}</strong></td>
+                <td><strong class="f-lg">DUE DATE: {{ date('d/m/Y', strtotime($quote->due_date)) }}</strong></td>
             </tr>
             <tr>
                 <td>{{ $quote->contact->address->city }}-{{ $quote->contact->address->pincode }},
-                    {{ $quote->contact->address->state }}, {{ $quote->contact->address->country }}</td>
+                    {{ $quote->contact->address->state->name }}, {{ $quote->contact->address->country->name }}</td>
             </tr>
             <tr>
                 <td>Phone: {{ $quote->contact->phone }}, Mobile: {{ $quote->contact->mobile }}
@@ -170,9 +173,13 @@
             </tr>
             <tr>
                 <td>
-                    Thanks for your enquiry with Reference No: <i class="f-lg">Email Dated: {{ date('d/m/Y', strtotime($quote->enquiry_date)); }}</i>
+                    Thanks for your enquiry with Reference No: <strong><i class="f-lg">Email Dated:
+                            {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</i></strong>
                     <br>
-                    We are pleased to submit our best Offer on behalf our Principal  <strong class="f-lg">{{ strtoupper($quote->quoteItems->first()?->product->supplier->name) }}, {{strtoupper($quote->quoteItems->first()?->product->supplier->country)}}</strong>  with Terms and
+                    We are pleased to submit our best Offer on behalf our Principal <strong
+                        class="f-lg">{{ strtoupper($quote->quoteItems->first()?->product->supplier->name) }},
+                        {{ strtoupper($quote->quoteItems->first()?->product->supplier->country->iso3) }}</strong> with Terms
+                    and
                     Conditions as follows:
                 </td>
             </tr>
@@ -182,28 +189,28 @@
 
         <table class="table tbl">
             <tr>
-                <td><strong>ANNEXURE - I: COMMERCIAL OFFER:</strong></td>
+                <td><strong style="text-decoration: underline; text-decoration-color: black">ANNEXURE - I: COMMERCIAL OFFER:</strong></td>
             </tr>
         </table>
 
         <table class="table cart-tbl">
             <tr class="bg">
                 <td><strong class="f-lg">Sno</strong></td>
-                <td><strong class="f-lg">Part Number</strong></td>
+                <td><strong class="f-lg">Part Number/ Make</strong></td>
                 <td><strong class="f-lg">Line Item Description</strong></td>
                 <td><strong class="f-lg">Qty</strong></td>
-                <td><strong class="f-lg">Unit Price</strong></td>
-                <td><strong class="f-lg">Taxble Amount</strong></td>
-                <td><strong class="f-lg">Tax Amount</strong></td>
-                <td><strong class="f-lg">Total Amount</strong></td>
+                <td><strong class="f-lg">Unit Price(INR)</strong></td>
+                <td><strong class="f-lg">Taxble Amount(INR)</strong></td>
+                <td><strong class="f-lg">Tax Amount(INR)</strong></td>
+                <td><strong class="f-lg">Total Amount(INR)</strong></td>
             </tr>
 
             @foreach ($quote->quoteItems as $item)
                 <tr>
                     <td>{{ $index++ }}</td>
-                    <td>{{ $item->product->part_number }}</td>
+                    <td>{{ $item->product->part_number }}/ {{ $item->product->supplier->name }}, {{ $item->product->supplier->country->iso3 }}</td>
                     <td class="text-left">{{ $item->product->description }}</td>
-                    <td>{{ $item->quantity }}</td>
+                    <td>{{ $item->quantity < 10 ? '0' . $item->quantity : $item->quantity }}</td>
                     <td>{{ number_format($item->product->sale_price, 2) }}</td>
                     <td>{{ number_format($item->total(), 2) }}</td>
                     <td>{{ number_format($item->tax(), 2) }}</td>
@@ -214,7 +221,7 @@
                 <td></td>
                 <td><strong class="f-xlg">TOTALS:</strong></td>
                 <td class="text-right"><strong class="f-xlg">SUM OF QUOTED ITEMS : </strong></td>
-                <td><strong class="f-xlg">{{ $quote->quoteItems->sum('quantity') }}</strong></td>
+                <td><strong class="f-xlg">{{ $quote->quoteItems->sum('quantity') < 10 ? '0' . $quote->quoteItems->sum('quantity') : $quote->quoteItems->sum('quantity') }}</strong></td>
                 <td></td>
                 <td><strong class="f-xlg">{{ number_format($quote->total(), 2) }}</strong></td>
                 <td><strong class="f-xlg">{{ number_format($quote->tax(), 2) }}</strong></td>
@@ -247,7 +254,7 @@
                         <br>
                         Tel <a href="tel:{{ $phone2 }}">{{ $phone2 }}</a>
                         <br>
-                        Fax <a href="tel:{{ $phone1 }}">{{ $phone1 }}</a>
+                        Fax <a href="tel:{{ $phone3 }}">{{ $phone3 }}</a>
                     </td>
                     <td>
                         GSTIN : {{ $gstn }}
@@ -344,7 +351,7 @@
 
         <table class="table tbl">
             <tr>
-                <td><strong>ANNEXURE - II: COMMERCIAL TERMS AND CONDITIONS OF SALES:</strong></td>
+                <td><strong style="text-decoration: underline; text-decoration-color: black">ANNEXURE - II: COMMERCIAL TERMS AND CONDITIONS OF SALES:</strong></td>
             </tr>
         </table>
         <table class="table terms">
@@ -488,7 +495,7 @@
                         <br>
                         Tel <a href="tel:{{ $phone2 }}">{{ $phone2 }}</a>
                         <br>
-                        Fax <a href="tel:{{ $phone1 }}">{{ $phone1 }}</a>
+                        Fax <a href="tel:{{ $phone3 }}">{{ $phone3 }}</a>
                     </td>
                     <td>
                         GSTIN : {{ $gstn }}

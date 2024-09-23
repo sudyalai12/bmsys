@@ -2,26 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Address;
-use App\Models\Contact;
 use App\Models\Country;
-use App\Models\Customer;
-use App\Models\Delivery;
 use App\Models\DeliveryTerm;
-use App\Models\Department;
 use App\Models\FreightChargesTerm;
 use App\Models\GstTerm;
 use App\Models\HandlingChargesTerm;
 use App\Models\PaymentTerm;
 use App\Models\PnfChargesTerm;
-use App\Models\PoPlaceTerm;
 use App\Models\PriceBasicTerm;
-use App\Models\PriceBasis;
-use App\Models\Product;
-use App\Models\Quote;
-use App\Models\QuoteItem;
 use App\Models\State;
-use App\Models\Supplier;
 use App\Models\Tax;
 use App\Models\User;
 use App\Models\ValidityQuoteTerm;
@@ -53,7 +42,6 @@ class DatabaseSeeder extends Seeder
         DB::table('price_basic_terms')->insert(PriceBasicTerm::$price_basic_terms);
         DB::table('payment_terms')->insert(PaymentTerm::$payment_terms);
         DB::table('handling_charges_terms')->insert(HandlingChargesTerm::$handling_charges_terms);
-        // DB::table('po_place_terms')->insert(PoPlaceTerm::$po_place_terms);
         DB::table('gst_terms')->insert(GstTerm::$gst_terms);
         DB::table('delivery_terms')->insert(DeliveryTerm::$delivery_terms);
         DB::table('pnf_charges_terms')->insert(PnfChargesTerm::$pnf_charges_terms);

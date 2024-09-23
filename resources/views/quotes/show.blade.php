@@ -55,36 +55,32 @@
             <tr>
                 <th>Pincode</th>
                 <td>{{ $quote->contact->address->pincode }}</td>
-                <th>State</th>
-                <td>{{ $quote->contact->address->state }}</td>
-                <th>Country</th>
-                <td>{{ $quote->contact->address->country }}</td>
-            </tr>
-            <tr>
+                <th>State/Country</th>
+                <td>{{ $quote->contact->address->state->name }}/ {{ $quote->contact->address->country->name }}</td>
                 <th>Phone</th>
                 <td>{{ $quote->contact->phone }}</td>
+            </tr>
+            <tr>
                 <th>Mobile</th>
                 <td>{{ $quote->contact->mobile }}</td>
                 <th>Email</th>
                 <td><a href="mailto:{{ $quote->contact->email }}">{{ $quote->contact->email }}</a></td>
-            </tr>
-            <tr>
                 <th>Tax Type</th>
                 <td>{{ $quote->contact->customer->tax_type }}</td>
+            </tr>
+            <tr>
                 <th>GST Number</th>
                 <td>{{ $quote->contact->customer->gstn }}</td>
                 <th>PAN</th>
                 <td>{{ $quote->contact->customer->pan }}</td>
-            </tr>
-            <tr>
                 <th>State Code</th>
                 <td>{{ $quote->contact->customer->state_code }}</td>
+            </tr>
+            <tr>
                 <th>Customer Nickname</th>
                 <td>{{ $quote->contact->customer->nickname }}</td>
                 <th>Due Date</th>
                 <td><input value="{{ $quote->due_date }}" id="due_date" type="date"></td>
-            </tr>
-            <tr>
                 <th>Enquiry Date</th>
                 <td><input value="{{ $quote->enquiry_date }}" id="enquiry_date" type="date"></td>
             </tr>

@@ -35,11 +35,11 @@
             </tr>
             <tr>
                 <th>State</th>
-                <td>{{ $contact->address->state }}</td>
+                <td>{{ $contact->address->state->name }}</td>
             </tr>
             <tr>
                 <th>Country</th>
-                <td>{{ $contact->address->country }}</td>
+                <td>{{ $contact->address->country->name }}</td>
             </tr>
             <tr>
                 <th>Phone</th>

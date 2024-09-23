@@ -24,21 +24,10 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        //     array:9 [▼ // app\Http\Controllers\ProductController.php:27
-        //     "_token" => "SgPd2bLfMGwF6w1trgviLgMBP7bTGdRxFgng3RpQ"
-        //     "part_number" => "24961554"
-        //     "description" => "Ut Qui Fugit Voluptas Maxime Hic Culpa Illo Adipisci."
-        //     "supplier" => "Eichmann-Waelchi"
-        //     "supplier_country" => "Saint Vincent and the Grenadines"
-        //     "hsn_code" => "04578932"
-        //     "unit_price" => "723"
-        //     "purchase_price" => "429"
-        //     "sale_price" => "984"
-        //   ]
-
+        $country = Country::where('name', $request->supplier_country)->first();
         $supplier = Supplier::firstOrCreate([
             'name' => $request->supplier,
-            'country' => $request->supplier_country
+            'country_id' => $country->id,
         ]);
 
         $product = Product::firstOrCreate([

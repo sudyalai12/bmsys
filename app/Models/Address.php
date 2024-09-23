@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Address extends Model
 {
@@ -13,7 +11,7 @@ class Address extends Model
     protected $table = 'addresses';
     protected $guarded = [];
     protected $hidden = [];
-    protected $with = [];
+    protected $with = ['state', 'country'];
 
     public function setAddress1Attribute(string $address1)
     {
@@ -35,5 +33,15 @@ class Address extends Model
     public function contacts()
     {
         return $this->hasMany(Contact::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }

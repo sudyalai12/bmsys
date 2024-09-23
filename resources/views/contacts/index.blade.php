@@ -36,8 +36,8 @@
                     <td>{{ $contact->address->address2 }}</td>
                     <td>{{ $contact->address->city }}</td>
                     <td>{{ $contact->address->pincode }}</td>
-                    <td>{{ $contact->address->state }}</td>
-                    <td>{{ $contact->address->country }}</td>
+                    <td>{{ $contact->address->state->name }}</td>
+                    <td>{{ $contact->address->country->name }}</td>
                     <td>{{ $contact->phone }}</td>
                     <td>{{ $contact->mobile }}</td>
                     <td>{{ $contact->email }}</td>

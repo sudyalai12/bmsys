@@ -24,8 +24,8 @@ class AddressFactory extends Factory
             'address2' => fake()->streetName(),
             'city' => fake()->city(),
             'pincode' => fake()->numberBetween(100000, 999999),
-            'state' => fake()->state(),
-            'country' => Country::all()->random()->name,
+            'state_id' => State::all()->random()->id,
+            'country_id' => Country::all()->random()->id
         ];
     }
 }
