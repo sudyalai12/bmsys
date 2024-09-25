@@ -2357,7 +2357,7 @@ class Country extends Model
         [
             "id" => 232,
             "name" => "United Kingdom",
-            "iso3" => "GBR",
+            "iso3" => "UK",
             "numeric_code" => "826",
             "phone_code" => "44",
             "currency" => "GBP",

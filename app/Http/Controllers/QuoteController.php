@@ -14,6 +14,7 @@ use App\Models\PriceBasicTerm;
 use App\Models\Product;
 use App\Models\Quote;
 use App\Models\QuoteItem;
+use App\Models\SpecialConditionsTerm;
 use App\Models\ValidityQuoteTerm;
 use App\Models\WarrantyTerm;
 use Illuminate\Http\Request;
@@ -75,6 +76,7 @@ class QuoteController extends Controller
         $freightChargesTerms = FreightChargesTerm::get()->pluck('description');
         $warrantyTerms = WarrantyTerm::get()->pluck('description');
         $validityQuoteTerms = ValidityQuoteTerm::get()->pluck('description');
+        // $specialConditionsTerms = SpecialConditionsTerm::get()->pluck('description');
         return view('quotes.show', compact('quote', 'priceBasicTerms', 'paymentTerms', 'handlingChargesTerms', 'gstTerms', 'deliveryTerms', 'pnfChargesTerms', 'freightChargesTerms', 'warrantyTerms', 'validityQuoteTerms'));
     }
 
@@ -91,6 +93,7 @@ class QuoteController extends Controller
         $freightChargesTerm = $request->freight_charges_term;
         $warrantyTerm = $request->warranty_term;
         $validityQuoteTerm = $request->validity_quote_term;
+        $specialConditionsTerms = $request->special_conditions_terms;
 
         if($request->due_date || $request->enquiry_date) {
             $dueDate = date('Y-m-d', strtotime($request->due_date));

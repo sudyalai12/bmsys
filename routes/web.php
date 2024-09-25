@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/quotes/{quote}/items/{quoteItem}', [QuoteController::class, 'destroyItem']);
     Route::post('/quotes/{quote}/update', [QuoteController::class, 'update']);
     Route::get('/quotes/{quote}/pdf', [PdfController::class, 'quotePdf']);
+    Route::get('/quotes/{quote}/create-pdf', [PdfController::class, 'create']);
     Route::get('/quotes/{quote}', [QuoteController::class, 'show']);
     Route::get('/register', [RegisterController::class, 'create']);
     Route::post('/register', [RegisterController::class, 'store']);

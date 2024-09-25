@@ -13,6 +13,7 @@ use App\Models\PriceBasicTerm;
 use App\Models\PriceBasis;
 use App\Models\Product;
 use App\Models\Quote;
+use App\Models\SpecialConditionsTerm;
 use App\Models\ValidityQuoteTerm;
 use App\Models\WarrantyTerm;
 use Illuminate\Database\Migrations\Migration;
@@ -71,6 +72,11 @@ return new class extends Migration
             $table->string('description');
         });
 
+        // Schema::create('special_conditions_terms', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('description');
+        // });
+
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Contact::class, 'contact_id')->constrained()->onDelete('cascade');
@@ -86,6 +92,7 @@ return new class extends Migration
             $table->foreignIdFor(FreightChargesTerm::class, 'freight_charges_term_id')->default(1);
             $table->foreignIdFor(WarrantyTerm::class, 'warranty_term_id')->default(1);
             $table->foreignIdFor(ValidityQuoteTerm::class, 'validity_quote_term_id')->default(1);
+            // $table->foreignIdFor(SpecialConditionsTerm::class, 'special_conditions_term_id')->default(1);
             $table->timestamps();
         });
 

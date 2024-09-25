@@ -14,4 +14,10 @@ class PdfController extends Controller
         $file = "Q-" . date('mdY') . "-NEPL-" . $quote->contact->customer->nickname . ".pdf";
         return Pdf::loadView('pdf.quote', compact('quote'))->setPaper($customPaper, 'landscape')->stream($file);
     }
+
+    public function create(Quote $quote)
+    {
+        $quote->generateReference();
+        return view('pdf.quote', compact('quote'));
+    }
 }

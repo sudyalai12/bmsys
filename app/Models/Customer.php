@@ -46,12 +46,11 @@ class Customer extends Model
         $yearPlusOne = date('y') + 1;
 
         return sprintf(
-            'NEPL/%s/Q-%s/%s-%s/%s',
+            'NEPL/%s/Q-%s/%s-%s',
             strtoupper($name),
             date('md'),
             $year,
             $yearPlusOne,
-            date('His')
         );
     }
 }
