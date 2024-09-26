@@ -52,14 +52,40 @@
     }
 
     @font-face {
-        font-family: 'Gowun Batang Bold';
+        font-family: 'Gowun Batang';
         src: url({{ storage_path('fonts\GowunBatang-Bold.ttf') }}) format("truetype");
         font-weight: 700;
         font-style: normal;
     }
 
+    @font-face {
+        font-family: 'Bitter';
+        src: url({{ storage_path('fonts\Bitter-Regular.ttf') }}) format("truetype");
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Bitter';
+        src: url({{ storage_path('fonts\Bitter-MediumItalic.ttf') }}) format("truetype");
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: 'Bitter';
+        src: url({{ storage_path('fonts\Bitter-SemiBold.ttf') }}) format("truetype");
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    .font-bitter {
+        font-family: 'Bitter' !important;
+    }
+
     body {
         font-family: "Gowun Batang";
+        color: black;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -86,16 +112,28 @@
         background-color: white;
         padding: 22px;
     }
-    .last-page{
+
+    .last-page {
         page-break-after: avoid;
     }
 
     .bold {
+        /* font-family: "Bitter" !important; */
         font-weight: 700 !important;
+    }
+
+    .italic {
+        /* font-family: 'sans-serif' !important; */
+        font-family: "Bitter" !important;
+        font-style: italic !important;
     }
 
     .color {
         color: #4472c4 !important;
+    }
+
+    .dark-color {
+        color: #2d5291 !important;
     }
 
     .bg {
@@ -132,10 +170,13 @@
     }
 
     .address-box td,
-    .msme-box td,
     .header-footer td,
     footer td {
         line-height: 8px;
+    }
+
+    .msme-box td {
+        line-height: 10px;
     }
 
     .msme-img {
@@ -214,7 +255,7 @@
                     <td class="address-box" style="padding-left: 2px">
                         <table>
                             <tr>
-                                <td class="bold color">NEUVIN ELECTRONICS PRIVATE LIMITED</td>
+                                <td class="bold dark-color font-bitter">NEUVIN ELECTRONICS PRIVATE LIMITED</td>
                             </tr>
                             <tr>
                                 <td>WZ-1258, Third Floor, Nand Gyan Bhawan</td>
@@ -240,10 +281,12 @@
                                 <td><img class="msme-img" src="{{ $msme }}"></td>
                             </tr>
                             <tr>
-                                <td class="bg bold text-center">QUOTATION NO:</td>
+                                <td class="bg bold text-center font-bitter">QUOTATION NO:</td>
                             </tr>
                             <tr>
-                                <td class="bg bold text-center">202407-832</td>
+                                <td class="bg bold text-center font-bitter">
+                                    {{ date('Ym') . '-' . ($quote->id < 10 ? '00' . $quote->id : ($quote->id < 100 ? '0' . $quote->id : $quote->id)) }}
+                                </td>
                             </tr>
                         </table>
                     </td>
@@ -252,53 +295,50 @@
 
             <table class="header-footer" style="margin-top: 1px">
                 <tr>
-                    <td style="padding: 2px 10px" class="bg text-right bold">QUOTATION</td>
+                    <td style="padding: 2px 10px" class="bg text-right bold font-bitter italic">QUOTATION</td>
                 </tr>
             </table>
 
             <table style="margin-top: 4px">
                 <tr>
-                    <td class="bold">REF: NEPL/EFOCUS/Q-0729/2024-25</td>
-                    <td class="text-right bold">DATE: 29/07/2024</td>
+                    <td class="bold">REF: {{ $quote->reference }}</td>
+                    <td class="text-right bold">DATE: {{ date('d/m/Y') }}</td>
                 </tr>
             </table>
         </header>
 
         <table class="customer-detail">
             <tr>
-                <td class="bold">E FOCUS INSTRUMENTS INDIA PRIVATE LIMITED</td>
-                <td class="bold">Enquiry REF: EMAIL DATED: 29/07/2024</td>
+                <td class="bold">{{ Str::upper($quote->contact->customer->name) }}</td>
+                <td class="bold">Enquiry REF: EMAIL DATED: {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</td>
             </tr>
             <tr>
-                <td>No. 66, 2nd Cross Street</td>
-                <td class="bold">Enquiry Date: 29/07/2024</td>
+                <td>{{ $quote->contact->address->address1 }}</td>
+                <td class="bold">Enquiry Date: {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</td>
             </tr>
             <tr>
-                <td>Pallavan Nagar Extn., Maduravoya</td>
-                <td class="bold">DUE DATE: 30/07/2024</td>
+                <td>{{ $quote->contact->address->address2 }}</td>
+                <td class="bold">DUE DATE: {{ date('d/m/Y', strtotime($quote->due_date)) }}</td>
             </tr>
             <tr>
-                <td>Chennai - 600095 Tamil Nadu India</td>
+                <td>{{ $quote->contact->address->city }}-{{ $quote->contact->address->pincode }},
+                    {{ $quote->contact->address->state->name }}, {{ $quote->contact->address->country->name }}</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Phone: +91 44-47407422, Fax: +91 44-49580005</td>
+                <td>Phone: {{ $quote->contact->phone }}, Mobile: {{ $quote->contact->mobile }}</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Mobile: +91 7397242650</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><a href="">E-mail: sankarapandi@efocusinstruments.com</a></td>
+                <td><a href="">E-mail: {{ $quote->contact->email }}</a></td>
                 <td></td>
             </tr>
         </table>
 
         <table class="mt">
             <tr>
-                <td style="text-decoration: underline;" class="bold">KIND ATTN: MR. SANKARAPANDI.M, MANAGER -
-                    TECHNICAL SALES</td>
+                <td class="bold underline italic">KIND ATTN: {{ Str::upper($quote->contact->name) }},
+                    {{ Str::upper($quote->contact->department) }}</td>
             </tr>
         </table>
 
@@ -307,30 +347,35 @@
                 <td class="bold">Dear Sir/Madam</td>
             </tr>
             <tr>
-                <td>Thanks for your enquiry with Reference No: Email Dated: 29/07/2024</td>
+                <td>Thanks for your enquiry with Reference No: <span class="bold italic">Email Dated:
+                        {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</span></td>
             </tr>
             <tr>
-                <td>We are pleased to submit our best Offer on behalf our Principal GPS SOURCE INC., USA with Terms and
-                    Conditions as follows</td>
+                <td>We are pleased to submit our best Offer on behalf our Principal
+                    <span class="bold italic">{{ strtoupper($quote->quoteItems->first()?->product->supplier->name) }},
+                        {{ strtoupper($quote->quoteItems->first()?->product->supplier->country->iso3) }}</span> with
+                    Terms and
+                    Conditions as follows
+                </td>
             </tr>
         </table>
 
         <table class="mt">
             <tr>
-                <td class="bold underline">ANNEXURE - I: COMMERCIAL OFFER:</td>
+                <td class="bold underline italic">ANNEXURE - I: COMMERCIAL OFFER:</td>
             </tr>
         </table>
 
         <table style="margin-top: 2px" class="border">
             <tr>
-                <td class="bg bold p text-center">SNO</td>
-                <td class="bg bold p text-center">Part Number/Make</td>
-                <td class="bg bold p text-center">Line Item Description</td>
-                <td class="bg bold p text-center">Qty</td>
-                <td class="bg bold p text-center">Unit Price<br>(INR)</td>
-                <td class="bg bold p text-center">Taxable Amount<br>(INR)</td>
-                <td class="bg bold p text-center">Tax Amount<br>(INR)</td>
-                <td class="bg bold p text-center">Total Amount<br>(INR)</td>
+                <td class="bg bold p text-center font-bitter">SNO</td>
+                <td class="bg bold p text-center font-bitter">Part Number/Make</td>
+                <td class="bg bold p text-center font-bitter">Line Item Description</td>
+                <td class="bg bold p text-center font-bitter">Qty</td>
+                <td class="bg bold p text-center font-bitter">Unit Price<br>(INR)</td>
+                <td class="bg bold p text-center font-bitter">Taxable Amount<br>(INR)</td>
+                <td class="bg bold p text-center font-bitter">Tax Amount<br>(INR)</td>
+                <td class="bg bold p text-center font-bitter">Total Amount<br>(INR)</td>
             </tr>
             @foreach ($quote->quoteItems as $item)
                 <tr>
@@ -345,7 +390,7 @@
                     <td class="bold p">{{ number_format($item->total() + $item->tax(), 2) }}</td>
                 </tr>
             @endforeach
-            <tr>
+            <tr style="background-color: #f5f5f5">
                 <td class="bold p"></td>
                 <td class="bold p">Totals:</td>
                 <td class="bold p">Sum of Quoted Items:</td>
@@ -362,25 +407,26 @@
         <footer>
             <table>
                 <tr>
-                    <td class="bold color">Should have any enquiries concerning this Quote, please contact Mr. Vinod
+                    <td class="bold dark-color">Should have any enquiries concerning this Quote, please contact Mr.
+                        Vinod
                         Sharma: +91 9910584666</td>
                     <td class="bg text-center">Thanks for giving us opportunity to quote.</td>
                 </tr>
             </table>
             <table class="footer-table">
                 <tr>
-                    <td>CIN:U74900HR2012PTC045440</td>
-                    <td>PAN NUMBER: AADCN9370Q</td>
-                    <td>Registered Office: A-45A First Floor Sai Kunj</td>
-                    <td>Page 1 of 2</td>
-                    <td>EFOCUS-2024/0729</td>
+                    <td class="bold">CIN:U74900HR2012PTC045440</td>
+                    <td class="bold">PAN NUMBER: AADCN9370Q</td>
+                    <td class="bold">Registered Office: A-45A First Floor Sai Kunj</td>
+                    <td class="bold">Page 1 of 2</td>
+                    <td class="bold">{{ $quote->contact->customer->nickname }}-{{ date('Y/md') }}</td>
                 </tr>
                 <tr>
-                    <td>GSTIN: 07AADCN9370Q1ZO</td>
-                    <td>VAT/CST/TIN: 07070443384</td>
-                    <td>New Palam Vihar Phase-3 Gurgaon - 122017 (HR)</td>
-                    <td>Printed on:</td>
-                    <td>29/07/2024 19:46:41</td>
+                    <td class="bold">GSTIN: 07AADCN9370Q1ZO</td>
+                    <td class="bold">VAT/CST/TIN: 07070443384</td>
+                    <td class="bold">New Palam Vihar Phase-3 Gurgaon - 122017 (HR)</td>
+                    <td class="bold">Printed on:</td>
+                    <td class="bold">{{ date('Y/m/d H:i:s') }}</td>
                 </tr>
             </table>
         </footer>
@@ -395,7 +441,7 @@
                     <td class="address-box" style="padding-left: 2px">
                         <table>
                             <tr>
-                                <td class="bold color">NEUVIN ELECTRONICS PRIVATE LIMITED</td>
+                                <td class="bold dark-color font-bitter">NEUVIN ELECTRONICS PRIVATE LIMITED</td>
                             </tr>
                             <tr>
                                 <td>WZ-1258, Third Floor, Nand Gyan Bhawan</td>
@@ -421,10 +467,12 @@
                                 <td><img class="msme-img" src="{{ $msme }}"></td>
                             </tr>
                             <tr>
-                                <td class="bg bold text-center">QUOTATION NO:</td>
+                                <td class="bg bold text-center font-bitter">QUOTATION NO:</td>
                             </tr>
                             <tr>
-                                <td class="bg bold text-center">202407-832</td>
+                                <td class="bg bold text-center font-bitter">
+                                    {{ date('Ym') . '-' . ($quote->id < 10 ? '00' . $quote->id : ($quote->id < 100 ? '0' . $quote->id : $quote->id)) }}
+                                </td>
                             </tr>
                         </table>
                     </td>
@@ -433,21 +481,21 @@
 
             <table class="header-footer" style="margin-top: 1px">
                 <tr>
-                    <td style="padding: 2px 10px" class="bg text-right bold">QUOTATION</td>
+                    <td style="padding: 2px 10px" class="bg text-right bold font-bitter italic">QUOTATION</td>
                 </tr>
             </table>
 
             <table style="margin-top: 4px">
                 <tr>
-                    <td class="bold">REF: NEPL/EFOCUS/Q-0729/2024-25</td>
-                    <td class="text-right bold">DATE: 29/07/2024</td>
+                    <td class="bold">REF: {{ $quote->reference }}</td>
+                    <td class="text-right bold">DATE: {{ date('d/m/Y') }}</td>
                 </tr>
             </table>
         </header>
 
         <table>
             <tr>
-                <td class="bold underline">ANNEXURE - II: COMMERCIAL TERMS AND CONDITIONS OF SALES:</td>
+                <td class="bold underline italic">ANNEXURE - II: COMMERCIAL TERMS AND CONDITIONS OF SALES:</td>
             </tr>
         </table>
 
@@ -544,7 +592,7 @@
 
             <tr>
                 <td class="bold">Special Conditions</td>
-                <td>NA</td>
+                <td>End Use Statement Required with Order</td>
             </tr>
         </table>
 
@@ -586,25 +634,26 @@
         <footer>
             <table>
                 <tr>
-                    <td class="bold color">Should have any enquiries concerning this Quote, please contact Mr. Vinod
+                    <td class="bold dark-color">Should have any enquiries concerning this Quote, please contact Mr.
+                        Vinod
                         Sharma: +91 9910584666</td>
                     <td class="bg text-center">Thanks for giving us opportunity to quote.</td>
                 </tr>
             </table>
             <table class="footer-table">
                 <tr>
-                    <td>CIN:U74900HR2012PTC045440</td>
-                    <td>PAN NUMBER: AADCN9370Q</td>
-                    <td>Registered Office: A-45A First Floor Sai Kunj</td>
-                    <td>Page 2 of 2</td>
-                    <td>EFOCUS-2024/0729</td>
+                    <td class="bold">CIN:U74900HR2012PTC045440</td>
+                    <td class="bold">PAN NUMBER: AADCN9370Q</td>
+                    <td class="bold">Registered Office: A-45A First Floor Sai Kunj</td>
+                    <td class="bold">Page 1 of 2</td>
+                    <td class="bold">{{ $quote->contact->customer->nickname }}-{{ date('Y/md') }}</td>
                 </tr>
                 <tr>
-                    <td>GSTIN: 07AADCN9370Q1ZO</td>
-                    <td>VAT/CST/TIN: 07070443384</td>
-                    <td>New Palam Vihar Phase-3 Gurgaon - 122017 (HR)</td>
-                    <td>Printed on:</td>
-                    <td>29/07/2024 19:46:41</td>
+                    <td class="bold">GSTIN: 07AADCN9370Q1ZO</td>
+                    <td class="bold">VAT/CST/TIN: 07070443384</td>
+                    <td class="bold">New Palam Vihar Phase-3 Gurgaon - 122017 (HR)</td>
+                    <td class="bold">Printed on:</td>
+                    <td class="bold">{{ date('Y/m/d H:i:s') }}</td>
                 </tr>
             </table>
         </footer>
@@ -612,3 +661,6 @@
 </body>
 
 </html>
+
+{{-- APTOS DISPLAY --}}
+{{-- TIMES RROMAN --}}

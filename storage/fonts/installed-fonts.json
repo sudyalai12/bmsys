@@ -5,5 +5,11 @@
     },
     "gowun batang bold": {
         "bold": "gowun_batang_bold_bold_d0c374ff30c7868e973910b5818fe9f4"
+    },
+    "bitter": {
+        "normal": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/bitter_normal_dbf9350f6dc72820f8a093ba08329868",
+        "bold": "bitter_bold_fb939977bfea68031bf945804ccd212b",
+        "500_italic": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/bitter_500_italic_961edcb267021baec0397ddb8aa3dbc9",
+        "bold_italic": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/bitter_bold_italic_961edcb267021baec0397ddb8aa3dbc9"
     }
 }
