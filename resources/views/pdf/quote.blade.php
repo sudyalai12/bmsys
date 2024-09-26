@@ -1,4 +1,8 @@
 @php
+    function formatString($string)
+    {
+        return preg_replace('/;/', "\r\n•", $string);
+    }
     $files = [
         'logo' => 'neuvin-logo.png',
         'msme' => 'msme.png',
@@ -44,48 +48,38 @@
     <title>Document</title>
 </head>
 <style>
+    /* Tinos Font  */
     @font-face {
-        font-family: 'Gowun Batang';
-        src: url({{ storage_path('fonts\GowunBatang-Regular.ttf') }}) format("truetype");
+        font-family: 'Tinos';
+        src: url({{ storage_path('fonts\Tinos-Regular.ttf') }}) format("truetype");
         font-weight: 400;
         font-style: normal;
     }
 
     @font-face {
-        font-family: 'Gowun Batang';
-        src: url({{ storage_path('fonts\GowunBatang-Bold.ttf') }}) format("truetype");
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Bitter';
-        src: url({{ storage_path('fonts\Bitter-Regular.ttf') }}) format("truetype");
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Bitter';
-        src: url({{ storage_path('fonts\Bitter-MediumItalic.ttf') }}) format("truetype");
-        font-weight: 700;
+        font-family: 'Tinos';
+        src: url({{ storage_path('fonts\Tinos-Italic.ttf') }}) format("truetype");
+        font-weight: 400;
         font-style: italic;
     }
 
     @font-face {
-        font-family: 'Bitter';
-        src: url({{ storage_path('fonts\Bitter-SemiBold.ttf') }}) format("truetype");
+        font-family: 'Tinos';
+        src: url({{ storage_path('fonts\Tinos-Bold.ttf') }}) format("truetype");
         font-weight: 700;
         font-style: normal;
     }
 
-    .font-bitter {
-        font-family: 'Bitter' !important;
+    @font-face {
+        font-family: 'Tinos';
+        src: url({{ storage_path('fonts\Tinos-BoldItalic.ttf') }}) format("truetype");
+        font-weight: 700;
+        font-style: italic;
     }
 
     body {
-        font-family: "Gowun Batang";
-        color: black;
+        font-family: 'Tinos';
+        color: rgb(0, 0, 0);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -94,7 +88,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        line-height: 12px;
+        font-size: 12px;
     }
 
     table {
@@ -104,12 +98,11 @@
     }
 
     .page {
+        background-color: white;
         position: relative;
         page-break-after: always;
-        font-size: 12px;
         width: 772px;
         height: 1012px;
-        background-color: white;
         padding: 22px;
     }
 
@@ -118,13 +111,10 @@
     }
 
     .bold {
-        /* font-family: "Bitter" !important; */
-        font-weight: 700 !important;
+        font-weight: bold !important;
     }
 
     .italic {
-        /* font-family: 'sans-serif' !important; */
-        font-family: "Bitter" !important;
         font-style: italic !important;
     }
 
@@ -141,6 +131,22 @@
         color: rgb(255, 255, 255) !important;
     }
 
+    .mt {
+        margin-top: 22px;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
+
+    .p {
+        padding: 2px;
+    }
+
+    .oneline {
+        white-space: nowrap;
+    }
+
     .text-center {
         text-align: center !important;
     }
@@ -155,7 +161,7 @@
 
     header {
         /* border: 1px solid black; */
-        margin-bottom: 22px;
+        margin-bottom: 18px;
     }
 
     .logo-img {
@@ -166,21 +172,33 @@
     .address-box,
     .msme-box {
         /* border: 1px solid black; */
-        font-size: 10px;
     }
 
     .address-box td,
     .header-footer td,
     footer td {
-        line-height: 8px;
+        /* line-height: 11px; */
     }
 
-    .msme-box td {
+    .address-box td {
+        font-size: 11px;
         line-height: 10px;
     }
 
+    .msme-box td {
+        line-height: 11px;
+        font-weight: bold !important;
+    }
+
+    .header-bottom td {
+        line-height: 11px;
+        padding: 2px 10px;
+    }
+
+    .header-footer td {}
+
     .msme-img {
-        height: 47px;
+        height: 46px;
     }
 
     .address-box {
@@ -199,22 +217,12 @@
     .customer-detail th,
     .customer-detail a {}
 
-    .mt {
-        margin-top: 22px;
-    }
 
-    .underline {
-        text-decoration: underline;
-    }
 
     .border,
     .border td,
     .border th {
         border: 1px solid black;
-    }
-
-    .p {
-        padding: 2px;
     }
 
     footer {
@@ -224,10 +232,13 @@
         right: 22px;
         bottom: 22px;
     }
+    footer td{
+        line-height: 11px;
+        font-size: 10px !important;
+    }
 
     .footer-table {
-        border-top: 1px solid #4472c4;
-        margin-top: 2px;
+        border-top: 1px solid #2d5291;
     }
 
     .termsnotices {
@@ -236,15 +247,29 @@
 
     .termsnotices td {
         line-height: 11px !important;
-        padding-top: 4px !important;
+        padding-top: 6px !important;
     }
 
     .termsnotices td {
         vertical-align: top;
     }
+
+    .cart {
+        margin-top: 2px;
+    }
+    .cart td{
+        font-size: 13px;
+        padding: 4px;
+    }
+
+    .qty {
+        padding: 0 4px;
+    }
 </style>
 
 <body>
+
+
 
     <div class="page">
         <header>
@@ -281,10 +306,10 @@
                                 <td><img class="msme-img" src="{{ $msme }}"></td>
                             </tr>
                             <tr>
-                                <td class="bg bold text-center font-bitter">QUOTATION NO:</td>
+                                <td class="bg text-center">QUOTATION NO:</td>
                             </tr>
                             <tr>
-                                <td class="bg bold text-center font-bitter">
+                                <td class="bg text-center">
                                     {{ date('Ym') . '-' . ($quote->id < 10 ? '00' . $quote->id : ($quote->id < 100 ? '0' . $quote->id : $quote->id)) }}
                                 </td>
                             </tr>
@@ -293,13 +318,13 @@
                 </tr>
             </table>
 
-            <table class="header-footer" style="margin-top: 1px">
+            <table class="header-bottom">
                 <tr>
-                    <td style="padding: 2px 10px" class="bg text-right bold font-bitter italic">QUOTATION</td>
+                    <td class="bg text-right bold italic">QUOTATION</td>
                 </tr>
             </table>
 
-            <table style="margin-top: 4px">
+            <table class="header-footer">
                 <tr>
                     <td class="bold">REF: {{ $quote->reference }}</td>
                     <td class="text-right bold">DATE: {{ date('d/m/Y') }}</td>
@@ -354,8 +379,7 @@
                 <td>We are pleased to submit our best Offer on behalf our Principal
                     <span class="bold italic">{{ strtoupper($quote->quoteItems->first()?->product->supplier->name) }},
                         {{ strtoupper($quote->quoteItems->first()?->product->supplier->country->iso3) }}</span> with
-                    Terms and
-                    Conditions as follows
+                    Terms and Conditions as follows
                 </td>
             </tr>
         </table>
@@ -366,41 +390,42 @@
             </tr>
         </table>
 
-        <table style="margin-top: 2px" class="border">
+        <table class="border cart">
             <tr>
-                <td class="bg bold p text-center font-bitter">SNO</td>
-                <td class="bg bold p text-center font-bitter">Part Number/Make</td>
-                <td class="bg bold p text-center font-bitter">Line Item Description</td>
-                <td class="bg bold p text-center font-bitter">Qty</td>
-                <td class="bg bold p text-center font-bitter">Unit Price<br>(INR)</td>
-                <td class="bg bold p text-center font-bitter">Taxable Amount<br>(INR)</td>
-                <td class="bg bold p text-center font-bitter">Tax Amount<br>(INR)</td>
-                <td class="bg bold p text-center font-bitter">Total Amount<br>(INR)</td>
+                <td class="bg bold p text-center">SNO</td>
+                <td class="bg bold p text-center">Part Number/Make</td>
+                <td class="bg bold p text-center">Line Item Description</td>
+                <td class="bg bold p text-center qty">Qty</td>
+                <td class="bg bold p text-center oneline">Unit Price<br>(INR)</td>
+                <td class="bg bold p text-center oneline">Taxable Amount<br>(INR)</td>
+                <td class="bg bold p text-center oneline">Tax Amount<br>(INR)</td>
+                <td class="bg bold p text-center oneline">Total Amount<br>(INR)</td>
             </tr>
             @foreach ($quote->quoteItems as $item)
                 <tr>
                     <td class="bold p text-center">{{ $index++ }}</td>
                     <td class="bold p">{{ $item->product->part_number }}<br>
                         {{ $item->product->supplier->name }},{{ $item->product->supplier->country->iso3 }}</td>
-                    <td class="bold p">{{ $item->product->description }}</td>
-                    <td class="bold p">{{ $item->quantity < 10 ? '0' . $item->quantity : $item->quantity }}</td>
-                    <td class="bold p">{{ number_format($item->product->sale_price, 2) }}</td>
-                    <td class="bold p">{{ number_format($item->total(), 2) }}</td>
-                    <td class="bold p">{{ number_format($item->tax(), 2) }}</td>
-                    <td class="bold p">{{ number_format($item->total() + $item->tax(), 2) }}</td>
+                    <td class="bold p" style="white-space: pre-wrap;">@php echo formatString($item->product->description) @endphp</td>
+                    <td class="bold p text-center">{{ $item->quantity < 10 ? '0' . $item->quantity : $item->quantity }}
+                    </td>
+                    <td class="bold p text-center">{{ number_format($item->product->sale_price, 2) }}</td>
+                    <td class="bold p text-center">{{ number_format($item->total(), 2) }}</td>
+                    <td class="bold p text-center">{{ number_format($item->tax(), 2) }}</td>
+                    <td class="bold p text-center">{{ number_format($item->total() + $item->tax(), 2) }}</td>
                 </tr>
             @endforeach
             <tr style="background-color: #f5f5f5">
                 <td class="bold p"></td>
                 <td class="bold p">Totals:</td>
                 <td class="bold p">Sum of Quoted Items:</td>
-                <td class="bold p">
+                <td class="bold p text-center">
                     {{ $quote->quoteItems->sum('quantity') < 10 ? '0' . $quote->quoteItems->sum('quantity') : $quote->quoteItems->sum('quantity') }}
                 </td>
                 <td class="bold p"></td>
-                <td class="bold p">{{ number_format($quote->total(), 2) }}</td>
-                <td class="bold p">{{ number_format($quote->tax(), 2) }}</td>
-                <td class="bold p">{{ number_format($quote->total() + $quote->tax(), 2) }}</td>
+                <td class="bold p text-center">{{ number_format($quote->total(), 2) }}</td>
+                <td class="bold p text-center">{{ number_format($quote->tax(), 2) }}</td>
+                <td class="bold p text-center">{{ number_format($quote->total() + $quote->tax(), 2) }}</td>
             </tr>
         </table>
 
@@ -410,7 +435,7 @@
                     <td class="bold dark-color">Should have any enquiries concerning this Quote, please contact Mr.
                         Vinod
                         Sharma: +91 9910584666</td>
-                    <td class="bg text-center">Thanks for giving us opportunity to quote.</td>
+                    <td class="bg bold text-center">Thanks for giving us opportunity to quote.</td>
                 </tr>
             </table>
             <table class="footer-table">
@@ -419,14 +444,14 @@
                     <td class="bold">PAN NUMBER: AADCN9370Q</td>
                     <td class="bold">Registered Office: A-45A First Floor Sai Kunj</td>
                     <td class="bold">Page 1 of 2</td>
-                    <td class="bold">{{ $quote->contact->customer->nickname }}-{{ date('Y/md') }}</td>
+                    <td class="bold text-right">{{ $quote->contact->customer->nickname }}-{{ date('Y/md') }}</td>
                 </tr>
                 <tr>
                     <td class="bold">GSTIN: 07AADCN9370Q1ZO</td>
                     <td class="bold">VAT/CST/TIN: 07070443384</td>
                     <td class="bold">New Palam Vihar Phase-3 Gurgaon - 122017 (HR)</td>
                     <td class="bold">Printed on:</td>
-                    <td class="bold">{{ date('Y/m/d H:i:s') }}</td>
+                    <td class="bold text-right">{{ date('Y/m/d H:i:s') }}</td>
                 </tr>
             </table>
         </footer>
@@ -467,10 +492,10 @@
                                 <td><img class="msme-img" src="{{ $msme }}"></td>
                             </tr>
                             <tr>
-                                <td class="bg bold text-center font-bitter">QUOTATION NO:</td>
+                                <td class="bg text-center">QUOTATION NO:</td>
                             </tr>
                             <tr>
-                                <td class="bg bold text-center font-bitter">
+                                <td class="bg text-center">
                                     {{ date('Ym') . '-' . ($quote->id < 10 ? '00' . $quote->id : ($quote->id < 100 ? '0' . $quote->id : $quote->id)) }}
                                 </td>
                             </tr>
@@ -479,13 +504,13 @@
                 </tr>
             </table>
 
-            <table class="header-footer" style="margin-top: 1px">
+            <table class="header-bottom">
                 <tr>
-                    <td style="padding: 2px 10px" class="bg text-right bold font-bitter italic">QUOTATION</td>
+                    <td class="bg text-right bold italic">QUOTATION</td>
                 </tr>
             </table>
 
-            <table style="margin-top: 4px">
+            <table class="header-footer">
                 <tr>
                     <td class="bold">REF: {{ $quote->reference }}</td>
                     <td class="text-right bold">DATE: {{ date('d/m/Y') }}</td>
@@ -587,12 +612,12 @@
 
             <tr>
                 <td class="bold">PO Conditions</td>
-                <td>NC/NR (Non-Cancellable / Non-Returnable)</td>
+                <td>{{ $quote->poConditionsTerm->description }}</td>
             </tr>
 
             <tr>
                 <td class="bold">Special Conditions</td>
-                <td>End Use Statement Required with Order</td>
+                <td>{{ $quote->specialConditionsTerm->description }}</td>
             </tr>
         </table>
 
@@ -637,7 +662,7 @@
                     <td class="bold dark-color">Should have any enquiries concerning this Quote, please contact Mr.
                         Vinod
                         Sharma: +91 9910584666</td>
-                    <td class="bg text-center">Thanks for giving us opportunity to quote.</td>
+                    <td class="bg bold text-center">Thanks for giving us opportunity to quote.</td>
                 </tr>
             </table>
             <table class="footer-table">
@@ -645,15 +670,15 @@
                     <td class="bold">CIN:U74900HR2012PTC045440</td>
                     <td class="bold">PAN NUMBER: AADCN9370Q</td>
                     <td class="bold">Registered Office: A-45A First Floor Sai Kunj</td>
-                    <td class="bold">Page 1 of 2</td>
-                    <td class="bold">{{ $quote->contact->customer->nickname }}-{{ date('Y/md') }}</td>
+                    <td class="bold">Page 2 of 2</td>
+                    <td class="bold text-right">{{ $quote->contact->customer->nickname }}-{{ date('Y/md') }}</td>
                 </tr>
                 <tr>
                     <td class="bold">GSTIN: 07AADCN9370Q1ZO</td>
                     <td class="bold">VAT/CST/TIN: 07070443384</td>
                     <td class="bold">New Palam Vihar Phase-3 Gurgaon - 122017 (HR)</td>
                     <td class="bold">Printed on:</td>
-                    <td class="bold">{{ date('Y/m/d H:i:s') }}</td>
+                    <td class="bold text-right">{{ date('Y/m/d H:i:s') }}</td>
                 </tr>
             </table>
         </footer>

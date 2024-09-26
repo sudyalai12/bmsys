@@ -2,15 +2,25 @@
 
 namespace Database\Seeders;
 
+use App\Models\Address;
+use App\Models\Contact;
 use App\Models\Country;
+use App\Models\Customer;
 use App\Models\DeliveryTerm;
 use App\Models\FreightChargesTerm;
 use App\Models\GstTerm;
 use App\Models\HandlingChargesTerm;
 use App\Models\PaymentTerm;
 use App\Models\PnfChargesTerm;
+use App\Models\PoConditionsTerm;
+use App\Models\PoConditionTerm;
 use App\Models\PriceBasicTerm;
+use App\Models\Product;
+use App\Models\Quote;
+use App\Models\QuoteItem;
+use App\Models\SpecialConditionsTerm;
 use App\Models\State;
+use App\Models\Supplier;
 use App\Models\Tax;
 use App\Models\User;
 use App\Models\ValidityQuoteTerm;
@@ -29,15 +39,15 @@ class DatabaseSeeder extends Seeder
         DB::table('states')->insert(State::$states);
         DB::table('taxes')->insert(Tax::$taxes);
 
-        // Contact::factory(50)->create();
-        // Contact::all()->each(function ($contact) {
-        //     $contact->address_id = Address::all()->random()->id;
-        //     $contact->customer_id = Customer::all()->random()->id;
-        //     $contact->save();
-        // });
+        Contact::factory(50)->create();
+        Contact::all()->each(function ($contact) {
+            $contact->address_id = Address::all()->random()->id;
+            $contact->customer_id = Customer::all()->random()->id;
+            $contact->save();
+        });
 
-        // Supplier::factory(10)->create();
-        // Product::factory(200)->create();
+        Supplier::factory(10)->create();
+        Product::factory(200)->create();
 
         DB::table('price_basic_terms')->insert(PriceBasicTerm::$price_basic_terms);
         DB::table('payment_terms')->insert(PaymentTerm::$payment_terms);
@@ -48,14 +58,16 @@ class DatabaseSeeder extends Seeder
         DB::table('freight_charges_terms')->insert(FreightChargesTerm::$freight_charges_terms);
         DB::table('warranty_terms')->insert(WarrantyTerm::$warranty_terms);
         DB::table('validity_quote_terms')->insert(ValidityQuoteTerm::$validity_quote_terms);
+        DB::table('po_conditions_terms')->insert(PoConditionsTerm::$po_conditions_terms);
+        DB::table('special_conditions_terms')->insert(SpecialConditionsTerm::$special_conditions_terms);
 
-        // Quote::factory(10)->create();
+        Quote::factory(10)->create();
 
-        // Quote::all()->each(function ($quote) {
-        //     $quote->generateReference();
-        // });
+        Quote::all()->each(function ($quote) {
+            $quote->generateReference();
+        });
 
-        // QuoteItem::factory(100)->create();
+        QuoteItem::factory(100)->create();
         
         User::factory()->create([
             'name' => 'Neuvin',

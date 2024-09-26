@@ -80,8 +80,13 @@ class Quote extends Model
         return $this->belongsTo(ValidityQuoteTerm::class);
     }
 
-    public function specialConditionsTerms()
+    public function poConditionsTerm()
     {
-        return $this->belongsToMany(SpecialConditionsTerm::class);
+        return $this->belongsTo(PoConditionsTerm::class);
+    }
+
+    public function specialConditionsTerm()
+    {
+        return $this->belongsTo(SpecialConditionsTerm::class);
     }
 }

@@ -1,15 +1,8 @@
 {
-    "gowun batang": {
-        "normal": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/gowun_batang_normal_7b6365092237e1c4d69491dbd0f03176",
-        "bold": "gowun_batang_bold_d0c374ff30c7868e973910b5818fe9f4"
-    },
-    "gowun batang bold": {
-        "bold": "gowun_batang_bold_bold_d0c374ff30c7868e973910b5818fe9f4"
-    },
-    "bitter": {
-        "normal": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/bitter_normal_dbf9350f6dc72820f8a093ba08329868",
-        "bold": "bitter_bold_fb939977bfea68031bf945804ccd212b",
-        "500_italic": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/bitter_500_italic_961edcb267021baec0397ddb8aa3dbc9",
-        "bold_italic": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/bitter_bold_italic_961edcb267021baec0397ddb8aa3dbc9"
+    "tinos": {
+        "normal": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/tinos_normal_e29953bddb4d842c95455cd38550231d",
+        "italic": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/tinos_italic_d12e0010b73cbcc270352a7e76489ad5",
+        "bold": "C:\\xampp\\htdocs\\company-management-system-11092024\\storage\\fonts\/tinos_bold_4f88a6ea7a907de12228e16e8b090a72",
+        "bold_italic": "tinos_bold_italic_37c280bd94a11307ff1b4d4b163c3edc"
     }
 }

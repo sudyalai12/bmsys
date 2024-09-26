@@ -8,29 +8,47 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::view('/', 'home');
 
-    Route::get('/customers', [CustomerController::class, 'index']);
-    Route::get('/customers/create', [CustomerController::class, 'create']);
-    Route::post('/customers', [CustomerController::class, 'store']);
-    Route::get('/customers/{customer}', [CustomerController::class, 'show']);
+    Route::resource('customers', CustomerController::class)->only([
+        'index',
+        'create',
+        'store',
+        'edit',
+        'update',
+        'show',
+        'destroy'
+    ]);
 
-    Route::get('/contacts', [ContactController::class, 'index']);
-    Route::get('/contacts/{contact}/edit', [ContactController::class, 'edit']);
-    Route::patch('/contacts/{contact}', [ContactController::class, 'update']);
-    Route::delete('/contacts/{contact}', [ContactController::class, 'destroy']);
-    Route::get('/contacts/{contact}', [ContactController::class, 'show']);
+    Route::resource('contacts', ContactController::class)->only([
+        'index',
+        'edit',
+        'update',
+        'destroy',
+        'show'
+    ]);
 
-    Route::get('/products', [ProductController::class, 'index']);
-    Route::get('/products/create', [ProductController::class, 'create']);
-    Route::post('/products', [ProductController::class, 'store']);
-    Route::get('/products/{product}/edit', [ProductController::class, 'edit']);
-    Route::patch('/products/{product}', [ProductController::class, 'update']);
-    Route::delete('/products/{product}', [ProductController::class, 'destroy']);
-    Route::get('/products/{product}', [ProductController::class, 'show']);
+    Route::resource('suppliers', SupplierController::class)->only([
+        'index',
+        'show',
+        'destroy',
+        'edit',
+        'update'
+    ]);
+
+    Route::resource('products', ProductController::class)->only([
+        'index',
+        'create',
+        'store',
+        'edit',
+        'update',
+        'destroy',
+        'show'
+    ]);
 
     Route::get('/quotes', [QuoteController::class, 'index']);
     Route::get('/quotes/create', [QuoteController::class, 'create']);

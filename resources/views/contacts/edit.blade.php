@@ -17,13 +17,13 @@
                 <x-form.field class="fb-100">
                     <x-form.label for="customer">Customer Name</x-form.label>
                     <x-form.input placeholder="Enter Customer Name" id="customer" type="text" name="customer"
-                        value="{{ $contact->customer->name }}" />
+                        value="{{ $contact->customer->name }}" disabled />
                     <x-form.error name="customer" />
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="nickname">Customer Nick Name</x-form.label>
                     <x-form.input placeholder="Enter Customer Nick Name" id="nickname" type="text" name="nickname"
-                        value="{{ $contact->customer->nickname }}" />
+                        value="{{ $contact->customer->nickname }}" disabled />
                     <x-form.error name="nickname" />
                 </x-form.field>
                 <x-form.field class="fb-100">
@@ -107,25 +107,25 @@
                 <x-form.field class="fb-100">
                     <x-form.label for="tax_type">SaleTax</x-form.label>
                     <x-form.input placeholder="Enter Tax Type" id="tax_type" type="text" name="tax_type"
-                        value="{{ $contact->customer->tax_type }}" />
+                        value="{{ $contact->customer->tax_type }}" disabled />
                     <x-form.error name="tax_type" />
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="gstn">GST Number</x-form.label>
                     <x-form.input placeholder="Enter GST Number (15 digit)" id="gstn" type="text" name="gstn"
-                        value="{{ $contact->customer->gstn }}" />
+                        value="{{ $contact->customer->gstn }}" disabled />
                     <x-form.error name="gstn" />
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="pan">PAN</x-form.label>
                     <x-form.input placeholder="Enter PAN (10 digit)" id="pan" type="text" name="pan"
-                        value="{{ $contact->customer->pan }}" />
+                        value="{{ $contact->customer->pan }}" disabled />
                     <x-form.error name="pan" />
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="state_code">State Code</x-form.label>
                     <x-form.input placeholder="Enter State Code (2 digit)" id="state_code" type="text"
-                        name="state_code" value="{{ $contact->customer->state_code }}" />
+                        name="state_code" value="{{ $contact->customer->state_code }}" disabled />
                     <x-form.error name="state_code" />
                 </x-form.field>
             </div>

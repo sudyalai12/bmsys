@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Address;
 use App\Models\Contact;
 use App\Models\Country;
@@ -69,6 +70,30 @@ class CustomerController extends Controller
             ]
         );
         return redirect("/contacts/{$contact->id}");
+    }
+
+    public function edit(Customer $customer)
+    {
+        return view('customers.edit', compact('customer'));
+    }
+
+    public function update(UpdateCustomerRequest $request, Customer $customer)
+    {
+        $customer->update([
+            'name' => $request->customer,
+            'nickname' => $request->nickname,
+            'tax_type' => $request->tax_type,
+            'gstn' => $request->gstn,
+            'pan' => $request->pan,
+            'state_code' => $request->state_code,
+        ]);
+        return redirect("/customers/{$customer->id}");
+    }
+
+    public function destroy(Customer $customer)
+    {
+        $customer->delete();
+        return redirect('/customers');
     }
 
     public function show(Customer $customer)

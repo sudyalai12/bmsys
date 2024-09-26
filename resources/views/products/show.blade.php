@@ -1,3 +1,10 @@
+@php
+    function formatString($string)
+    {
+        return preg_replace('/;/', "\r\n•", $string);
+    }
+@endphp
+
 @extends('layouts.app')
 @section('content')
     <h1 class="heading">Product Details</h1>
@@ -13,7 +20,7 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ $product->description }}</td>
+                <td style="white-space: pre-wrap;">@php echo formatString($product->description);@endphp</td>
             </tr>
             <tr>
                 <th>UnitPrice(INR)</th>

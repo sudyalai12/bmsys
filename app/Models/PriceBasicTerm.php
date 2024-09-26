@@ -15,5 +15,6 @@ class PriceBasicTerm extends Model
 
     public static $price_basic_terms = [
         ['description' => "EX WORKS NEUVIN ELECTRONICS PVT. LTD. NEW DELHI - 110045"],
+        ['description' => "FOR Destination"],
     ];
 }

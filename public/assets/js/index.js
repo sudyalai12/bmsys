@@ -184,7 +184,7 @@ $(function () {
     });
 
     $(
-        "#price_basic_term, #payment_term, #handling_charges_term, #gst_term, #delivery_term, #pnf_charges_term, #freight_charges_term, #warranty_term, #validity_quote_term"
+        "#price_basic_term, #payment_term, #handling_charges_term, #gst_term, #delivery_term, #pnf_charges_term, #freight_charges_term, #warranty_term, #validity_quote_term, #po_conditions_term, #special_conditions_term"
     ).on("change", function () {
         console.log(this.value);
         $("#update-quote-form").submit();

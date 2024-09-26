@@ -291,6 +291,30 @@
                     </select>
                     <x-form.error name="validity_quote_term" />
                 </x-form.field>
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="po_conditions_term">PO Conditions</x-form.label>
+                    <select name="po_conditions_term" id="po_conditions_term">
+                        @foreach ($poConditionsTerms as $poConditionsTerm)
+                            <option @if ($quote->poConditionsTerm->description == $poConditionsTerm) selected @endif value="{{ $poConditionsTerm }}">
+                                {{ $poConditionsTerm }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-form.error name="po_conditions_term" />
+                </x-form.field>
+
+                <x-form.field class="fb-800">
+                    <x-form.label for="special_conditions_term">Special Conditions</x-form.label>
+                    <select name="special_conditions_term" id="special_conditions_term">
+                        @foreach ($specialConditionsTerms as $specialConditionsTerm)
+                            <option @if ($quote->specialConditionsTerm->description == $specialConditionsTerm) selected @endif value="{{ $specialConditionsTerm }}">
+                                {{ $specialConditionsTerm }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-form.error name="special_conditions_term" />
+                </x-form.field>
             </div>
         </form>
     </div>

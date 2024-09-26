@@ -10,9 +10,10 @@ class SpecialConditionsTerm extends Model
     use HasFactory;
     protected $table = 'special_conditions_terms';
     protected $guarded = [];
+    protected $hidden = [];
     protected $with = [];
 
-    public static $validity_quote_terms = [
+    public static $special_conditions_terms = [
         ['description' => 'End Use Statement Required with Order.'],
         ['description' => 'NA'],
     ];

@@ -27,13 +27,13 @@
                 <x-form.field class="fb-200">
                     <x-form.label for="supplier">Supplier Name</x-form.label>
                     <x-form.input placeholder="Enter Supplier Name" id="supplier" type="text" name="supplier"
-                        value="{{ $product->supplier->name }}" />
+                        value="{{ $product->supplier->name }}" disabled />
                     <x-form.error name="supplier" />
                 </x-form.field>
                 <x-form.field class="fb-200">
                     <x-form.label for="supplier_country">Supplier's Country</x-form.label>
                     <x-form.input placeholder="Enter Supplier Country Name" id="supplier_country" type="text"
-                        name="supplier_country" value="{{ $product->supplier->country->name }}" />
+                        name="supplier_country" value="{{ $product->supplier->country->name }}" disabled />
                     <x-form.error name="supplier_country" />
                 </x-form.field>
                 <x-form.field class="fb-200">

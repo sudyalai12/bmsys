@@ -9,6 +9,8 @@ use App\Models\GstTerm;
 use App\Models\HandlingChargesTerm;
 use App\Models\PaymentTerm;
 use App\Models\PnfChargesTerm;
+use App\Models\PoConditionsTerm;
+use App\Models\PoConditionTerm;
 use App\Models\PoPlaceTerm;
 use App\Models\PriceBasicTerm;
 use App\Models\Product;
@@ -69,15 +71,15 @@ class QuoteController extends Controller
         $priceBasicTerms = PriceBasicTerm::get()->pluck('description');
         $paymentTerms = PaymentTerm::get()->pluck('description');
         $handlingChargesTerms = HandlingChargesTerm::get()->pluck('description');
-        // $poPlaceTerms = PoPlaceTerm::get()->pluck('description');
         $gstTerms = GstTerm::get()->pluck('description');
         $deliveryTerms = DeliveryTerm::get()->pluck('description');
         $pnfChargesTerms = PnfChargesTerm::get()->pluck('description');
         $freightChargesTerms = FreightChargesTerm::get()->pluck('description');
         $warrantyTerms = WarrantyTerm::get()->pluck('description');
         $validityQuoteTerms = ValidityQuoteTerm::get()->pluck('description');
-        // $specialConditionsTerms = SpecialConditionsTerm::get()->pluck('description');
-        return view('quotes.show', compact('quote', 'priceBasicTerms', 'paymentTerms', 'handlingChargesTerms', 'gstTerms', 'deliveryTerms', 'pnfChargesTerms', 'freightChargesTerms', 'warrantyTerms', 'validityQuoteTerms'));
+        $poConditionsTerms = PoConditionsTerm::get()->pluck('description');
+        $specialConditionsTerms = SpecialConditionsTerm::get()->pluck('description');
+        return view('quotes.show', compact('quote', 'priceBasicTerms', 'paymentTerms', 'handlingChargesTerms', 'gstTerms', 'deliveryTerms', 'pnfChargesTerms', 'freightChargesTerms', 'warrantyTerms', 'validityQuoteTerms', 'poConditionsTerms', 'specialConditionsTerms'));
     }
 
     public function edit() {}
@@ -93,7 +95,8 @@ class QuoteController extends Controller
         $freightChargesTerm = $request->freight_charges_term;
         $warrantyTerm = $request->warranty_term;
         $validityQuoteTerm = $request->validity_quote_term;
-        $specialConditionsTerms = $request->special_conditions_terms;
+        $poConditionsTerm = $request->po_conditions_term;
+        $specialConditionsTerm = $request->special_conditions_term;
 
         if($request->due_date || $request->enquiry_date) {
             $dueDate = date('Y-m-d', strtotime($request->due_date));
@@ -114,6 +117,8 @@ class QuoteController extends Controller
         $freightChargesTerm = FreightChargesTerm::where('description', $freightChargesTerm)->first();
         $warrantyTerm = WarrantyTerm::where('description', $warrantyTerm)->first();
         $validityQuoteTerm = ValidityQuoteTerm::where('description', $validityQuoteTerm)->first();
+        $poConditionsTerm = PoConditionsTerm::where('description', $poConditionsTerm)->first();
+        $specialConditionsTerm = SpecialConditionsTerm::where('description', $specialConditionsTerm)->first();
 
         $quote->priceBasicTerm()->associate($priceBasicTerm);
         $quote->paymentTerm()->associate($paymentTerm);
@@ -124,6 +129,8 @@ class QuoteController extends Controller
         $quote->freightChargesTerm()->associate($freightChargesTerm);
         $quote->warrantyTerm()->associate($warrantyTerm);
         $quote->validityQuoteTerm()->associate($validityQuoteTerm);
+        $quote->poConditionsTerm()->associate($poConditionsTerm);
+        $quote->specialConditionsTerm()->associate($specialConditionsTerm);
         $quote->save();
         return response()->json($request->all());
     }

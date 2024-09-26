@@ -8,6 +8,8 @@ use App\Models\GstTerm;
 use App\Models\HandlingChargesTerm;
 use App\Models\PaymentTerm;
 use App\Models\PnfChargesTerm;
+use App\Models\PoConditionsTerm;
+use App\Models\PoConditionTerm;
 use App\Models\PoPlaceTerm;
 use App\Models\PriceBasicTerm;
 use App\Models\PriceBasis;
@@ -72,10 +74,15 @@ return new class extends Migration
             $table->string('description');
         });
 
-        // Schema::create('special_conditions_terms', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('description');
-        // });
+        Schema::create('po_conditions_terms', function (Blueprint $table) {
+            $table->id();
+            $table->string('description');
+        });
+
+        Schema::create('special_conditions_terms', function (Blueprint $table) {
+            $table->id();
+            $table->string('description');
+        });
 
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
@@ -92,7 +99,8 @@ return new class extends Migration
             $table->foreignIdFor(FreightChargesTerm::class, 'freight_charges_term_id')->default(1);
             $table->foreignIdFor(WarrantyTerm::class, 'warranty_term_id')->default(1);
             $table->foreignIdFor(ValidityQuoteTerm::class, 'validity_quote_term_id')->default(1);
-            // $table->foreignIdFor(SpecialConditionsTerm::class, 'special_conditions_term_id')->default(1);
+            $table->foreignIdFor(PoConditionsTerm::class, 'po_conditions_term_id')->default(1);
+            $table->foreignIdFor(SpecialConditionsTerm::class, 'special_conditions_term_id')->default(1);
             $table->timestamps();
         });
 
@@ -110,8 +118,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quote_items');
-        Schema::dropIfExists('quotes');
         Schema::dropIfExists('price_basic_terms');
         Schema::dropIfExists('payment_terms');
         Schema::dropIfExists('handling_charges_terms');
@@ -121,5 +127,9 @@ return new class extends Migration
         Schema::dropIfExists('freight_charges_terms');
         Schema::dropIfExists('warranty_terms');
         Schema::dropIfExists('validity_quote_terms');
+        Schema::dropIfExists('po_conditions_terms');
+        Schema::dropIfExists('special_conditions_terms');
+        Schema::dropIfExists('quotes');
+        Schema::dropIfExists('quote_items');
     }
 };

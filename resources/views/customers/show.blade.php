@@ -23,4 +23,5 @@
             </tr>
         </tbody>
     </table>
+    <x-button><a href="/customers/{{ $customer->id }}/edit">Edit</a></x-button>
 @endSection
