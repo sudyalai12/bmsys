@@ -8,10 +8,7 @@ use App\Models\Address;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Customer;
-use App\Models\Department;
 use App\Models\State;
-use App\Models\Tax;
-use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {

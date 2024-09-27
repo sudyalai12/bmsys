@@ -31,7 +31,7 @@ class StoreCustomerRequest extends FormRequest
             'address2' => 'required|min:2|max:100|string',
             'city' => 'required|min:2|max:30|string',
             'pincode' => 'required|size:6|regex:/^[0-9]+$/',
-            'state' => 'required|min:2|max:30|string',
+            'state' => 'required|exists:states,name',
             'country' => 'required|exists:countries,name',
             'phone' => 'required|min:10|max:16|string|regex:/^[0-9-+ ]+$/',
             'mobile' => 'required|min:10|max:16|string|regex:/^[0-9-+ ]+$/',
@@ -90,9 +90,7 @@ class StoreCustomerRequest extends FormRequest
             'pincode.regex' => 'The contact pincode number must be numeric.',
 
             'state.required' => 'The contact state name is required.',
-            'state.min' => 'The contact state name must be at least 2 characters.',
-            'state.max' => 'The contact state name may not be greater than 30 characters.',
-            'state.string' => 'The contact state name must be a string.',
+            'state.exists' => 'The state name does not exist.',
 
             'country.required' => 'The country name is required.',
             'country.exists' => 'The country name does not exist.',

@@ -7,6 +7,13 @@ $(function () {
         () => $(".main").css("margin-left", "60px")
     );
 
+    $("form").on("submit", function (event) {
+        const $form = $(this);
+        if ($form.hasClass("submitted")) return false;
+        $form.addClass("submitted");
+        $form.find(":submit").prop("disabled", true).html('<i class="fa fa-spinner fa-spin"></i>');
+    });
+
     function search(url, input) {
         const $input = $(input);
         const $autocompleteItems = $input.siblings(".autocomplete-items");

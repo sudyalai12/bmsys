@@ -681,4 +681,13 @@ span.quotes {
 }
 .quote-preview table th, .quote-preview table td {
   border: none;
+}
+
+.panels {
+  background-color: white;
+  padding: 10px;
+}
+.panels h2 {
+  font-size: 1rem;
+  font-weight: 300;
 }/*# sourceMappingURL=index.css.map */

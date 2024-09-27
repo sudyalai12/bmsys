@@ -146,7 +146,7 @@
         /* text-underline-offset: -0.5rem !important; */
     }
 
-    .lg{
+    .lg {
         font-size: 11px !important;
     }
 
@@ -415,14 +415,15 @@
                 <td class="bg bold p text-center qty">QTY<br>NOS.</td>
                 <td class="bg bold p text-center oneline">Unit Price<br>INR</td>
                 <td class="bg bold p text-center oneline">Taxable Amount<br>INR</td>
-                <td class="bg bold p text-center oneline">{{$quote->contact->customer->tax_type}} / INR<br>Rate/Value</td>
+                <td class="bg bold p text-center oneline">{{ $quote->contact->customer->tax_type }} / INR<br>Rate/Value
+                </td>
                 <td class="bg bold p text-center oneline">Total Amount<br>INR</td>
             </tr>
             @foreach ($quote->quoteItems as $item)
                 <tr>
                     <td class="bold p text-center">{{ $index++ }}</td>
                     <td class="bold p">{{ $item->product->part_number }}<br>
-                        {{ $item->product->supplier->name }},{{ $item->product->supplier->country->iso3 }}</td>
+                        {{ $item->product->supplier->name }}, {{ $item->product->supplier->country->iso3 }}</td>
                     <td class="bold p" style="white-space: pre-wrap;">@php echo formatString($item->product->description) @endphp</td>
                     <td class="bold p text-center">{{ $item->quantity < 10 ? '0' . $item->quantity : $item->quantity }}
                     </td>
