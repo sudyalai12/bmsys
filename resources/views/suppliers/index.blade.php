@@ -2,6 +2,7 @@
 @section('content')
     {{-- {{ $suppliers }} --}}
     <h1 class="heading">Our Suppliers</h1>
+    <x-button class="products" btntype="secondary"><a href="/products/create">Add new Product</a></x-button>
     <x-table>
         <thead class="suppliers">
             <tr>

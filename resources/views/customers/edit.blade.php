@@ -15,13 +15,13 @@
             <div class="form-block">
                 <h2>Basic Details</h2>
                 <x-form.field class="fb-100">
-                    <x-form.label for="customer">Customer Name</x-form.label>
+                    <x-form.label for="customer">Customer</x-form.label>
                     <x-form.input placeholder="Enter Customer Name" id="customer" type="text" name="customer"
                         value="{{ $customer->name }}" />
                     <x-form.error name="customer" />
                 </x-form.field>
                 <x-form.field class="fb-100">
-                    <x-form.label for="nickname">Customer Nick Name</x-form.label>
+                    <x-form.label for="nickname">Customer Nick</x-form.label>
                     <x-form.input placeholder="Enter Customer Nick Name" id="nickname" type="text" name="nickname"
                         value="{{ $customer->nickname }}" />
                     <x-form.error name="nickname" />
@@ -37,7 +37,7 @@
                     <x-form.error name="tax_type" />
                 </x-form.field>
                 <x-form.field class="fb-100">
-                    <x-form.label for="gstn">GST Number</x-form.label>
+                    <x-form.label for="gstn">GST</x-form.label>
                     <x-form.input placeholder="Enter GST Number (15 digit)" id="gstn" type="text" name="gstn"
                         value="{{ $customer->gstn }}" />
                     <x-form.error name="gstn" />

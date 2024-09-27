@@ -8,19 +8,21 @@
             <tr>
                 <th>QID</th>
                 <th>ReferenceNo</th>
-                <th>CustomerName</th>
+                <th>CustomerNick</th>
                 <th>ContactPersonName</th>
-                <th>Updated</th>
+                <th>EnquiryDate</th>
+                <th>DueDate</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($quotes as $quote)
                 <tr>
                     <td><a href="/quotes/{{ $quote->id }}">{{ $quote->id }}</a></td>
-                    <td>{{ $quote->reference }}</td>
-                    <td><a href="/customers/{{ $quote->contact->customer->id }}">{{ $quote->contact->customer->name }}</a></td>
+                    <td><a href="/quotes/{{ $quote->id }}">{{ $quote->reference }}</a></td>
+                    <td><a href="/customers/{{ $quote->contact->customer->id }}">{{ $quote->contact->customer->nickname }}</a></td>
                     <td><a href="/contacts/{{ $quote->contact->id }}">{{ $quote->contact->name }}</a></td>
-                    <td>{{ $quote->updated_at }}</td>
+                    <td>{{ $quote->enquiry_date }}</td>
+                    <td>{{ $quote->due_date }}</td>
                 </tr>
             @endforeach
         </tbody>

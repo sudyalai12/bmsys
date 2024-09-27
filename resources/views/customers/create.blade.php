@@ -13,32 +13,32 @@
             <div class="form-block">
                 <h2>Basic Details</h2>
                 <x-form.field class="fb-100">
-                    <x-form.label for="customer">Customer Name</x-form.label>
+                    <x-form.label for="customer">Customer</x-form.label>
                     <x-form.input placeholder="Enter Customer Name" id="customer" type="text" name="customer"
                         value="{{ old('customer') }}" />
                     <x-form.error name="customer" />
                 </x-form.field>
                 <x-form.field class="fb-100">
-                    <x-form.label for="nickname">Customer Nick Name</x-form.label>
+                    <x-form.label for="nickname">Customer Nick</x-form.label>
                     <x-form.input placeholder="Enter Customer Nick Name" id="nickname" type="text" name="nickname"
                         value="{{ old('nickname') }}" />
                     <x-form.error name="nickname" />
                 </x-form.field>
                 <x-form.field class="fb-100">
-                    <x-form.label for="email">Email Address</x-form.label>
+                    <x-form.label for="email">Email</x-form.label>
                     <x-form.input placeholder="Enter Contact Person Email" id="email" type="text" name="email"
                         value="{{ old('email') }}" />
                     <x-form.error name="email" />
                 </x-form.field>
                 <x-form.field class="fb-100">
-                    <x-form.label for="contact">Contact Person Name</x-form.label>
+                    <x-form.label for="contact">Contact Person</x-form.label>
                     <x-form.input placeholder="Enter Contact Person Name" id="contact" type="text" name="contact"
                         value="{{ old('contact') }}" />
                     <x-form.error name="contact" />
                 </x-form.field>
                 <x-form.field class="fb-100">
-                    <x-form.label for="department">Deptartment/Designation</x-form.label>
-                    <x-form.input placeholder="Enter Department Name" id="department" type="text" name="department"
+                    <x-form.label for="department">Dept/Desig</x-form.label>
+                    <x-form.input placeholder="Enter Department/Designation Name" id="department" type="text" name="department"
                         value="{{ old('department') }}" />
                     <x-form.error name="department" />
                 </x-form.field>
@@ -65,7 +65,7 @@
                     <x-form.error name="city" />
                 </x-form.field>
                 <x-form.field class="fb-100">
-                    <x-form.label for="pincode">Pin Code</x-form.label>
+                    <x-form.label for="pincode">Pincode</x-form.label>
                     <x-form.input placeholder="Enter Pin Code" id="pincode" type="text" name="pincode"
                         value="{{ old('pincode') }}" />
                     <x-form.error name="pincode" />
@@ -107,7 +107,7 @@
                     <x-form.error name="tax_type" />
                 </x-form.field>
                 <x-form.field class="fb-100">
-                    <x-form.label for="gstn">GST Number</x-form.label>
+                    <x-form.label for="gstn">GST</x-form.label>
                     <x-form.input placeholder="Enter GST Number (15 digit)" id="gstn" type="text" name="gstn"
                         value="{{ old('gstn') == '' ? 'XXXXXXXXXXXXXXX' : old('gstn') }}" />
                     <x-form.error name="gstn" />
