@@ -20,8 +20,8 @@
             @foreach ($products as $product)
                 <tr>
                     <td><a href="/products/{{ $product->id }}">{{ $product->id }}</a></td>
-                    <td>{{ $product->part_number }}</td>
-                    <td>{{ $product->supplier->name }}</td>
+                    <td><a href="/products/{{ $product->id }}">{{ $product->part_number }}</a></td>
+                    <td><a href="/suppliers/{{ $product->supplier->id }}">{{ $product->supplier->name }}</a></td>
                     <td>{{ $product->description }}</td>
                     <td>{{ number_format($product->unit_price, 2) }}</td>
                     <td>{{ number_format($product->purchase_price, 2) }}</td>

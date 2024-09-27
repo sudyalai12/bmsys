@@ -21,6 +21,22 @@
                     @endforeach
                 </td>
             </tr>
+            <tr>
+                <th>Sale Tax</th>
+                <td>{{ $customer->tax_type }}</td>
+            </tr>
+            <tr>
+                <th>GST Number</th>
+                <td>{{ $customer->gstn }}</td>
+            </tr>
+            <tr>
+                <th>PAN</th>
+                <td>{{ $customer->pan }}</td>
+            </tr>
+            <tr>
+                <th>State Code</th>
+                <td>{{ $customer->state_code }}</td>
+            </tr>
         </tbody>
     </table>
     <x-button><a href="/customers/{{ $customer->id }}/edit">Edit</a></x-button>

@@ -16,7 +16,7 @@
             </tr>
             <tr>
                 <th>Supplier / Country</th>
-                <td>{{ $product->supplier->name }} / {{ $product->supplier->country->name }}</td>
+                <td><a href="/suppliers/{{ $product->supplier->id }}">{{ $product->supplier->name }}</a> / {{ $product->supplier->country->name }}</td>
             </tr>
             <tr>
                 <th>Description</th>

@@ -15,7 +15,7 @@
             @foreach ($customers as $customer)
                 <tr>
                     <td><a href="/customers/{{ $customer->id }}">{{ $customer->id }}</a></td>
-                    <td>{{ $customer->nickname }}</td>
+                    <td><a href="/customers/{{ $customer->id }}">{{ $customer->nickname }}</a></td>
                     <td>{{ $customer->name }}</td>
                 </tr>
             @endforeach

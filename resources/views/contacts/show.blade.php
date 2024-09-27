@@ -43,15 +43,15 @@
             </tr>
             <tr>
                 <th>Phone</th>
-                <td>{{ $contact->phone }}</td>
+                <td><a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a></td>
             </tr>
             <tr>
                 <th>Mobile</th>
-                <td>{{ $contact->mobile }}</td>
+                <td><a href="tel:{{ $contact->mobile }}">{{ $contact->mobile }}</a></td>
             </tr>
             <tr>
                 <th>Email</th>
-                <td>{{ $contact->email }}</td>
+                <td><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></td>
             </tr>
             <tr>
                 <th>TaxType</th>

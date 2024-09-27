@@ -14,7 +14,7 @@
             @foreach ($suppliers as $supplier)
                 <tr>
                     <td><a href="/suppliers/{{ $supplier->id }}">{{ $supplier->id }}</a></td>
-                    <td>{{ $supplier->name }}</td>
+                    <td><a href="/suppliers/{{ $supplier->id }}">{{ $supplier->name }}</a></td>
                     <td>{{ $supplier->country->name }}</td>
                 </tr>
             @endforeach

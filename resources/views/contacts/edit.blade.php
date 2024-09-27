@@ -48,13 +48,13 @@
 
             <div class="form-block">
                 <h2>Address Details</h2>
-                <x-form.field class="fb-500">
+                <x-form.field class="fb-200">
                     <x-form.label for="address1">Address1</x-form.label>
                     <x-form.input placeholder="Enter Address" id="address1" type="text" name="address1"
                         value="{{ $contact->address->address1 }}" />
                     <x-form.error name="address1" />
                 </x-form.field>
-                <x-form.field class="fb-500">
+                <x-form.field class="fb-200">
                     <x-form.label for="address2">Address2</x-form.label>
                     <x-form.input placeholder="Enter Address" id="address2" type="text" name="address2"
                         value="{{ $contact->address->address2 }}" />

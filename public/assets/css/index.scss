@@ -139,6 +139,11 @@ a {
 .italic {
     font-style: italic;
 }
+.oneline{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .form-box {
     width: 100%;
     max-width: 1400px;
@@ -607,8 +612,8 @@ span.contacts{
 }
 .product-form{
     background-color: white;
-    border: 2px solid #161a2d;
-    border-top: 8px solid #161a2d;
+    border: 2px solid #343781;
+    border-top: 8px solid #343781;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     .form-header {
