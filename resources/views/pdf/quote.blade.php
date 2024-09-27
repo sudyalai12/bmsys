@@ -410,12 +410,12 @@
         <table class="border cart">
             <tr>
                 <td class="bg bold p text-center">SNO</td>
-                <td class="bg bold p text-center">Part Number/Make<br>HSN Code/Article#</td>
+                <td style="min-width: 110px;" class="bg bold p text-center">Part Number/Make<br>HSN Code/Article#</td>
                 <td class="bg bold p text-center">Line Item Description</td>
                 <td class="bg bold p text-center qty">QTY<br>NOS.</td>
                 <td class="bg bold p text-center oneline">Unit Price<br>INR</td>
                 <td class="bg bold p text-center oneline">Taxable Amount<br>INR</td>
-                <td class="bg bold p text-center oneline">{{ $quote->contact->customer->tax_type }} / INR<br>Rate/Value
+                <td class="bg bold p text-center oneline">{{ $quote->contact->customer->tax_type }}/INR<br>Rate/Value
                 </td>
                 <td class="bg bold p text-center oneline">Total Amount<br>INR</td>
             </tr>
@@ -643,7 +643,7 @@
 
         <table class="">
             <tr>
-                <td>We Hope our offer is in line with your requirements to favour us your valuable Purchase Order.</td>
+                <td>We Hope our offer is inline with your requirements to favour us your valuable Purchase Order.</td>
             </tr>
             <tr>
                 <td>We assured you best of our services all the time.</td>
