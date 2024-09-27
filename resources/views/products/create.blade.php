@@ -3,7 +3,7 @@
 @endsection
 @section('content')
     <div class="form-box">
-        <form method="POST" class="form customer-form" action="/products">
+        <form method="POST" class="form customer-form product-form" action="/products">
             @csrf
             <div class="form-header">
                 <h1>Product Details</h1>
@@ -61,7 +61,8 @@
             </div>
 
             <div class="text-center">
-                <x-button btntype="secondary" type="submit">Save</x-button>
+                <x-button class="products" btntype="secondary" type="submit">Save</x-button>
+                <x-button btntype="transparent" type="reset">Reset</x-button>
             </div>
         </form>
     </div>

@@ -2,9 +2,9 @@
 @section('content')
     {{-- {{ $quotes }} --}}
     <h1 class="heading">Quotes</h1>
-    <x-button btntype="secondary"><a href="/quotes/create">Add new Quote</a></x-button>
+    <x-button class="quotes" btntype="secondary"><a href="/quotes/create">Add new Quote</a></x-button>
     <x-table>
-        <thead>
+        <thead class="quotes">
             <tr>
                 <th>QID</th>
                 <th>ReferenceNo</th>

@@ -2,21 +2,21 @@
 @section('content')
     {{-- {{ $customers }} --}}
     <h1 class="heading">Customers</h1>
-    <x-button btntype="secondary"><a href="/customers/create">Add new Customer</a></x-button>
+    <x-button btntype="secondary" class="customers"><a href="/customers/create">Add new Customer</a></x-button>
     <x-table>
-        <thead>
+        <thead class="customers">
             <tr>
                 <th>CustID</th>
-                <th>CustomerName</th>
                 <th>CustNick</th>
+                <th>CustomerName</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($customers as $customer)
                 <tr>
                     <td><a href="/customers/{{ $customer->id }}">{{ $customer->id }}</a></td>
-                    <td>{{ $customer->name }}</td>
                     <td>{{ $customer->nickname }}</td>
+                    <td>{{ $customer->name }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -9,13 +9,13 @@
                 <h1>Create Quote</h1>
             </div>
             <div class="form-block">
-                <x-form.field class="fb-500">
+                <x-form.field class="fb-200">
                     <x-form.label for="customer">Select Customer</x-form.label>
                     <x-form.input placeholder="Enter Customer Name" id="customer" type="text" name="customer"
                         value="{{ old('customer', $contact?->customer->name) }}" />
                     <x-form.error name="customer" />
                 </x-form.field>
-                <x-form.field class="fb-500">
+                <x-form.field class="fb-200">
                     <x-form.label for="contact">Select Contact Person</x-form.label>
                     <x-form.input placeholder="Enter Contact Person Name" id="contact" type="text" name="contact"
                         value="{{ old('contact', $contact?->name) }}" />
@@ -42,7 +42,8 @@
             </div>
 
             <div class="text-center">
-                <x-button btntype="secondary" type="submit">Save</x-button>
+                <x-button class="quotes" btntype="secondary" type="submit">Save</x-button>
+                <x-button btntype="treansparent" type="reset">Reset</x-button>
             </div>
         </form>
     </div>

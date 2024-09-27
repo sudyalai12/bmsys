@@ -127,8 +127,8 @@
             </div>
 
             <div class="text-center">
-                <x-button btntype="secondary" type="submit">Save</x-button>
-                <x-button btntype="primary" type="reset">Clear</x-button>
+                <x-button class="customers" btntype="secondary" type="submit">Save</x-button>
+                <x-button btntype="transparent" type="reset">Clear</x-button>
             </div>
         </form>
     </div>

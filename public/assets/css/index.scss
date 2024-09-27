@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+$main: #4f52ba !important;
+$dark: #161a2d !important;
+$light: #f0f4ff !important;
+
+$dashbord: #1e90ff !important;
+$customers: #28a745 !important;
+$contacts: #ff8c00 !important;
+$products: #6f42c1 !important;
+$suppliers: #20c997 !important;
+$quotes: #ffc107 !important;
+
 // COLOR TEMPLATE
 $primarycolor: #007bff;
 $darkprimarycolor: #0069d9;
@@ -33,6 +44,7 @@ a {
     padding: 5px 10px;
     background-color: $primarycolor;
     color: $whitecolor;
+    // border: 1px solid $primarycolor;
     border: none;
     font-weight: 500;
     &:hover {
@@ -44,46 +56,58 @@ a {
     }
     &-primary {
         background-color: $primarycolor;
+        // border: 1px solid $primarycolor;
     }
     &-dark-primary {
         background-color: $darkprimarycolor;
+        // border: 1px solid $darkprimarycolor;
     }
     &-secondary {
         background-color: $secondarycolor;
+        // border: 1px solid $secondarycolor;
     }
     &-success {
         background-color: $successcolor;
+        // border: 1px solid $successcolor;
     }
     &-danger {
         background-color: $dangercolor;
+        // border: 1px solid $dangercolor;
     }
     &-warning {
         background-color: $warningcolor;
+        // border: 1px solid $warningcolor;
     }
     &-info {
         background-color: $infocolor;
+        // border: 1px solid $infocolor;
     }
     &-light {
         background-color: $lightcolor;
+        // border: 1px solid $lightcolor;
     }
     &-dark {
         background-color: $darkcolor;
+        // border: 1px solid $darkcolor;
+    }
+    &-transparent {
+        background-color: transparent;
+        color: $blackcolor;
+        // border: 1px solid $blackcolor;
     }
 }
-body {
-    background-color: $whitecolor;
-}
-aside {
-    position: fixed;
-    width: 200px;
-    height: 100%;
-    background-color: $lightcolor;
-    overflow: auto;
-}
-#app {
-    margin-left: 200px;
-    padding: 1rem;
-}
+
+// aside {
+//     position: fixed;
+//     width: 200px;
+//     height: 100%;
+//     background-color: $lightcolor;
+//     overflow: auto;
+// }
+// #app {
+//     margin-left: 200px;
+//     padding: 1rem;
+// }
 .cursor {
     cursor: pointer;
 }
@@ -103,9 +127,21 @@ aside {
 .text-center {
     text-align: center;
 }
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+.underline{
+    text-decoration: underline;
+}
+.italic {
+    font-style: italic;
+}
 .form-box {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
 }
 .table-box {
     overflow-x: scroll;
@@ -142,25 +178,25 @@ SIDEBAR CSS
 ############
 ############
 */
-.sidenav-link {
-    color: $blackcolor;
-    padding: 2px 1rem;
-    border-left: 4px solid transparent;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    transition: all 0.3s ease;
-    gap: 5px;
-    &:hover {
-        border-left: 4px solid $primarycolor;
-    }
-    &.active {
-        border-left: 4px solid $primarycolor;
-    }
-    .nav-link-img {
-        height: 1rem;
-    }
-}
+// .sidenav-link {
+//     color: $blackcolor;
+//     padding: 2px 1rem;
+//     border-left: 4px solid transparent;
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+//     transition: all 0.3s ease;
+//     gap: 5px;
+//     &:hover {
+//         border-left: 4px solid $primarycolor;
+//     }
+//     &.active {
+//         border-left: 4px solid $primarycolor;
+//     }
+//     .nav-link-img {
+//         height: 1rem;
+//     }
+// }
 
 /*##########
 ############
@@ -169,6 +205,7 @@ TABLE CSS
 ############
 */
 table {
+    background-color: white;
     width: auto;
     border-collapse: collapse;
     // white-space: nowrap;
@@ -211,6 +248,8 @@ FORM CSS
 */
 .customer-form,
 .quote-form {
+    background-color: white;
+    width: 100%;
     border: 2px solid #343a40;
     border-top: 8px solid #343a40;
     margin-bottom: 1rem;
@@ -336,6 +375,292 @@ FORM CSS
         border-radius: 5px;
         p {
             font-size: 0.8rem;
+        }
+    }
+}
+
+// NEW CSS
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 60px;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+    background: $dark;
+    padding: 25px 10px;
+    transition: all 0.4s ease;
+    &:hover {
+        width: 220px;
+        .sidebar-links h4 span {
+            opacity: 1;
+        }
+    }
+}
+body {
+    min-height: 100vh;
+    background: $light;
+}
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    img {
+        width: 42px;
+        border-radius: 50%;
+    }
+    h2 {
+        color: #fff;
+        font-size: 1.25rem;
+        font-weight: 600;
+        white-space: nowrap;
+        margin-left: 12px;
+    }
+}
+
+.sidebar-links {
+    list-style: none;
+    margin-top: 20px;
+    height: 80%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    h4 {
+        color: #fff;
+        font-weight: 500;
+        white-space: nowrap;
+        margin: 10px 0;
+        position: relative;
+        span {
+            opacity: 0;
+        }
+    }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    li {
+        a {
+            display: flex;
+            align-items: center;
+            gap: 0 12px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 4px 8px;
+            text-decoration: none;
+            transition: 0.2s ease;
+            &:hover {
+                color: $dark;
+                background: #fff;
+                border-radius: 4px;
+            }
+        }
+    }
+}
+
+.sidebar-links .menu-separator {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(1);
+    transform: translateY(-50%);
+    background: $main;
+    transform-origin: right;
+    transition-delay: 0.2s;
+}
+.sidebar:hover .sidebar-links .menu-separator {
+    transition-delay: 0s;
+    transform: scaleX(0);
+}
+
+.user-account {
+    margin-top: auto;
+    padding: 4px 8px;
+    margin-left: -10px;
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    color: $dark;
+}
+.user-profile img {
+    width: 42px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.user-profile h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.user-profile span {
+    font-size: 0.775rem;
+    font-weight: 600;
+}
+.user-detail {
+    margin-left: 12px;
+    white-space: nowrap;
+}
+.sidebar:hover .user-account {
+    background: #fff;
+    border-radius: 4px;
+}
+
+.main {
+    margin-left: 60px;
+    transition: all 0.4s ease;
+}
+main {
+    padding: 8px;
+}
+
+header {
+    // background-color: white;
+    padding: 2px;
+    .header-menu {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        list-style: none;
+        flex-wrap: wrap;
+    }
+}
+
+.menu-link {
+    display: inline-block;
+    padding: 0 2px;
+    a {
+        background-color: #088294;
+        color: white;
+        padding: 4px 10px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        gap: 1px;
+
+        span {
+            font-size: 1.2rem;
+        }
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+.dashboard {
+    background-color: $dashbord;
+    a {
+        background-color: $dashbord;
+    }
+}
+span.dashboard{
+    background: transparent !important;
+    color: $dashbord;
+}
+
+.customers {
+    background-color: $customers;
+    a {
+        background-color: $customers;
+    }
+}
+
+.customer-form {
+    background-color: white;
+    border: 2px solid #1b642c;
+    border-top: 8px solid #1b642c;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    .form-header {
+        background-color: $customers;
+        color: $whitecolor;
+    }
+}
+
+span.customers{
+    background: transparent !important;
+    color: $customers;
+}
+
+.contacts {
+    background-color: $contacts;
+    a {
+        background-color: $contacts;
+    }
+}
+span.contacts{
+    background: transparent !important;
+    color: $contacts;
+}
+
+.products {
+    background-color: $products;
+    a {
+        background-color: $products;
+    }
+}
+.product-form{
+    background-color: white;
+    border: 2px solid #161a2d;
+    border-top: 8px solid #161a2d;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    .form-header {
+        background-color: $products;
+        color: $whitecolor;
+    }
+}
+span.products{
+    background: transparent !important;
+    color: $products;
+}
+.suppliers {
+    background-color: $suppliers;
+    a {
+        background-color: $suppliers;
+    }
+}
+span.suppliers{
+    background: transparent !important;
+    color: $suppliers;
+}
+
+.quotes {
+    background-color: $quotes;
+    a {
+        background-color: $quotes;
+    }
+}
+.quote-form {
+    background-color: white;
+    border: 2px solid #d4a108;
+    border-top: 8px solid #d4a108;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    .form-header {
+        background-color: $quotes;
+        color: $whitecolor;
+    }
+}
+span.quotes{
+    background: transparent !important;
+    color: $quotes;
+}
+
+.quote-preview{
+    background-color: white;
+    padding: 25px;
+    table{
+        width: 100%;
+        border: none;
+        th, td{
+            border: none;
         }
     }
 }

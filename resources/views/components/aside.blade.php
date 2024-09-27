@@ -1,14 +1,99 @@
-<aside>
-    <x-nav-link href="/" :active="request()->is('/')" img="/assets/img/dashboard.png">Dashboard</x-nav-link>
-    <x-nav-link href="/customers" :active="request()->is('customers')" img="/assets/img/customer.png">Customers</x-nav-link>
-    <x-nav-link href="/contacts" :active="request()->is('contacts')" img="/assets/img/contact.png">Contact People</x-nav-link>
-    <x-nav-link href="/suppliers" :active="request()->is('suppliers')" img="/assets/img/supplier.png">Suppliers</x-nav-link>
-    <x-nav-link href="/products" :active="request()->is('products')" img="/assets/img/product.png">Products</x-nav-link>
-    <x-nav-link href="/quotes" :active="request()->is('quotes')" img="/assets/img/quote.png">Quotes</x-nav-link>
-    @guest
-        <x-nav-link href="/login" :active="request()->is('login')" img="/assets/img/login.png">LogIn</x-nav-link>
-    @endguest
-    @auth
-        <x-nav-link href="/logout" :active="request()->is('logout')" img="/assets/img/logout.png">LogOut</x-nav-link>
-    @endauth
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <img src={{ url("images/logo.png") }} alt="logo" />
+        <h2>Neuvin</h2>
+    </div>
+
+    <ul class="sidebar-links">
+        <h4>
+            <span>Main Menu</span>
+            <div class="menu-separator"></div>
+        </h4>
+        <li>
+            <a href="/">
+                <span class="material-symbols-outlined dashboard">
+                    dashboard
+                </span>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="/customers">
+                <span class="material-symbols-outlined customers">
+                    groups
+                </span>
+                Customers
+            </a>
+        </li>
+        <li>
+            <a href="/contacts">
+                <span class="material-symbols-outlined contacts">
+                    person
+                </span>
+                Contacts Person
+            </a>
+        </li>
+        <li>
+            <a href="/products">
+                <span class="material-symbols-outlined products">
+                    inventory_2
+                </span>
+                Products
+            </a>
+        </li>
+        <li>
+            <a href="/suppliers">
+                <span class="material-symbols-outlined suppliers">
+                    precision_manufacturing
+                </span>
+                Suppliers
+            </a>
+        </li>
+        <li>
+            <a href="/quotes">
+                <span class="material-symbols-outlined quotes">
+                    request_quote
+                </span>
+                Quotes
+            </a>
+        </li>
+
+        <h4>
+            <span>Account</span>
+            <div class="menu-separator"></div>
+        </h4>
+        {{-- <li>
+            <a href="#">
+                <span class="material-symbols-outlined">
+                    account_circle
+                </span>
+                Profile
+            </a>
+        </li> --}}
+        {{-- <li>
+            <a href="#">
+                <span class="material-symbols-outlined">
+                    settings
+                </span>
+                Settings
+            </a>
+        </li> --}}
+        <li>
+            <a href="/logout">
+                <span class="material-symbols-outlined">
+                    logout
+                </span>
+                Logout
+            </a>
+        </li>
+    </ul>
+    <div class="user-account">
+        <div class="user-profile">
+            <img src="{{ url("images/profile-img.jpg") }}" alt="Profile Image" />
+            <div class="user-detail">
+                <h3>Sudhanshu</h3>
+                <span>Web Developer</span>
+            </div>
+        </div>
+    </div>
 </aside>

@@ -28,11 +28,13 @@
     <link rel="stylesheet" href="{{ url('assets/css/index.css') }}" />
     @yield('css')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
 <body>
     <x-aside />
-    <div id="app">
+    <div class="main">
         <x-header />
         {{-- <x-flash /> --}}
         <main>

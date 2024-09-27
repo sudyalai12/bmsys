@@ -2,9 +2,9 @@
 @section('content')
     {{-- {{ $products }} --}}
     <h1 class="heading">Products</h1>
-    <x-button btntype="secondary"><a href="/products/create">Add new Product</a></x-button>
+    <x-button class="products" btntype="secondary"><a href="/products/create">Add new Product</a></x-button>
     <x-table>
-        <thead>
+        <thead class="products">
             <tr>
                 <th>ProdID</th>
                 <th>PartNo</th>

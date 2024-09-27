@@ -2,6 +2,10 @@ console.log("Javascript Loaded");
 
 $(function () {
     console.log("JQuery Loaded");
+    $("aside").hover(
+        () => $(".main").css("margin-left", "220px"),
+        () => $(".main").css("margin-left", "60px")
+    );
 
     function search(url, input) {
         const $input = $(input);
@@ -48,7 +52,7 @@ $(function () {
                         console.error(error);
                     },
                 });
-            }, 200);
+            }, 0);
         });
     }
 
@@ -214,7 +218,9 @@ $(function () {
             data: {
                 due_date: $("#due_date").val(),
                 enquiry_date: $("#enquiry_date").val(),
-                _token: $("#update-quote-form").find("input[name=_token]").val(),
+                _token: $("#update-quote-form")
+                    .find("input[name=_token]")
+                    .val(),
             },
             // data: $("#update-quote-form").serialize(),
             type: "POST",

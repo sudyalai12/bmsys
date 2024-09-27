@@ -12,6 +12,7 @@ class Customer extends Model
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
     protected $with = [];
+    // protected $appends = ['country'];
 
     public function setNameAttribute($name)
     {
@@ -33,6 +34,11 @@ class Customer extends Model
     {
         $this->attributes['state_code'] = strtoupper($state_code);
     }
+
+    // public function getCountryAttribute()
+    // {
+    //     return $this->contacts()->first()?->address->country->name;
+    // }
 
     public function contacts()
     {

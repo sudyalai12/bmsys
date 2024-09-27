@@ -3,7 +3,7 @@
     {{-- {{ $suppliers }} --}}
     <h1 class="heading">Our Suppliers</h1>
     <x-table>
-        <thead>
+        <thead class="suppliers">
             <tr>
                 <th>SupplierID</th>
                 <th>SupplierName</th>

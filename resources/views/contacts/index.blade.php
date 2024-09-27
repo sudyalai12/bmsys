@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
     {{-- {{ $contacts }} --}}
-    <h1 class="heading">Contact Persons</h1>
-    <x-button btntype="secondary"><a href="/customers/create">Add new Customer</a></x-button>
+    <h1 class="heading contacts-heading">Contact Persons</h1>
+    <x-button class="contacts" btntype="secondary"><a href="/customers/create">Add new Customer</a></x-button>
     <x-table>
-        <thead>
+        <thead class="contacts">
             <tr>
                 <th>CPID</th>
                 <th>CustomerName</th>

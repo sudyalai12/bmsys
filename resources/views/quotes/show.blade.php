@@ -31,61 +31,46 @@
 @endphp
 @section('content')
     {{-- {{ $quote }} --}}
-    <x-table class="mb-1">
-        <tbody>
+
+    <div class="quote-preview">
+        <table>
             <tr>
-                <th>Customer Name</th>
-                <td>
-                    <a href="/customers/{{ $quote->contact->customer->id }}">{{ $quote->contact->customer->name }}
-                    </a>
-                </td>
-                <th>Contact Person Name</th>
-                <td><a href="/contacts/{{ $quote->contact->id }}">{{ $quote->contact->name }}</a></td>
-                <th>Department Name</th>
-                <td>{{ $quote->contact->department }}</td>
+                <td><strong>REF: {{ $quote->reference }}</strong></td>
+                <td class="text-right"><strong>DATE: {{ date('d/m/Y') }}</strong></td>
             </tr>
             <tr>
-                <th>Address1</th>
+                <td><strong>{{ Str::upper($quote->contact->customer->name) }}</strong></td>
+                <td><strong>Enquiry REF: Email Dated: {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</strong></td>
+            </tr>
+            <tr>
                 <td>{{ $quote->contact->address->address1 }}</td>
-                <th>Address2</th>
+                <td><strong>Enquiry Date: <input value="{{ $quote->enquiry_date }}" id="enquiry_date" type="date"></strong></td>
+            </tr>
+            <tr>
                 <td>{{ $quote->contact->address->address2 }}</td>
-                <th>City</th>
-                <td>{{ $quote->contact->address->city }}</td>
+                <td><strong>DUE DATE: <input value="{{ $quote->due_date }}" id="due_date" type="date"></strong></td>
             </tr>
             <tr>
-                <th>Pincode</th>
-                <td>{{ $quote->contact->address->pincode }}</td>
-                <th>State/Country</th>
-                <td>{{ $quote->contact->address->state->name }}/ {{ $quote->contact->address->country->name }}</td>
-                <th>Phone</th>
-                <td>{{ $quote->contact->phone }}</td>
+                <td>{{ $quote->contact->address->city }}-{{ $quote->contact->address->pincode }},
+                    {{ $quote->contact->address->state->name }}, {{ $quote->contact->address->country->name }}</td>
+                <td></td>
             </tr>
             <tr>
-                <th>Mobile</th>
-                <td>{{ $quote->contact->mobile }}</td>
-                <th>Email</th>
-                <td><a href="mailto:{{ $quote->contact->email }}">{{ $quote->contact->email }}</a></td>
-                <th>Tax Type</th>
-                <td>{{ $quote->contact->customer->tax_type }}</td>
+                <td>Phone: {{ $quote->contact->phone }}, Mobile: {{ $quote->contact->mobile }}</td>
+                <td></td>
             </tr>
             <tr>
-                <th>GST Number</th>
-                <td>{{ $quote->contact->customer->gstn }}</td>
-                <th>PAN</th>
-                <td>{{ $quote->contact->customer->pan }}</td>
-                <th>State Code</th>
-                <td>{{ $quote->contact->customer->state_code }}</td>
+                <td><a href="">E-mail: {{ $quote->contact->email }}</a></td>
+                <td></td>
             </tr>
+        </table>
+        <table>
             <tr>
-                <th>Customer Nickname</th>
-                <td>{{ $quote->contact->customer->nickname }}</td>
-                <th>Due Date</th>
-                <td><input value="{{ $quote->due_date }}" id="due_date" type="date"></td>
-                <th>Enquiry Date</th>
-                <td><input value="{{ $quote->enquiry_date }}" id="enquiry_date" type="date"></td>
+                <td class="underline italic"><strong>KIND ATTN: {{ Str::upper($quote->contact->name) }},
+                    {{ Str::upper($quote->contact->department) }}</strong></td>
             </tr>
-        </tbody>
-    </x-table>
+        </table>
+    </div>
 
     <div class="form-box">
         <form method="POST" class="form quote-form" action="/quotes/{{ $quote->id }}">
@@ -212,14 +197,6 @@
                     <x-form.error name="handling_charges_term" />
                 </x-form.field>
 
-                {{-- <x-form.field class="fb-800">
-                    <x-form.label for="po_place_term">PO to Place</x-form.label>
-                    <select name="" id="">
-                        <option title="Hindi" value="hi">bye</option>
-                    </select>
-                    <x-form.error name="po_place_term" />
-                </x-form.field> --}}
-
                 <x-form.field class="fb-800">
                     <x-form.label for="gst_term">GST/IGST</x-form.label>
                     <select name="gst_term" id="gst_term">
@@ -308,7 +285,8 @@
                     <x-form.label for="special_conditions_term">Special Conditions</x-form.label>
                     <select name="special_conditions_term" id="special_conditions_term">
                         @foreach ($specialConditionsTerms as $specialConditionsTerm)
-                            <option @if ($quote->specialConditionsTerm->description == $specialConditionsTerm) selected @endif value="{{ $specialConditionsTerm }}">
+                            <option @if ($quote->specialConditionsTerm->description == $specialConditionsTerm) selected @endif
+                                value="{{ $specialConditionsTerm }}">
                                 {{ $specialConditionsTerm }}
                             </option>
                         @endforeach
