@@ -89,6 +89,7 @@
         padding: 0;
         box-sizing: border-box;
         font-size: 12px;
+        line-height: 11px;
     }
 
     table {
@@ -101,9 +102,9 @@
         background-color: white;
         position: relative;
         page-break-after: always;
-        width: 772px;
-        height: 1012px;
-        padding: 22px;
+        width: 766px;
+        height: 1006px;
+        padding: 25px;
     }
 
     .last-page {
@@ -116,6 +117,10 @@
 
     .italic {
         font-style: italic !important;
+    }
+
+    .spacing {
+        letter-spacing: -0.7px !important;
     }
 
     .color {
@@ -132,11 +137,17 @@
     }
 
     .mt {
-        margin-top: 22px;
+        margin-top: 20px;
     }
 
     .underline {
         text-decoration: underline;
+        padding-bottom: 2px;
+        /* text-underline-offset: -0.5rem !important; */
+    }
+
+    .lg{
+        font-size: 11px !important;
     }
 
     .p {
@@ -157,6 +168,10 @@
 
     .text-left {
         text-align: left !important;
+    }
+
+    .inline-block {
+        display: inline-block !important;
     }
 
     header {
@@ -192,7 +207,7 @@
 
     .header-bottom td {
         line-height: 11px;
-        padding: 2px 10px;
+        padding: 0px 10px;
     }
 
     .header-footer td {}
@@ -222,7 +237,7 @@
     .border,
     .border td,
     .border th {
-        border: 1px solid black;
+        border: 1px solid rgb(172, 166, 166);
     }
 
     footer {
@@ -232,7 +247,8 @@
         right: 22px;
         bottom: 22px;
     }
-    footer td{
+
+    footer td {
         line-height: 11px;
         font-size: 10px !important;
     }
@@ -242,7 +258,7 @@
     }
 
     .termsnotices {
-        margin-bottom: 4px;
+        margin-bottom: 22px;
     }
 
     .termsnotices td {
@@ -257,7 +273,8 @@
     .cart {
         margin-top: 2px;
     }
-    .cart td{
+
+    .cart td {
         font-size: 13px;
         padding: 4px;
     }
@@ -334,8 +351,8 @@
 
         <table class="customer-detail">
             <tr>
-                <td class="bold">{{ Str::upper($quote->contact->customer->name) }}</td>
-                <td class="bold">Enquiry REF: EMAIL DATED: {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</td>
+                <td style="width: 55%" class="bold">{{ Str::upper($quote->contact->customer->name) }}</td>
+                <td class="bold">Enquiry REF: Email Dated: {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</td>
             </tr>
             <tr>
                 <td>{{ $quote->contact->address->address1 }}</td>
@@ -362,7 +379,7 @@
 
         <table class="mt">
             <tr>
-                <td class="bold underline italic">KIND ATTN: {{ Str::upper($quote->contact->name) }},
+                <td class="bold underline italic spacing">KIND ATTN: {{ Str::upper($quote->contact->name) }},
                     {{ Str::upper($quote->contact->department) }}</td>
             </tr>
         </table>
@@ -386,20 +403,20 @@
 
         <table class="mt">
             <tr>
-                <td class="bold underline italic">ANNEXURE - I: COMMERCIAL OFFER:</td>
+                <td class="bold underline italic spacing">ANNEXURE - I: COMMERCIAL OFFER:</td>
             </tr>
         </table>
 
         <table class="border cart">
             <tr>
                 <td class="bg bold p text-center">SNO</td>
-                <td class="bg bold p text-center">Part Number/Make</td>
+                <td class="bg bold p text-center">Part Number/Make<br>HSN Code/Article#</td>
                 <td class="bg bold p text-center">Line Item Description</td>
-                <td class="bg bold p text-center qty">Qty</td>
-                <td class="bg bold p text-center oneline">Unit Price<br>(INR)</td>
-                <td class="bg bold p text-center oneline">Taxable Amount<br>(INR)</td>
-                <td class="bg bold p text-center oneline">Tax Amount<br>(INR)</td>
-                <td class="bg bold p text-center oneline">Total Amount<br>(INR)</td>
+                <td class="bg bold p text-center qty">QTY<br>NOS.</td>
+                <td class="bg bold p text-center oneline">Unit Price<br>INR</td>
+                <td class="bg bold p text-center oneline">Taxable Amount<br>INR</td>
+                <td class="bg bold p text-center oneline">{{$quote->contact->customer->tax_type}} / INR<br>Rate/Value</td>
+                <td class="bg bold p text-center oneline">Total Amount<br>INR</td>
             </tr>
             @foreach ($quote->quoteItems as $item)
                 <tr>
@@ -411,11 +428,11 @@
                     </td>
                     <td class="bold p text-center">{{ number_format($item->product->sale_price, 2) }}</td>
                     <td class="bold p text-center">{{ number_format($item->total(), 2) }}</td>
-                    <td class="bold p text-center">{{ number_format($item->tax(), 2) }}</td>
+                    <td class="bold p text-center">18.00%/<br>{{ number_format($item->tax(), 2) }}</td>
                     <td class="bold p text-center">{{ number_format($item->total() + $item->tax(), 2) }}</td>
                 </tr>
             @endforeach
-            <tr style="background-color: #f5f5f5">
+            <tr style="background-color: #e2dcdc">
                 <td class="bold p"></td>
                 <td class="bold p">Totals:</td>
                 <td class="bold p">Sum of Quoted Items:</td>
@@ -432,10 +449,12 @@
         <footer>
             <table>
                 <tr>
-                    <td class="bold dark-color">Should have any enquiries concerning this Quote, please contact Mr.
+                    <td class="bold dark-color lg">Should have any enquiries concerning this Quote, please contact Mr.
                         Vinod
                         Sharma: +91 9910584666</td>
-                    <td class="bg bold text-center">Thanks for giving us opportunity to quote.</td>
+                    <div class="text-right">
+                        <td class="bg bold text-right inline-block p">Thanks for giving us opportunity to quote.</td>
+                    </div>
                 </tr>
             </table>
             <table class="footer-table">
@@ -520,7 +539,7 @@
 
         <table>
             <tr>
-                <td class="bold underline italic">ANNEXURE - II: COMMERCIAL TERMS AND CONDITIONS OF SALES:</td>
+                <td class="bold underline italic spacing">ANNEXURE - II: COMMERCIAL TERMS AND CONDITIONS OF SALES:</td>
             </tr>
         </table>
 
@@ -623,10 +642,10 @@
 
         <table class="">
             <tr>
-                <td>We Hope our offer is inline with your requirement to favor us your valuable Purchase Order.</td>
+                <td>We Hope our offer is in line with your requirements to favour us your valuable Purchase Order.</td>
             </tr>
             <tr>
-                <td>We assured you best of our servicers all the time.</td>
+                <td>We assured you best of our services all the time.</td>
             </tr>
         </table>
 
@@ -659,10 +678,12 @@
         <footer>
             <table>
                 <tr>
-                    <td class="bold dark-color">Should have any enquiries concerning this Quote, please contact Mr.
+                    <td class="bold dark-color lg">Should have any enquiries concerning this Quote, please contact Mr.
                         Vinod
                         Sharma: +91 9910584666</td>
-                    <td class="bg bold text-center">Thanks for giving us opportunity to quote.</td>
+                    <div class="text-right p">
+                        <td class="bg bold text-right inline-block p">Thanks for giving us opportunity to quote.</td>
+                    </div>
                 </tr>
             </table>
             <table class="footer-table">
