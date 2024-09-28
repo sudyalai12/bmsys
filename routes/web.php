@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
-        $customers = Customer::orderBy('updated_at', 'desc')->get()->take(5);
-        $products = Product::orderBy('updated_at', 'desc')->get()->take(5);
-        $quotes = Quote::orderBy('updated_at', 'desc')->get()->take(5);
+        $customers = Customer::latest()->take(5)->get();
+        $products = Product::latest()->take(5)->get();
+        $quotes = Quote::latest()->take(5)->get();
         return view('home', compact('customers', 'products', 'quotes'));
     });
 
