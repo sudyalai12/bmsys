@@ -9,6 +9,10 @@
                 <td>{{ $supplier->name }}</td>
             </tr>
             <tr>
+                <th>Supplier FullName</th>
+                <td>{{ $supplier->fullname }}</td>
+            </tr>
+            <tr>
                 <th>Supplier Country</th>
                 <td>{{ $supplier->country->name }}</td>
             </tr>
@@ -23,5 +27,7 @@
             </tr>
         </tbody>
     </table>
-    <x-button><a href="/suppliers/{{ $supplier->id }}/edit">Edit</a></x-button>
+    <x-button><a href="/suppliers/{{ $supplier->id }}/edit"><span class="material-symbols-outlined">
+                edit
+            </span>Edit</a></x-button>
 @endSection

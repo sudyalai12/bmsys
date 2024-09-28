@@ -2,7 +2,11 @@
 @section('content')
     {{-- {{ $products }} --}}
     <h1 class="heading">Products</h1>
-    <x-button class="products" btntype="secondary"><a href="/products/create">Add new Product</a></x-button>
+    <div class="floating-panel">
+        <x-button class="products" btntype="secondary"><a href="/products/create"><span class="material-symbols-outlined">
+                    add_shopping_cart
+                </span>Add new Product</a></x-button>
+    </div>
     <x-table>
         <thead class="products">
             <tr>

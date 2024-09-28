@@ -30,6 +30,7 @@ class SupplierController extends Controller
         $country = Country::where('name', $request->supplier_country)->first();
         $supplier->update([
             'name' => $request->supplier,
+            'fullname' => $request->supplier_fullname,
             'country_id' => $country->id,
         ]);
 

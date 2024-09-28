@@ -16,7 +16,9 @@
             </tr>
             <tr>
                 <th>Supplier / Country</th>
-                <td><a href="/suppliers/{{ $product->supplier->id }}">{{ $product->supplier->name }}</a> / {{ $product->supplier->country->name }}</td>
+                <td><a href="/suppliers/{{ $product->supplier->id }}">{{ $product->supplier->name }}</a>
+                    /
+                    {{ $product->supplier->country->name }}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -40,5 +42,7 @@
             </tr>
         </tbody>
     </table>
-    <x-button><a href="/products/{{ $product->id }}/edit">Edit</a></x-button>
+    <x-button><a href="/products/{{ $product->id }}/edit"><span class="material-symbols-outlined">
+                edit
+            </span>Edit</a></x-button>
 @endSection

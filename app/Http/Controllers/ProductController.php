@@ -27,6 +27,7 @@ class ProductController extends Controller
         $country = Country::where('name', $request->supplier_country)->first();
         $supplier = Supplier::firstOrCreate([
             'name' => $request->supplier,
+            'fullname' => $request->supplier_fullname,
             'country_id' => $country->id,
         ]);
 

@@ -23,6 +23,7 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'supplier' => 'required|min:2|max:50|string',
+            'supplier_fullname' => 'required|min:2|max:50|string',
             'supplier_country' => 'required|exists:countries,name',
             'part_number' => 'required|min:2|max:30|string',
             'hsn_code' => 'required|min:2|max:30|string',

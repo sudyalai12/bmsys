@@ -44,7 +44,8 @@
             </tr>
             <tr>
                 <td>{{ $quote->contact->address->address1 }}</td>
-                <td><strong>Enquiry Date: <input value="{{ $quote->enquiry_date }}" id="enquiry_date" type="date"></strong></td>
+                <td><strong>Enquiry Date: <input value="{{ $quote->enquiry_date }}" id="enquiry_date" type="date"></strong>
+                </td>
             </tr>
             <tr>
                 <td>{{ $quote->contact->address->address2 }}</td>
@@ -67,7 +68,7 @@
         <table>
             <tr>
                 <td class="underline italic"><strong>KIND ATTN: {{ Str::upper($quote->contact->name) }},
-                    {{ Str::upper($quote->contact->department) }}</strong></td>
+                        {{ Str::upper($quote->contact->department) }}</strong></td>
             </tr>
         </table>
     </div>
@@ -100,7 +101,7 @@
             </div>
 
             <div class="text-center">
-                <x-button btntype="secondary" type="submit">Add</x-button>
+                <x-button btntype="secondary" class="quotes" type="submit">Add</x-button>
             </div>
         </form>
     </div>
@@ -153,9 +154,15 @@
             </tr>
         </tbody>
     </x-table>
-    <x-button btntype="warning"><a href="/quotes/{{ $quote->id }}/pdf" target="_blank">Generate Quote
-            PDF</a></x-button>
-    <br><br>
+    <div class="floating-panel">
+        <x-button btntype="warning"><a href="/quotes/{{ $quote->id }}/pdf" target="_blank"><span class="material-symbols-outlined">
+            picture_as_pdf
+            </span>Generate Quote
+                PDF</a></x-button>
+        <x-button btntype="success"><a href="" target=""><span class="material-symbols-outlined">
+            mail
+            </span>Whatsapp Quote</a></x-button>
+    </div>
     <div class="form-box">
         <form id="update-quote-form" method="POST" class="form quote-form" action="/quotes/{{ $quote->id }}/update">
             @csrf

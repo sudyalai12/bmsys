@@ -37,6 +37,12 @@
                     <x-form.error name="supplier_country" />
                 </x-form.field>
                 <x-form.field class="fb-200">
+                    <x-form.label for="supplier_fullname">Supplier Fullname</x-form.label>
+                    <x-form.input placeholder="Enter Supplier Full Name" id="supplier_fullname" type="text"
+                        name="supplier_fullname" value="{{ $product->supplier->fullname }}" disabled />
+                    <x-form.error name="supplier_fullname" />
+                </x-form.field>
+                <x-form.field class="fb-200">
                     <x-form.label for="hsn_code">HSN Code</x-form.label>
                     <x-form.input placeholder="Enter HSN Code" id="hsn_code" type="text" name="hsn_code"
                         value="{{ $product->hsn_code }}" />

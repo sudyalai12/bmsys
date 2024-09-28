@@ -39,5 +39,7 @@
             </tr>
         </tbody>
     </table>
-    <x-button><a href="/customers/{{ $customer->id }}/edit">Edit</a></x-button>
+    <x-button><a href="/customers/{{ $customer->id }}/edit"><span class="material-symbols-outlined">
+                edit
+            </span>Edit</a></x-button>
 @endSection

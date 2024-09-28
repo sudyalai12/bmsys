@@ -71,6 +71,11 @@
             </tr>
         </tbody>
     </table>
-    <x-button><a href="/contacts/{{ $contact->id }}/edit">Edit</a></x-button>
-    <x-button btntype="secondary"><a href="/quotes/create?contact={{ $contact->id }}">Quote</a></x-button>
+    <x-button><a href="/contacts/{{ $contact->id }}/edit"><span class="material-symbols-outlined">
+                edit
+            </span>Edit</a></x-button>
+    <x-button btntype="secondary"><a href="/quotes/create?contact={{ $contact->id }}"><span
+                class="material-symbols-outlined">
+                note_add
+            </span>Quote</a></x-button>
 @endSection

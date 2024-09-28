@@ -23,6 +23,7 @@ class UpdateSupplierRequest extends FormRequest
     {
         return [
             'supplier' => 'required|min:2|max:50|string',
+            'supplier_fullname' => 'required|min:2|max:50|string',
             'supplier_country' => 'required|exists:countries,name',
         ];
     }

@@ -29,10 +29,16 @@
                     <x-form.error name="supplier" />
                 </x-form.field>
                 <x-form.field class="fb-200">
-                    <x-form.label for="supplier_country">Supplier's Country</x-form.label>
+                    <x-form.label for="supplier_country">Supplier Country</x-form.label>
                     <x-form.input placeholder="Enter Supplier Country Name" id="supplier_country" type="text" name="supplier_country"
                         value="{{ old('supplier_country') }}" />
                     <x-form.error name="supplier_country" />
+                </x-form.field>
+                <x-form.field class="fb-200">
+                    <x-form.label for="supplier_fullname">Supplier Fullname</x-form.label>
+                    <x-form.input placeholder="Enter Supplier Full Name" id="supplier_fullname" type="text" name="supplier_fullname"
+                        value="{{ old('supplier_fullname') }}" />
+                    <x-form.error name="supplier_fullname" />
                 </x-form.field>
                 <x-form.field class="fb-200">
                     <x-form.label for="hsn_code">HSN Code</x-form.label>
