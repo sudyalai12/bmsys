@@ -3,9 +3,14 @@
     {{-- {{ $suppliers }} --}}
     <h1 class="heading">Our Suppliers</h1>
     <div class="floating-panel">
-        <x-button class="suppliers" btntype="secondary"><a href="/products/create"><span class="material-symbols-outlined">
+        <x-button class="suppliers" btntype="secondary">
+            <a href="/products/create">
+                <span class="material-symbols-outlined">
                     add_shopping_cart
-                </span>Add new Product</a></x-button>
+                </span>
+                Add new Product
+            </a>
+        </x-button>
     </div>
     <x-table>
         <thead class="suppliers">

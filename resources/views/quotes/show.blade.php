@@ -31,7 +31,24 @@
 @endphp
 @section('content')
     {{-- {{ $quote }} --}}
-
+    <div class="floating-panel">
+        <x-button btntype="warning">
+            <a href="/quotes/{{ $quote->id }}/pdf" target="_blank">
+                <span class="material-symbols-outlined">
+                    picture_as_pdf
+                </span>
+                Generate Quote PDF
+            </a>
+        </x-button>
+        <x-button btntype="success">
+            <a href="" target="">
+                <span class="material-symbols-outlined">
+                    mail
+                </span>
+                Whatsapp Quote
+            </a>
+        </x-button>
+    </div>
     <div class="quote-preview">
         <table>
             <tr>
@@ -44,7 +61,8 @@
             </tr>
             <tr>
                 <td>{{ $quote->contact->address->address1 }}</td>
-                <td><strong>Enquiry Date: <input value="{{ $quote->enquiry_date }}" id="enquiry_date" type="date"></strong>
+                <td><strong>Enquiry Date: <input value="{{ $quote->enquiry_date }}" id="enquiry_date"
+                            type="date"></strong>
                 </td>
             </tr>
             <tr>
@@ -154,15 +172,7 @@
             </tr>
         </tbody>
     </x-table>
-    <div class="floating-panel">
-        <x-button btntype="warning"><a href="/quotes/{{ $quote->id }}/pdf" target="_blank"><span class="material-symbols-outlined">
-            picture_as_pdf
-            </span>Generate Quote
-                PDF</a></x-button>
-        <x-button btntype="success"><a href="" target=""><span class="material-symbols-outlined">
-            mail
-            </span>Whatsapp Quote</a></x-button>
-    </div>
+
     <div class="form-box">
         <form id="update-quote-form" method="POST" class="form quote-form" action="/quotes/{{ $quote->id }}/update">
             @csrf

@@ -2,6 +2,16 @@
 @section('content')
     {{-- {{ $contact }} --}}
     <h1 class="heading">Contact Person Details</h1>
+    <div class="floating-panel">
+        <x-button class="contacts" btntype="secondary">
+            <a href="/customers/create">
+                <span class="material-symbols-outlined">
+                    person_add
+                </span>
+                Add new Customer
+            </a>
+        </x-button>
+    </div>
     <table class="table mb-1">
         <tbody>
             <tr>
@@ -71,11 +81,20 @@
             </tr>
         </tbody>
     </table>
-    <x-button><a href="/contacts/{{ $contact->id }}/edit"><span class="material-symbols-outlined">
+    <x-button>
+        <a href="/contacts/{{ $contact->id }}/edit">
+            <span class="material-symbols-outlined">
                 edit
-            </span>Edit</a></x-button>
-    <x-button btntype="secondary"><a href="/quotes/create?contact={{ $contact->id }}"><span
-                class="material-symbols-outlined">
+            </span>
+            Edit
+        </a>
+    </x-button>
+    <x-button btntype="secondary" class="quotes">
+        <a href="/quotes/create?contact={{ $contact->id }}">
+            <span class="material-symbols-outlined">
                 note_add
-            </span>Quote</a></x-button>
+            </span>
+            Quote
+        </a>
+    </x-button>
 @endSection

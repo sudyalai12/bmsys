@@ -3,9 +3,14 @@
     {{-- {{ $products }} --}}
     <h1 class="heading">Products</h1>
     <div class="floating-panel">
-        <x-button class="products" btntype="secondary"><a href="/products/create"><span class="material-symbols-outlined">
+        <x-button class="products" btntype="secondary">
+            <a href="/products/create">
+                <span class="material-symbols-outlined">
                     add_shopping_cart
-                </span>Add new Product</a></x-button>
+                </span>
+                Add new Product
+            </a>
+        </x-button>
     </div>
     <x-table>
         <thead class="products">

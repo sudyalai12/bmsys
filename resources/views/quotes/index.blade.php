@@ -3,9 +3,14 @@
     {{-- {{ $quotes }} --}}
     <h1 class="heading">Quotes</h1>
     <div class="floating-panel">
-        <x-button class="quotes" btntype="secondary"><a href="/quotes/create"><span class="material-symbols-outlined">
+        <x-button class="quotes" btntype="secondary">
+            <a href="/quotes/create">
+                <span class="material-symbols-outlined">
                     note_add
-                </span>Add new Quote</a></x-button>
+                </span>
+                Add new Quote
+            </a>
+        </x-button>
     </div>
     <x-table>
         <thead class="quotes">

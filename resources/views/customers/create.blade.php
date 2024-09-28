@@ -9,7 +9,7 @@
                 <h1>Customer Details</h1>
                 <p>Enter the details of the customer</p>
             </div>
-            
+
             <div class="form-block">
                 <h2>Basic Details</h2>
                 <x-form.field class="fb-100">
@@ -38,8 +38,8 @@
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="department">Dept/Desig</x-form.label>
-                    <x-form.input placeholder="Enter Department/Designation Name" id="department" type="text" name="department"
-                        value="{{ old('department') }}" />
+                    <x-form.input placeholder="Enter Department/Designation Name" id="department" type="text"
+                        name="department" value="{{ old('department') }}" />
                     <x-form.error name="department" />
                 </x-form.field>
             </div>
@@ -88,12 +88,14 @@
                 <h2>Contact Details</h2>
                 <x-form.field class="fb-100">
                     <x-form.label for="phone">Phone Number</x-form.label>
-                    <x-form.input placeholder="Enter Phone Number Eg: +91 0000000000" id="phone" type="text" name="phone" value="{{ old('phone') }}" />
+                    <x-form.input placeholder="Enter Phone Number Eg: +91 0000000000" id="phone" type="text"
+                        name="phone" value="{{ old('phone') }}" />
                     <x-form.error name="phone" />
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="mobile">Mobile Number</x-form.label>
-                    <x-form.input placeholder="Enter Mobile Number Eg: +91 0000000000" id="mobile" type="text" name="mobile" value="{{ old('mobile') }}" />
+                    <x-form.input placeholder="Enter Mobile Number Eg: +91 0000000000" id="mobile" type="text"
+                        name="mobile" value="{{ old('mobile') }}" />
                     <x-form.error name="mobile" />
                 </x-form.field>
             </div>
@@ -120,8 +122,8 @@
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="state_code">State Code</x-form.label>
-                    <x-form.input placeholder="Enter State Code (2 digit)" id="state_code" type="text" name="state_code"
-                        value="{{ old('state_code') == '' ? '00' : old('state_code') }}" />
+                    <x-form.input placeholder="Enter State Code (2 digit)" id="state_code" type="text"
+                        name="state_code" value="{{ old('state_code') == '' ? '00' : old('state_code') }}" />
                     <x-form.error name="state_code" />
                 </x-form.field>
             </div>

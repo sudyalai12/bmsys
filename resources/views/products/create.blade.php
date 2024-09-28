@@ -30,14 +30,14 @@
                 </x-form.field>
                 <x-form.field class="fb-200">
                     <x-form.label for="supplier_country">Supplier Country</x-form.label>
-                    <x-form.input placeholder="Enter Supplier Country Name" id="supplier_country" type="text" name="supplier_country"
-                        value="{{ old('supplier_country') }}" />
+                    <x-form.input placeholder="Enter Supplier Country Name" id="supplier_country" type="text"
+                        name="supplier_country" value="{{ old('supplier_country') }}" />
                     <x-form.error name="supplier_country" />
                 </x-form.field>
                 <x-form.field class="fb-200">
                     <x-form.label for="supplier_fullname">Supplier Fullname</x-form.label>
-                    <x-form.input placeholder="Enter Supplier Full Name" id="supplier_fullname" type="text" name="supplier_fullname"
-                        value="{{ old('supplier_fullname') }}" />
+                    <x-form.input placeholder="Enter Supplier Full Name" id="supplier_fullname" type="text"
+                        name="supplier_fullname" value="{{ old('supplier_fullname') }}" />
                     <x-form.error name="supplier_fullname" />
                 </x-form.field>
                 <x-form.field class="fb-200">
@@ -54,8 +54,8 @@
                 </x-form.field>
                 <x-form.field class="fb-200">
                     <x-form.label for="purchase_price">Purchase Price</x-form.label>
-                    <x-form.input placeholder="Enter Purchase Price" id="purchase_price" type="number" name="purchase_price"
-                        value="{{ old('purchase_price') == '' ? '00' : old('purchase_price') }}" />
+                    <x-form.input placeholder="Enter Purchase Price" id="purchase_price" type="number"
+                        name="purchase_price" value="{{ old('purchase_price') == '' ? '00' : old('purchase_price') }}" />
                     <x-form.error name="purchase_price" />
                 </x-form.field>
                 <x-form.field class="fb-200">

@@ -3,9 +3,14 @@
     {{-- {{ $customers }} --}}
     <h1 class="heading">Customers</h1>
     <div class="floating-panel">
-        <x-button btntype="secondary" class="customers"><a href="/customers/create"><span class="material-symbols-outlined">
+        <x-button btntype="secondary" class="customers">
+            <a href="/customers/create">
+                <span class="material-symbols-outlined">
                     person_add
-                </span>Add new Customer</a></x-button>
+                </span>
+                Add new Customer
+            </a>
+        </x-button>
     </div>
     <x-table>
         <thead class="customers">

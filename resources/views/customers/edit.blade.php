@@ -50,8 +50,8 @@
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="state_code">State Code</x-form.label>
-                    <x-form.input placeholder="Enter State Code (2 digit)" id="state_code" type="text"
-                        name="state_code" value="{{ $customer->state_code }}" />
+                    <x-form.input placeholder="Enter State Code (2 digit)" id="state_code" type="text" name="state_code"
+                        value="{{ $customer->state_code }}" />
                     <x-form.error name="state_code" />
                 </x-form.field>
             </div>

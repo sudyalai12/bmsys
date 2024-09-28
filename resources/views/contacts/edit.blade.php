@@ -40,8 +40,8 @@
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="department">Dept/Desig</x-form.label>
-                    <x-form.input placeholder="Enter Department/Designation Name" id="department" type="text" name="department"
-                        value="{{ $contact->department }}" />
+                    <x-form.input placeholder="Enter Department/Designation Name" id="department" type="text"
+                        name="department" value="{{ $contact->department }}" />
                     <x-form.error name="department" />
                 </x-form.field>
             </div>

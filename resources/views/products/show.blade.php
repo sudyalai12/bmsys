@@ -8,6 +8,16 @@
 @extends('layouts.app')
 @section('content')
     <h1 class="heading">Product Details</h1>
+    <div class="floating-panel">
+        <x-button class="products" btntype="secondary">
+            <a href="/products/create">
+                <span class="material-symbols-outlined">
+                    add_shopping_cart
+                </span>
+                Add new Product
+            </a>
+        </x-button>
+    </div>
     <table class="table mb-1">
         <tbody>
             <tr>

@@ -2,6 +2,16 @@
 @section('content')
     {{-- {{ $supplier }} --}}
     <h1 class="heading">Supplier Details</h1>
+    <div class="floating-panel">
+        <x-button class="suppliers" btntype="secondary">
+            <a href="/products/create">
+                <span class="material-symbols-outlined">
+                    add_shopping_cart
+                </span>
+                Add new Product
+            </a>
+        </x-button>
+    </div>
     <table class="table mb-1">
         <tbody>
             <tr>
@@ -27,7 +37,12 @@
             </tr>
         </tbody>
     </table>
-    <x-button><a href="/suppliers/{{ $supplier->id }}/edit"><span class="material-symbols-outlined">
+    <x-button>
+        <a href="/suppliers/{{ $supplier->id }}/edit">
+            <span class="material-symbols-outlined">
                 edit
-            </span>Edit</a></x-button>
+            </span>
+            Edit
+        </a>
+    </x-button>
 @endSection
