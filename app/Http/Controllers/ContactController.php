@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\UpdateContactRequest;
 use App\Models\Address;
 use App\Models\Contact;
 use App\Models\Country;
@@ -32,7 +32,7 @@ class ContactController extends Controller
         return view('contacts.edit', compact('contact'));
     }
 
-    public function update(StoreCustomerRequest $request, Contact $contact)
+    public function update(UpdateContactRequest $request, Contact $contact)
     {
         $state = State::where('name', $request->state)->first();
         $country = Country::where('name', $request->country)->first();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Country;
 use App\Models\Product;
 use App\Models\Supplier;
@@ -54,7 +55,7 @@ class ProductController extends Controller
         return view('products.edit', compact('product'));
     }
 
-    public function update(Product $product, StoreProductRequest $request)
+    public function update(Product $product, UpdateProductRequest $request)
     {
         $product->update([
             'part_number' => $request->part_number,
