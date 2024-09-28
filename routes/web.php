@@ -58,15 +58,18 @@ Route::middleware('auth')->group(function () {
         'show'
     ]);
 
-    Route::get('/quotes', [QuoteController::class, 'index']);
-    Route::get('/quotes/create', [QuoteController::class, 'create']);
-    Route::post('/quotes', [QuoteController::class, 'store']);
-    Route::post('/quotes/{quote}', [QuoteController::class, 'storeItem']);
+    Route::resource('quotes', QuoteController::class)->only([
+        'index',
+        'create',
+        'store',
+        'show',
+        'update',
+    ]);
+    Route::post('/quotes/{quote}/items', [QuoteController::class, 'storeItem']);
     Route::delete('/quotes/{quote}/items/{quoteItem}', [QuoteController::class, 'destroyItem']);
-    Route::post('/quotes/{quote}/update', [QuoteController::class, 'update']);
     Route::get('/quotes/{quote}/pdf', [PdfController::class, 'quotePdf']);
     Route::get('/quotes/{quote}/create-pdf', [PdfController::class, 'create']);
-    Route::get('/quotes/{quote}', [QuoteController::class, 'show']);
+    
     Route::get('/register', [RegisterController::class, 'create']);
     Route::post('/register', [RegisterController::class, 'store']);
 });
