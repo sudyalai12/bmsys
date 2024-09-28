@@ -242,85 +242,77 @@ FORM CSS
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
 }
-.customer-form .form-error,
-.quote-form .form-error {
+
+.form-error {
   color: #dc3545;
   font-size: 0.8rem;
 }
-.customer-form .form-header,
-.quote-form .form-header {
+
+.form-header {
   background-color: #6c757d;
   color: #fff;
   text-align: center;
   padding: 2px 0;
 }
-.customer-form .form-header h1,
-.quote-form .form-header h1 {
+.form-header h1 {
   font-weight: 600;
   font-size: 1.5rem;
 }
-.customer-form .form-header p,
-.quote-form .form-header p {
+.form-header p {
   font-size: 0.8rem;
   font-weight: 500;
   padding: 4px;
 }
-.customer-form .form-block,
-.quote-form .form-block {
+
+.form-block {
   display: flex;
   flex-wrap: wrap;
   padding: 0.5rem;
   gap: 0.5rem;
 }
-.customer-form .form-block h2,
-.quote-form .form-block h2 {
+.form-block h2 {
   width: 100%;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 700;
   color: #6c757d;
 }
-.customer-form .form-field,
-.quote-form .form-field {
+
+.form-field {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
   flex-grow: 1;
 }
-.customer-form .form-label,
-.quote-form .form-label {
+
+.form-label {
   font-size: 0.8rem;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.7);
 }
-.customer-form select,
-.customer-form .form-input,
-.quote-form select,
-.quote-form .form-input {
+
+select,
+.form-input {
   padding: 2px 8px;
   border: 1px solid rgba(108, 117, 125, 0.8);
   width: 100%;
 }
-.customer-form select:focus,
-.customer-form .form-input:focus,
-.quote-form select:focus,
-.quote-form .form-input:focus {
+select:focus,
+.form-input:focus {
   outline: none;
 }
-.customer-form select::-moz-placeholder, .customer-form .form-input::-moz-placeholder, .quote-form select::-moz-placeholder, .quote-form .form-input::-moz-placeholder {
+select::-moz-placeholder, .form-input::-moz-placeholder {
   font-size: 0.7rem;
   color: rgba(52, 58, 64, 0.5019607843);
 }
-.customer-form select::placeholder,
-.customer-form .form-input::placeholder,
-.quote-form select::placeholder,
-.quote-form .form-input::placeholder {
+select::placeholder,
+.form-input::placeholder {
   font-size: 0.7rem;
   color: rgba(52, 58, 64, 0.5019607843);
 }
-.customer-form .form-button,
-.quote-form .form-button {
+
+.form-button {
   padding: 5px 10px;
   text-transform: uppercase;
   background-color: #007bff;
@@ -330,8 +322,7 @@ FORM CSS
   font-weight: 700;
   margin-bottom: 1rem;
 }
-.customer-form .form-button a,
-.quote-form .form-button a {
+.form-button a {
   color: #fff;
 }
 
@@ -687,15 +678,6 @@ span.quotes {
   border: none;
 }
 
-.panels {
-  background-color: white;
-  padding: 10px;
-}
-.panels h2 {
-  font-size: 1rem;
-  font-weight: 300;
-}
-
 .floating-panel {
   padding: 1rem;
   position: fixed;
@@ -714,4 +696,86 @@ span.quotes {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.panels-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.panels {
+  background-color: white;
+  padding: 10px;
+}
+.panels h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.panel-items {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.panel-list {
+  margin-top: 10px;
+  list-style: none;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.panel-list li {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.customers h1,
+.customers h2,
+.customers h3,
+.customers h4,
+.customers h5,
+.customers h6,
+.contacts h1,
+.contacts h2,
+.contacts h3,
+.contacts h4,
+.contacts h5,
+.contacts h6,
+.products h1,
+.products h2,
+.products h3,
+.products h4,
+.products h5,
+.products h6,
+.suppliers h1,
+.suppliers h2,
+.suppliers h3,
+.suppliers h4,
+.suppliers h5,
+.suppliers h6,
+.quotes h1,
+.quotes h2,
+.quotes h3,
+.quotes h4,
+.quotes h5,
+.quotes h6 {
+  color: white;
+}
+.customers span,
+.contacts span,
+.products span,
+.suppliers span,
+.quotes span {
+  color: white;
+}
+.customers a,
+.contacts a,
+.products a,
+.suppliers a,
+.quotes a {
+  color: white;
 }/*# sourceMappingURL=index.css.map */

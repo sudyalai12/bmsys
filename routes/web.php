@@ -9,10 +9,18 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SupplierController;
+use App\Models\Customer;
+use App\Models\Product;
+use App\Models\Quote;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
-    Route::view('/', 'home');
+    Route::get('/', function () {
+        $customers = Customer::orderBy('updated_at', 'desc')->get()->take(5);
+        $products = Product::orderBy('updated_at', 'desc')->get()->take(5);
+        $quotes = Quote::orderBy('updated_at', 'desc')->get()->take(5);
+        return view('home', compact('customers', 'products', 'quotes'));
+    });
 
     Route::resource('customers', CustomerController::class)->only([
         'index',
