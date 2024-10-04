@@ -30,9 +30,9 @@
                     <td><a href="/quotes/{{ $quote->id }}">{{ $quote->id }}</a></td>
                     <td><a href="/quotes/{{ $quote->id }}">{{ $quote->reference }}</a></td>
                     <td><a
-                            href="/customers/{{ $quote->enquiry->contact->customer->id }}">{{ $quote->enquiry->contact->customer->nickname }}</a>
+                            href="/customers/{{ $quote->enquiry->contact->customer->id }}">{{ $quote->nickname }}</a>
                     </td>
-                    <td><a href="/contacts/{{ $quote->enquiry->contact->id }}">{{ $quote->enquiry->contact->name }}</a></td>
+                    <td><a href="/contacts/{{ $quote->enquiry->contact->id }}">{{ $quote->contact_name }}</a></td>
                     <td>{{ $quote->enquiry->date }}</td>
                     <td>{{ $quote->enquiry->due_date }}</td>
                     <td>{{ $quote->enquiry->reference }}</td>
