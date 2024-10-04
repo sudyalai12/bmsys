@@ -105,10 +105,15 @@ a {
   font-style: italic;
 }
 
+.danger-text {
+  color: #dc3545;
+}
+
 .oneline {
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+}
+.oneline td {
+  white-space: nowrap;
 }
 
 .form-box {
@@ -119,7 +124,7 @@ a {
 .table-box {
   overflow-x: scroll;
   height: auto;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 220px);
 }
 
 .no-border {
@@ -679,10 +684,9 @@ span.quotes {
 }
 
 .floating-panel {
-  padding: 1rem;
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 50px;
+  right: 50px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -778,4 +782,87 @@ span.quotes {
 .suppliers a,
 .quotes a {
   color: white;
+}
+
+.mr-mrs-select {
+  display: flex;
+}
+.mr-mrs-select select {
+  width: 70px;
+  border-right: none;
+}
+
+.card {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.card .card-body {
+  background-color: white;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  border-radius: 5px;
+  border-bottom: 4px solid #0069d9;
+  padding: 1rem;
+}
+.card .card-body a {
+  color: #0069d9;
+}
+.card .card-body .card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+.card .card-body .card-title img {
+  width: 50px;
+}
+.card .card-body .card-title .card-title-text h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.card .card-body .card-title .card-title-text span {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.card .card-body .card-details h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.card .card-body .card-details span {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.card .card-body .card-details b {
+  font-weight: 600;
+}
+
+.pdf-preview-box {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  display: none;
+}
+.pdf-preview-box embed {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+.pdf-preview-box span {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  color: white;
+  font-size: 1.5rem;
 }/*# sourceMappingURL=index.css.map */

@@ -3,7 +3,6 @@
 use App\Models\Address;
 use App\Models\Country;
 use App\Models\Customer;
-use App\Models\Department;
 use App\Models\State;
 use App\Models\Tax;
 use Illuminate\Database\Migrations\Migration;
@@ -22,7 +21,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('iso3');
             $table->string('numeric_code');
-            $table->integer('phone_code');
+            $table->string('phone_code');
             $table->string('currency');
             $table->string('currency_name');
             $table->string('currency_symbol');
@@ -38,19 +37,6 @@ return new class extends Migration
             $table->id();
             $table->string('type');
         });
-
-
-        Schema::create('customers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('nickname');
-            $table->string('tax_type');
-            $table->string('gstn');
-            $table->string('pan');
-            $table->string('state_code');
-            $table->timestamps();
-        });
-
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->string('address1');
@@ -62,13 +48,24 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('customers', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('nickname');
+            $table->foreignIdFor(Address::class, 'address_id')->constrained();
+            $table->foreignIdFor(Tax::class, 'tax_id')->constrained();
+            $table->string('gstn');
+            $table->string('pan');
+            $table->string('state_code');
+            $table->timestamps();
+        });
+
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Customer::class, 'customer_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('email');
             $table->string('department');
-            $table->foreignIdFor(Address::class, 'address_id')->constrained();
             $table->string('phone');
             $table->string('mobile');
             $table->timestamps();
@@ -80,11 +77,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customers');
         Schema::dropIfExists('contacts');
+        Schema::dropIfExists('customers');
         Schema::dropIfExists('addresses');
+        Schema::dropIfExists('taxes');
         Schema::dropIfExists('states');
         Schema::dropIfExists('countries');
-        Schema::dropIfExists('taxes');
     }
 };

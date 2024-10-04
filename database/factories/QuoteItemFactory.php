@@ -19,9 +19,9 @@ class QuoteItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'quote_id' => Quote::all()->random()->id,
-            'product_id' => Product::all()->random()->id,
-            'quantity' => fake()->numberBetween(1, 10)
+            'quote_id' => Quote::inRandomOrder()->value('id'),
+            'product_id' => Product::inRandomOrder()->value('id'),
+            'quantity' => fake()->numberBetween(1, 10),
         ];
     }
 }

@@ -21,6 +21,7 @@
                 <th>ContactPersonName</th>
                 <th>EnquiryDate</th>
                 <th>DueDate</th>
+                <th>EnquiryRef</th>
             </tr>
         </thead>
         <tbody>
@@ -29,11 +30,12 @@
                     <td><a href="/quotes/{{ $quote->id }}">{{ $quote->id }}</a></td>
                     <td><a href="/quotes/{{ $quote->id }}">{{ $quote->reference }}</a></td>
                     <td><a
-                            href="/customers/{{ $quote->contact->customer->id }}">{{ $quote->contact->customer->nickname }}</a>
+                            href="/customers/{{ $quote->enquiry->contact->customer->id }}">{{ $quote->enquiry->contact->customer->nickname }}</a>
                     </td>
-                    <td><a href="/contacts/{{ $quote->contact->id }}">{{ $quote->contact->name }}</a></td>
-                    <td>{{ $quote->enquiry_date }}</td>
-                    <td>{{ $quote->due_date }}</td>
+                    <td><a href="/contacts/{{ $quote->enquiry->contact->id }}">{{ $quote->enquiry->contact->name }}</a></td>
+                    <td>{{ $quote->enquiry->date }}</td>
+                    <td>{{ $quote->enquiry->due_date }}</td>
+                    <td>{{ $quote->enquiry->reference }}</td>
                 </tr>
             @endforeach
         </tbody>

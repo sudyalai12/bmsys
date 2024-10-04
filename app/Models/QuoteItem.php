@@ -11,7 +11,7 @@ class QuoteItem extends Model
     protected $table = 'quote_items';
     protected $guarded = [];
     protected $hidden = [];
-    protected $with = ['product'];
+    protected $with = ['quote', 'product'];
 
     public function quote()
     {
@@ -23,33 +23,28 @@ class QuoteItem extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
     public function total()
     {
         return $this->quantity * $this->product->sale_price;
     }
 
-    public function tax($tax = 0.18)
+    public function totalFixed()
+    {
+        return $this->quantity * $this->sale_price;
+    }
+
+    public function taxAmount($tax = 0.18)
     {
         return $this->total() * $tax;
     }
 
-    // public function remove()
-    // {
-    //     $this->delete();
-    // }
-
-    // public function updateQuantity($quantity)
-    // {
-    //     $this->update(['quantity' => $quantity]);
-    // }
-
-    // public function updatePrice($price)
-    // {
-    //     $this->update(['price' => $price]);
-    // }
-
-    // public function updateTotal()
-    // {
-    //     $this->update(['total' => $this->total()]);
-    // }
+    public function taxAmountFixed($tax = 0.18)
+    {
+        return $this->totalFixed() * $tax;
+    }
 }

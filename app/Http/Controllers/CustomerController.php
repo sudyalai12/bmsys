@@ -9,6 +9,7 @@ use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Customer;
 use App\Models\State;
+use App\Models\Tax;
 
 class CustomerController extends Controller
 {
@@ -26,47 +27,53 @@ class CustomerController extends Controller
 
     public function store(StoreCustomerRequest $request)
     {
-        $contact = Contact::where('name', $request->contact)->where('email', $request->email)->first();
+        $mrms = $request->mr_mrs;
+        $name = $mrms . ' ' . $request->contact;
+        $contact = Contact::where('name', $name)->where('email', $request->email)->first();
         if ($contact) {
             return back()->withErrors(['contact' => 'contact already present']);
         }
 
-        $state = State::where('name', $request->state)->first();
-        $country = Country::where('name', $request->country)->first();
-
-        $customer = Customer::firstOrCreate(
-            [
-                'name' => $request->customer,
-                'nickname' => $request->nickname,
-                'tax_type' => $request->tax_type,
-                'gstn' => $request->gstn,
-                'pan' => $request->pan,
-                'state_code' => $request->state_code,
-            ]
-        );
-        $address = Address::firstOrCreate(
-            [
+        $customer = Customer::where('name', $request->customer)->first();
+        if ($customer) {
+            $customer->contacts()->create([
+                'name' => $name,
+                'email' => $request->email,
+                'department' => $request->department,
+                'phone' => $request->phone,
+                'mobile' => $request->mobile,
+            ]);
+        } else {
+            $state = State::where('name', $request->state)->first();
+            $country = Country::where('name', $request->country)->first();
+            $tax = Tax::where('type', $request->tax_type)->first();
+            $address = Address::create([
                 'address1' => $request->address1,
                 'address2' => $request->address2,
                 'city' => $request->city,
                 'pincode' => $request->pincode,
                 'state_id' => $state->id,
                 'country_id' => $country->id,
-            ]
-        );
+            ]);
 
-        $contact = Contact::create(
-            [
-                'customer_id' => $customer->id,
+            $customer = Customer::create([
+                'name' => $request->customer,
+                'nickname' => $request->nickname,
+                'address_id' => $address->id,
+                'tax_id' => $tax->id,
+                'gstn' => $request->gstn,
+                'pan' => $request->pan,
+                'state_code' => $request->state_code,
+            ]);
+            $customer->contacts()->create([
                 'name' => $request->contact,
                 'email' => $request->email,
                 'department' => $request->department,
-                'address_id' => $address->id,
                 'phone' => $request->phone,
                 'mobile' => $request->mobile,
-            ]
-        );
-        return redirect("/contacts/{$contact->id}");
+            ]);
+        }
+        return redirect("/customers/{$customer->id}");
     }
 
     public function edit(Customer $customer)
@@ -76,13 +83,25 @@ class CustomerController extends Controller
 
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
+        $state = State::where('name', $request->state)->first();
+        $country = Country::where('name', $request->country)->first();
+        $tax = Tax::where('type', $request->tax_type)->first();
         $customer->update([
             'name' => $request->customer,
             'nickname' => $request->nickname,
-            'tax_type' => $request->tax_type,
+            'tax_id' => $tax->id,
             'gstn' => $request->gstn,
             'pan' => $request->pan,
             'state_code' => $request->state_code,
+        ]);
+
+        $customer->address()->update([
+            'address1' => $request->address1,
+            'address2' => $request->address2,
+            'city' => $request->city,
+            'pincode' => $request->pincode,
+            'state_id' => $state->id,
+            'country_id' => $country->id,
         ]);
         return redirect("/customers/{$customer->id}");
     }

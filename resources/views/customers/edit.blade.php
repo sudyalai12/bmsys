@@ -2,14 +2,23 @@
 @section('js')
 @endsection
 @section('content')
-    {{-- {{ $contact }} --}}
+    {{-- {{ $customer }} --}}
+    <div class="floating-panel">
+        <x-button btntype="secondary" class="customers">
+            <a href="/customers/create">
+                <span class="material-symbols-outlined">
+                    person_add
+                </span>
+                Add new Customer
+            </a>
+        </x-button>
+    </div>
     <div class="form-box">
         <form method="POST" class="form customer-form" action="/customers/{{ $customer->id }}">
             @csrf
             @method('PATCH')
             <div class="form-header">
                 <h1>Edit Customer Details</h1>
-                <p>Edit the details of the Customer</p>
             </div>
 
             <div class="form-block">
@@ -29,11 +38,51 @@
             </div>
 
             <div class="form-block">
+                <h2>Address Details</h2>
+                <x-form.field class="fb-200">
+                    <x-form.label for="address1">Address1</x-form.label>
+                    <x-form.input placeholder="Enter Address" id="address1" type="text" name="address1"
+                        value="{{ $customer->address->address1 }}" />
+                    <x-form.error name="address1" />
+                </x-form.field>
+                <x-form.field class="fb-200">
+                    <x-form.label for="address2">Address2</x-form.label>
+                    <x-form.input placeholder="Enter Address" id="address2" type="text" name="address2"
+                        value="{{ $customer->address->address2 }}" />
+                    <x-form.error name="address2" />
+                </x-form.field>
+                <x-form.field class="fb-100">
+                    <x-form.label for="city">City</x-form.label>
+                    <x-form.input placeholder="Enter City" id="city" type="text" name="city"
+                        value="{{ $customer->address->city }}" />
+                    <x-form.error name="city" />
+                </x-form.field>
+                <x-form.field class="fb-100">
+                    <x-form.label for="pincode">Pincode</x-form.label>
+                    <x-form.input placeholder="Enter Pin Code" id="pincode" type="text" name="pincode"
+                        value="{{ $customer->address->pincode }}" />
+                    <x-form.error name="pincode" />
+                </x-form.field>
+                <x-form.field class="fb-100">
+                    <x-form.label for="state">State</x-form.label>
+                    <x-form.input placeholder="Enter State" id="state" type="text" name="state"
+                        value="{{ $customer->address->state->name }}" />
+                    <x-form.error name="state" />
+                </x-form.field>
+                <x-form.field class="fb-100">
+                    <x-form.label for="country">Country</x-form.label>
+                    <x-form.input placeholder="Enter Country" id="country" type="text" name="country"
+                        value="{{ $customer->address->country->name }}" />
+                    <x-form.error name="country" />
+                </x-form.field>
+            </div>
+
+            <div class="form-block">
                 <h2>Tax Details</h2>
                 <x-form.field class="fb-100">
                     <x-form.label for="tax_type">SaleTax</x-form.label>
                     <x-form.input placeholder="Enter Tax Type" id="tax_type" type="text" name="tax_type"
-                        value="{{ $customer->tax_type }}" />
+                        value="{{ $customer->tax->type }}" />
                     <x-form.error name="tax_type" />
                 </x-form.field>
                 <x-form.field class="fb-100">
@@ -50,8 +99,8 @@
                 </x-form.field>
                 <x-form.field class="fb-100">
                     <x-form.label for="state_code">State Code</x-form.label>
-                    <x-form.input placeholder="Enter State Code (2 digit)" id="state_code" type="text" name="state_code"
-                        value="{{ $customer->state_code }}" />
+                    <x-form.input placeholder="Enter State Code (2 digit)" id="state_code" type="text"
+                        name="state_code" value="{{ $customer->state_code }}" />
                     <x-form.error name="state_code" />
                 </x-form.field>
             </div>

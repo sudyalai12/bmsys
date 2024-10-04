@@ -3,6 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Contact;
+use App\Models\Country;
+use App\Models\Enquiry;
+use App\Models\State;
+use App\Models\Tax;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +22,8 @@ class QuoteFactory extends Factory
     public function definition(): array
     {
         return [
-            'contact_id' => Contact::all()->random()->id,
+            'enquiry_id' => Enquiry::factory(),
+            'reference' => $this->faker->unique()->regexify('[A-Z]{3}[0-9]{3}'),
         ];
     }
 }

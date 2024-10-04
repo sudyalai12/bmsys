@@ -12,12 +12,12 @@
             </a>
         </x-button>
     </div>
-    <x-table>
+    <x-table class="oneline">
         <thead class="products">
             <tr>
                 <th>ProdID</th>
                 <th>PartNo</th>
-                <th>Supplier</th>
+                <th>Supplier / Country</th>
                 <th>Desc</th>
                 <th>UnitPrice(INR)</th>
                 <th>PurchasePrice(INR)</th>
@@ -30,7 +30,7 @@
                 <tr>
                     <td><a href="/products/{{ $product->id }}">{{ $product->id }}</a></td>
                     <td><a href="/products/{{ $product->id }}">{{ $product->part_number }}</a></td>
-                    <td><a href="/suppliers/{{ $product->supplier->id }}">{{ $product->supplier->name }}</a></td>
+                    <td><a href="/suppliers/{{ $product->supplier->id }}">{{ $product->supplier->name }} / {{ $product->supplier->country->name }}</a></td>
                     <td>{{ $product->description }}</td>
                     <td>{{ number_format($product->unit_price, 2) }}</td>
                     <td>{{ number_format($product->purchase_price, 2) }}</td>

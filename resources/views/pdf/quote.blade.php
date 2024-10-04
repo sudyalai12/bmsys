@@ -1,7 +1,7 @@
 @php
     function formatString($string)
     {
-        return preg_replace('/;/', "\r\n•", $string);
+        return preg_replace('/;/', "\r\n", $string);
     }
     $files = [
         'logo' => 'neuvin-logo.png',
@@ -344,43 +344,43 @@
             <table class="header-footer">
                 <tr>
                     <td class="bold">REF: {{ $quote->reference }}</td>
-                    <td class="text-right bold">DATE: {{ date('d/m/Y') }}</td>
+                    <td class="text-right bold">DATE: {{ date('d/m/Y', strtotime($quote->date)) }}</td>
                 </tr>
             </table>
         </header>
 
         <table class="customer-detail">
             <tr>
-                <td style="width: 55%" class="bold">{{ Str::upper($quote->contact->customer->name) }}</td>
-                <td class="bold">Enquiry REF: Email Dated: {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</td>
+                <td style="width: 55%" class="bold">{{ Str::upper($quote->customer_name) }}</td>
+                <td class="bold">Enquiry REF: {{ $quote->enquiry->reference }}</td>
             </tr>
             <tr>
-                <td>{{ $quote->contact->address->address1 }}</td>
-                <td class="bold">Enquiry Date: {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</td>
+                <td>{{ $quote->address1 }}</td>
+                <td class="bold">Enquiry Date: {{ date('d/m/Y', strtotime($quote->enquiry->date)) }}</td>
             </tr>
             <tr>
-                <td>{{ $quote->contact->address->address2 }}</td>
-                <td class="bold">DUE DATE: {{ date('d/m/Y', strtotime($quote->due_date)) }}</td>
+                <td>{{ $quote->address2 }}</td>
+                <td class="bold">DUE DATE: {{ date('d/m/Y', strtotime($quote->enquiry->due_date)) }}</td>
             </tr>
             <tr>
-                <td>{{ $quote->contact->address->city }}-{{ $quote->contact->address->pincode }},
-                    {{ $quote->contact->address->state->name }}, {{ $quote->contact->address->country->name }}</td>
+                <td>{{ $quote->city }}-{{ $quote->pincode }},
+                    {{ $quote->state->name }}, {{ $quote->country->name }}</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Phone: {{ $quote->contact->phone }}, Mobile: {{ $quote->contact->mobile }}</td>
+                <td>Phone: {{ $quote->phone }}, Mobile: {{ $quote->mobile }}</td>
                 <td></td>
             </tr>
             <tr>
-                <td><a href="">E-mail: {{ $quote->contact->email }}</a></td>
+                <td><a href="">E-mail: {{ $quote->email }}</a></td>
                 <td></td>
             </tr>
         </table>
 
         <table class="mt">
             <tr>
-                <td class="bold underline italic spacing">KIND ATTN: {{ Str::upper($quote->contact->name) }},
-                    {{ Str::upper($quote->contact->department) }}</td>
+                <td class="bold underline italic spacing">KIND ATTN: {{ Str::upper($quote->contact_name) }},
+                    {{ Str::upper($quote->department) }}</td>
             </tr>
         </table>
 
@@ -389,8 +389,7 @@
                 <td class="bold">Dear Sir/Madam</td>
             </tr>
             <tr>
-                <td>Thanks for your enquiry with Reference No: <span class="bold italic">Email Dated:
-                        {{ date('d/m/Y', strtotime($quote->enquiry_date)) }}</span></td>
+                <td>Thanks for your enquiry with Reference No: <span class="bold italic">{{ $quote->enquiry->reference }}</span></td>
             </tr>
             <tr>
                 <td>We are pleased to submit our best Offer on behalf our Principal
@@ -415,22 +414,22 @@
                 <td class="bg bold p text-center qty">QTY<br>NOS.</td>
                 <td class="bg bold p text-center oneline">Unit Price<br>INR</td>
                 <td class="bg bold p text-center oneline">Taxable Amount<br>INR</td>
-                <td class="bg bold p text-center oneline">{{ $quote->contact->customer->tax_type }}/INR<br>Rate/Value
+                <td class="bg bold p text-center oneline">{{ $quote->tax->type }}/INR<br>Rate/Value
                 </td>
                 <td class="bg bold p text-center oneline">Total Amount<br>INR</td>
             </tr>
             @foreach ($quote->quoteItems as $item)
                 <tr>
                     <td class="bold p text-center">{{ $index++ }}</td>
-                    <td class="bold p">{{ $item->product->part_number }}<br>
-                        {{ $item->product->supplier->name }}, {{ $item->product->supplier->country->iso3 }}</td>
-                    <td class="bold p" style="white-space: pre-wrap;">@php echo formatString($item->product->description) @endphp</td>
+                    <td class="bold p">{{ $item->part_number }}<br>
+                        {{ $item->name }}, {{ $item->country->iso3 }}</td>
+                    <td class="bold p" style="white-space: pre-wrap;">@php echo formatString($item->description) @endphp</td>
                     <td class="bold p text-center">{{ $item->quantity < 10 ? '0' . $item->quantity : $item->quantity }}
                     </td>
-                    <td class="bold p text-center">{{ number_format($item->product->sale_price, 2) }}</td>
-                    <td class="bold p text-center">{{ number_format($item->total(), 2) }}</td>
-                    <td class="bold p text-center">18.00%/<br>{{ number_format($item->tax(), 2) }}</td>
-                    <td class="bold p text-center">{{ number_format($item->total() + $item->tax(), 2) }}</td>
+                    <td class="bold p text-center">{{ number_format($item->sale_price, 2) }}</td>
+                    <td class="bold p text-center">{{ number_format($item->totalFixed(), 2) }}</td>
+                    <td class="bold p text-center">18.00%/<br>{{ number_format($item->taxAmountFixed(), 2) }}</td>
+                    <td class="bold p text-center">{{ number_format($item->totalFixed() + $item->taxAmountFixed(), 2) }}</td>
                 </tr>
             @endforeach
             <tr style="background-color: #e2dcdc">
@@ -441,9 +440,9 @@
                     {{ $quote->quoteItems->sum('quantity') < 10 ? '0' . $quote->quoteItems->sum('quantity') : $quote->quoteItems->sum('quantity') }}
                 </td>
                 <td class="bold p"></td>
-                <td class="bold p text-center">{{ number_format($quote->total(), 2) }}</td>
-                <td class="bold p text-center">{{ number_format($quote->tax(), 2) }}</td>
-                <td class="bold p text-center">{{ number_format($quote->total() + $quote->tax(), 2) }}</td>
+                <td class="bold p text-center">{{ number_format($quote->totalFixed(), 2) }}</td>
+                <td class="bold p text-center">{{ number_format($quote->taxAmountFixed(), 2) }}</td>
+                <td class="bold p text-center">{{ number_format($quote->totalFixed() + $quote->taxAmountFixed(), 2) }}</td>
             </tr>
         </table>
 
@@ -464,7 +463,7 @@
                     <td class="bold">PAN NUMBER: AADCN9370Q</td>
                     <td class="bold">Registered Office: A-45A First Floor Sai Kunj</td>
                     <td class="bold">Page 1 of 2</td>
-                    <td class="bold text-right">{{ $quote->contact->customer->nickname }}-{{ date('Y/md') }}</td>
+                    <td class="bold text-right">{{ $quote->nickname }}-{{ date('Y/md') }}</td>
                 </tr>
                 <tr>
                     <td class="bold">GSTIN: 07AADCN9370Q1ZO</td>
@@ -548,17 +547,17 @@
         <table class="termsnotices">
             <tr>
                 <td class="bold">Price Basis</td>
-                <td class="bold">{{ $quote->priceBasicTerm->description }}</td>
+                <td class="bold">{{ $quote->price_basic_term }}</td>
             </tr>
 
             <tr>
                 <td class="bold">Payment Terms</td>
-                <td>{{ $quote->paymentTerm->description }}</td>
+                <td>{{ $quote->payment_term }}</td>
             </tr>
 
             <tr>
                 <td class="bold">Handling Charges</td>
-                <td>{{ $quote->handlingChargesTerm->description }}</td>
+                <td>{{ $quote->handling_charges_term }}</td>
             </tr>
 
             <tr>
@@ -602,42 +601,42 @@
 
             <tr>
                 <td class="bold">GST/IGST</td>
-                <td>{{ $quote->gstTerm->description }}</td>
+                <td>{{ $quote->gst_term }}</td>
             </tr>
 
             <tr>
                 <td class="bold">Delivery</td>
-                <td>{{ $quote->deliveryTerm->description }}</td>
+                <td>{{ $quote->delivery_term }}</td>
             </tr>
 
             <tr>
                 <td class="bold">P&F Charges</td>
-                <td>{{ $quote->pnfChargesTerm->description }}</td>
+                <td>{{ $quote->pnf_charges_term }}</td>
             </tr>
 
             <tr>
                 <td class="bold">Freight Charges</td>
-                <td>{{ $quote->freightChargesTerm->description }}</td>
+                <td>{{ $quote->freight_charges_term }}</td>
             </tr>
 
             <tr>
                 <td class="bold">Warranty</td>
-                <td>{{ $quote->warrantyTerm->description }}</td>
+                <td>{{ $quote->warranty_term }}</td>
             </tr>
 
             <tr>
                 <td class="bold">Validity of Quote</td>
-                <td>{{ $quote->validityQuoteTerm->description }}</td>
+                <td>{{ $quote->validity_quote_term }}</td>
             </tr>
 
             <tr>
                 <td class="bold">PO Conditions</td>
-                <td>{{ $quote->poConditionsTerm->description }}</td>
+                <td>{{ $quote->po_conditions_term }}</td>
             </tr>
 
             <tr>
                 <td class="bold">Special Conditions</td>
-                <td>{{ $quote->specialConditionsTerm->description }}</td>
+                <td>{{ $quote->special_conditions_term }}</td>
             </tr>
         </table>
 
@@ -693,7 +692,7 @@
                     <td class="bold">PAN NUMBER: AADCN9370Q</td>
                     <td class="bold">Registered Office: A-45A First Floor Sai Kunj</td>
                     <td class="bold">Page 2 of 2</td>
-                    <td class="bold text-right">{{ $quote->contact->customer->nickname }}-{{ date('Y/md') }}</td>
+                    <td class="bold text-right">{{ $quote->nickname }}-{{ date('Y/md') }}</td>
                 </tr>
                 <tr>
                     <td class="bold">GSTIN: 07AADCN9370Q1ZO</td>
@@ -708,6 +707,3 @@
 </body>
 
 </html>
-
-{{-- APTOS DISPLAY --}}
-{{-- TIMES RROMAN --}}

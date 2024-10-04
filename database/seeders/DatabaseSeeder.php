@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Customer;
 use App\Models\DeliveryTerm;
+use App\Models\Enquiry;
 use App\Models\FreightChargesTerm;
 use App\Models\GstTerm;
 use App\Models\HandlingChargesTerm;
@@ -39,15 +40,8 @@ class DatabaseSeeder extends Seeder
         DB::table('states')->insert(State::$states);
         DB::table('taxes')->insert(Tax::$taxes);
 
-        // Contact::factory(50)->create();
-        // Contact::all()->each(function ($contact) {
-        //     $contact->address_id = Address::all()->random()->id;
-        //     $contact->customer_id = Customer::all()->random()->id;
-        //     $contact->save();
-        // });
-
-        // Supplier::factory(10)->create();
-        // Product::factory(200)->create();
+        // Supplier::factory(5)->create();
+        // Product::factory(10)->create();
 
         DB::table('price_basic_terms')->insert(PriceBasicTerm::$price_basic_terms);
         DB::table('payment_terms')->insert(PaymentTerm::$payment_terms);
@@ -61,14 +55,12 @@ class DatabaseSeeder extends Seeder
         DB::table('po_conditions_terms')->insert(PoConditionsTerm::$po_conditions_terms);
         DB::table('special_conditions_terms')->insert(SpecialConditionsTerm::$special_conditions_terms);
 
-        // Quote::factory(10)->create();
-
-        // Quote::all()->each(function ($quote) {
+        // Quote::factory(5)->create();
+        // foreach (Quote::all() as $quote) {
         //     $quote->generateReference();
-        // });
+        // }
+        // QuoteItem::factory(20)->create();
 
-        // QuoteItem::factory(100)->create();
-        
         User::factory()->create([
             'name' => 'Neuvin',
             'email' => 'info@neuvin.com',

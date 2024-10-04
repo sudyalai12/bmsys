@@ -25,7 +25,6 @@ class ContactFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'department' => fake()->jobTitle(),
-            'address_id' => Address::factory(),
             'phone' => fake()->numberBetween(1000000000, 9999999999),
             'mobile' => fake()->numberBetween(1000000000, 9999999999),
         ];

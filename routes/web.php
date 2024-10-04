@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
     ]);
     Route::post('/quotes/{quote}/items', [QuoteController::class, 'storeItem']);
     Route::delete('/quotes/{quote}/items/{quoteItem}', [QuoteController::class, 'destroyItem']);
+    Route::patch('/quotes/{quote}/items/{quoteItem}', [QuoteController::class, 'updateItem']);
+
     Route::get('/quotes/{quote}/pdf', [PdfController::class, 'quotePdf']);
     Route::get('/quotes/{quote}/create-pdf', [PdfController::class, 'create']);
     

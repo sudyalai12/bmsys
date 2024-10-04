@@ -13,7 +13,7 @@ class Contact extends Model
     protected $table = 'contacts';
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
-    protected $with = ['customer', 'address'];
+    protected $with = ['customer'];
 
     public function setNameAttribute(string $name)
     {
@@ -31,10 +31,5 @@ class Contact extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
-    }
-
-    public function address()
-    {
-        return $this->belongsTo(Address::class);
     }
 }

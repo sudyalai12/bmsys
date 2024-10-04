@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Customer;
 use App\Models\DeliveryTerm;
+use App\Models\Enquiry;
 use App\Models\FreightChargesTerm;
 use App\Models\GstTerm;
 use App\Models\HandlingChargesTerm;
@@ -38,31 +40,73 @@ class QuoteController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'customer' => 'required|exists:customers,name',
-            'contact' => 'required|exists:contacts,name',
-            'part_number' => 'required|exists:products,part_number',
-            'quantity' => 'required|numeric|min:1|max:100',
-        ]);
-
-        $contact = Contact::where('name', $validate['contact'])
-            ->whereHas('customer', function ($query) use ($validate) {
-                $query->where('name', $validate['customer']);
+        $contact = Contact::where('name', $request->contact)
+            ->whereHas('customer', function ($query) use ($request) {
+                $query->where('name', $request->customer);
             })
             ->first();
+
         if (!$contact) {
-            return back()->withErrors(['contact' => 'The selected contact is not associated with the selected customer.']);
+            return back()->withErrors(['contact' => 'Contact not found.']);
         }
 
-        $product = Product::where('part_number', $validate['part_number'])->first();
-        $quote = Quote::create([
+        $product = Product::where('part_number', $request->part_number)
+            ->whereHas('supplier', function ($query) use ($request) {
+                $query->where('name', $request->supplier);
+            })
+            ->first();
+
+        if (!$product) {
+            return back()->withErrors(['part_number' => 'Product not found.']);
+        }
+
+        $enquiry = Enquiry::create([
             'contact_id' => $contact->id,
+            'reference' => $request->enquiry_reference,
+            'date' => $request->enquiry_date,
+            'due_date' => $request->due_date
         ]);
-        $quote->reference = $quote->generateReference();
+
+        $quote = Quote::create([
+            'enquiry_id' => $enquiry->id,
+            'reference' => $enquiry->contact->customer->generateReference(),
+
+            // Customer Information
+            'customer_name' => $enquiry->contact->customer->name,
+            'nickname' => $enquiry->contact->customer->nickname,
+            'tax_id' => $enquiry->contact->customer->tax_id,
+            'gstn' => $enquiry->contact->customer->gstn,
+            'pan' => $enquiry->contact->customer->pan,
+            'state_code' => $enquiry->contact->customer->state_code,
+            'address1' => $enquiry->contact->customer->address->address1,
+            'address2' => $enquiry->contact->customer->address->address2,
+            'city' => $enquiry->contact->customer->address->city,
+            'pincode' => $enquiry->contact->customer->address->pincode,
+            'state_id' => $enquiry->contact->customer->address->state_id,
+            'country_id' => $enquiry->contact->customer->address->country_id,
+            'contact_name' => $enquiry->contact->name,
+            'email' => $enquiry->contact->email,
+            'department' => $enquiry->contact->department,
+            'mobile' => $enquiry->contact->mobile,
+            'phone' => $enquiry->contact->phone,
+        ]);
+
         $quote->quoteItems()->create([
             'product_id' => $product->id,
-            'quantity' => $validate['quantity'],
+            'quantity' => $request->quantity,
+
+            // Product Information
+            'name' => $product->supplier->name,
+            'fullname' => $product->supplier->fullname,
+            'country_id' => $product->supplier->country_id,
+            'part_number' => $product->part_number,
+            'description' => $product->description,
+            'unit_price' => $product->unit_price,
+            'purchase_price' => $product->purchase_price,
+            'sale_price' => $product->sale_price,
+            'hsn_code' => $product->hsn_code,
         ]);
+
         return redirect("/quotes/{$quote->id}");
     }
 
@@ -79,6 +123,10 @@ class QuoteController extends Controller
         $validityQuoteTerms = ValidityQuoteTerm::get()->pluck('description');
         $poConditionsTerms = PoConditionsTerm::get()->pluck('description');
         $specialConditionsTerms = SpecialConditionsTerm::get()->pluck('description');
+
+        // quote date set to today
+        $quote->date = date('Y-m-d', strtotime(now()));
+        $quote->save();
         return view('quotes.show', compact('quote', 'priceBasicTerms', 'paymentTerms', 'handlingChargesTerms', 'gstTerms', 'deliveryTerms', 'pnfChargesTerms', 'freightChargesTerms', 'warrantyTerms', 'validityQuoteTerms', 'poConditionsTerms', 'specialConditionsTerms'));
     }
 
@@ -86,6 +134,15 @@ class QuoteController extends Controller
 
     public function update(Quote $quote, Request $request)
     {
+        if ($request->due_date) {
+            $quote->date = $request->quote_date;
+            $quote->enquiry->due_date = $request->due_date;
+            $quote->enquiry->date = $request->enquiry_date;
+            $quote->enquiry->reference = $request->enquiry_ref;
+            $quote->enquiry->save();
+            $quote->save();
+            return response($request->all());
+        }
         $priceBasicTerm = $request->price_basic_term;
         $paymentTerm = $request->payment_term;
         $handlingChargesTerm = $request->handling_charges_term;
@@ -98,41 +155,33 @@ class QuoteController extends Controller
         $poConditionsTerm = $request->po_conditions_term;
         $specialConditionsTerm = $request->special_conditions_term;
 
-        if($request->due_date || $request->enquiry_date) {
-            $dueDate = date('Y-m-d', strtotime($request->due_date));
-            $enquiryDate = date('Y-m-d', strtotime($request->enquiry_date));
-            $quote->update([
-                'due_date' => $dueDate,
-                'enquiry_date' => $enquiryDate
-            ]);
-            return response()->json(['due_date' => $dueDate, 'enquiry_date' => $enquiryDate]);
-        }
+        $quote->update([
+            'price_basic_term' => $priceBasicTerm,
+            'payment_term' => $paymentTerm,
+            'handling_charges_term' => $handlingChargesTerm,
+            'gst_term' => $gstTerm,
+            'delivery_term' => $deliveryTerm,
+            'pnf_charges_term' => $pnfChargesTerm,
+            'freight_charges_term' => $freightChargesTerm,
+            'warranty_term' => $warrantyTerm,
+            'validity_quote_term' => $validityQuoteTerm,
+            'po_conditions_term' => $poConditionsTerm,
+            'special_conditions_term' => $specialConditionsTerm
+        ]);
 
-        $priceBasicTerm = PriceBasicTerm::where('description', $priceBasicTerm)->first();
-        $paymentTerm = PaymentTerm::where('description', $paymentTerm)->first();
-        $handlingChargesTerm = HandlingChargesTerm::where('description', $handlingChargesTerm)->first();
-        $gstTerm = GstTerm::where('description', $gstTerm)->first();
-        $deliveryTerm = DeliveryTerm::where('description', $deliveryTerm)->first();
-        $pnfChargesTerm = PnfChargesTerm::where('description', $pnfChargesTerm)->first();
-        $freightChargesTerm = FreightChargesTerm::where('description', $freightChargesTerm)->first();
-        $warrantyTerm = WarrantyTerm::where('description', $warrantyTerm)->first();
-        $validityQuoteTerm = ValidityQuoteTerm::where('description', $validityQuoteTerm)->first();
-        $poConditionsTerm = PoConditionsTerm::where('description', $poConditionsTerm)->first();
-        $specialConditionsTerm = SpecialConditionsTerm::where('description', $specialConditionsTerm)->first();
-
-        $quote->priceBasicTerm()->associate($priceBasicTerm);
-        $quote->paymentTerm()->associate($paymentTerm);
-        $quote->handlingChargesTerm()->associate($handlingChargesTerm);
-        $quote->gstTerm()->associate($gstTerm);
-        $quote->deliveryTerm()->associate($deliveryTerm);
-        $quote->pnfChargesTerm()->associate($pnfChargesTerm);
-        $quote->freightChargesTerm()->associate($freightChargesTerm);
-        $quote->warrantyTerm()->associate($warrantyTerm);
-        $quote->validityQuoteTerm()->associate($validityQuoteTerm);
-        $quote->poConditionsTerm()->associate($poConditionsTerm);
-        $quote->specialConditionsTerm()->associate($specialConditionsTerm);
-        $quote->save();
-        return response()->json($request->all());
+        return response()->json([
+            'price_basic_term' => $priceBasicTerm,
+            'payment_term' => $paymentTerm,
+            'handling_charges_term' => $handlingChargesTerm,
+            'gst_term' => $gstTerm,
+            'delivery_term' => $deliveryTerm,
+            'pnf_charges_term' => $pnfChargesTerm,
+            'freight_charges_term' => $freightChargesTerm,
+            'warranty_term' => $warrantyTerm,
+            'validity_quote_term' => $validityQuoteTerm,
+            'po_conditions_term' => $poConditionsTerm,
+            'special_conditions_term' => $specialConditionsTerm
+        ]);
     }
 
     public function destroy() {}
@@ -147,7 +196,18 @@ class QuoteController extends Controller
         $product = Product::where('part_number', $validate['part_number'])->first();
         $quoteItem = $quote->quoteItems()->updateOrCreate(
             ['product_id' => $product->id],
-            ['quantity' => $quote->quoteItems()->where('product_id', $product->id)->value('quantity') + $request->quantity]
+            [
+                'quantity' => $quote->quoteItems()->where('product_id', $product->id)->value('quantity') + $request->quantity,
+                'name' => $product->supplier->name,
+                'fullname' => $product->supplier->fullname,
+                'country_id' => $product->supplier->country_id,
+                'part_number' => $product->part_number,
+                'description' => $product->description,
+                'unit_price' => $product->unit_price,
+                'purchase_price' => $product->purchase_price,
+                'sale_price' => $product->sale_price,
+                'hsn_code' => $product->hsn_code,
+            ]
         );
         return redirect("/quotes/{$quote->id}");
     }
@@ -156,5 +216,10 @@ class QuoteController extends Controller
     {
         $quoteItem->delete();
         return redirect("/quotes/{$quote->id}");
+    }
+
+    public function updateItem(Quote $quote, QuoteItem $quoteItem, Request $request)
+    {
+        return response($request->all());
     }
 }

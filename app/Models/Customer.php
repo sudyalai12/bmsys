@@ -11,8 +11,7 @@ class Customer extends Model
     protected $table = 'customers';
     protected $guarded = [];
     protected $hidden = ['created_at', 'updated_at'];
-    protected $with = [];
-    // protected $appends = ['country'];
+    protected $with = ['tax', 'address'];
 
     public function setNameAttribute($name)
     {
@@ -35,11 +34,14 @@ class Customer extends Model
         $this->attributes['state_code'] = strtoupper($state_code);
     }
 
-    // public function getCountryAttribute()
-    // {
-    //     return $this->contacts()->first()?->address->country->name;
-    // }
-
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+    public function tax()
+    {
+        return $this->belongsTo(Tax::class);
+    }
     public function contacts()
     {
         return $this->hasMany(Contact::class);

@@ -30,10 +30,17 @@
                         value="{{ old('email') }}" />
                     <x-form.error name="email" />
                 </x-form.field>
-                <x-form.field class="fb-100">
+                <x-form.field class="fb-200">
                     <x-form.label for="contact">Contact Person</x-form.label>
-                    <x-form.input placeholder="Enter Contact Person Name" id="contact" type="text" name="contact"
-                        value="{{ old('contact') }}" />
+                    <div class="mr-mrs-select">
+                        <select name="mr_mrs" id="mr_mrs">
+                            <option value="Mr.">Mr.</option>
+                            <option value="Mrs.">Mrs.</option>
+                            <option value="Miss.">Miss.</option>
+                        </select>
+                        <x-form.input placeholder="Enter Contact Person Name" id="contact" type="text" name="contact"
+                            value="{{ old('contact') }}" />
+                    </div>
                     <x-form.error name="contact" />
                 </x-form.field>
                 <x-form.field class="fb-100">

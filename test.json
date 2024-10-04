@@ -1,502 +1,91 @@
-[
-    {
-        "id": 1,
-        "name": "Bosco-Feil",
-        "nickname": "RDCW",
-        "tax_type": "GST",
-        "gstn": "83YXSHB4279Y5ZO",
-        "pan": "VBZVZ5009N",
-        "state_code": "00",
-        "country": null
-    },
-    {
-        "id": 2,
-        "name": "Haley-Runolfsson",
-        "nickname": "OMJS",
-        "tax_type": "GST",
-        "gstn": "21AOJWN0686A3Z5",
-        "pan": "UFOFE6340S",
-        "state_code": "96",
-        "country": "Nigeria"
-    },
-    {
-        "id": 3,
-        "name": "Dach-Labadie",
-        "nickname": "ZYJE",
-        "tax_type": "SaleTax",
-        "gstn": "18UFAAA7105UWZ4",
-        "pan": "DELRZ5221A",
-        "state_code": "23",
-        "country": null
-    },
-    {
-        "id": 4,
-        "name": "Fahey, Hessel And Howe",
-        "nickname": "NVAC",
-        "tax_type": "GST",
-        "gstn": "06WFWPJ4018DSZ5",
-        "pan": "UKWIE2086B",
-        "state_code": "03",
-        "country": "Sweden"
-    },
-    {
-        "id": 5,
-        "name": "Gleichner-Goodwin",
-        "nickname": "FFHW",
-        "tax_type": "SaleTax",
-        "gstn": "38ZSODQ0442CRZQ",
-        "pan": "ERTHL1315I",
-        "state_code": "80",
-        "country": "Sri Lanka"
-    },
-    {
+{
+    "id": 6,
+    "enquiry_id": 6,
+    "reference": "NEPL/UKLX/Q-1003/2024-25",
+    "date": "2024-10-03",
+    "price_basic_term": "EX WORKS NEUVIN ELECTRONICS PVT. LTD. NEW DELHI - 110045",
+    "payment_term": "100% Payment in Advance against Proforma Invoice.",
+    "handling_charges_term": "INR 1500 per shipment.",
+    "gst_term": "Extra 18% on Electrical/Electronics/Quoted Products.",
+    "delivery_term": "4 - 6 Weeks, effective from date of receipt of formal Purchase Order /Payment/LC.",
+    "pnf_charges_term": "Applicable @2.00% of the Order Value.",
+    "freight_charges_term": "To be collect by the buyer/@2.00% of the order value.",
+    "warranty_term": "As per OEM policy, 12 months warranty against any manufacturing defect.",
+    "validity_quote_term": "Prices are valid for 30 days from the date of quote submission.",
+    "po_conditions_term": "NC/NR (Non-Cancellable / Non-Returnable)",
+    "special_conditions_term": "End Use Statement Required with Order.",
+    "customer_name": "Ebert-Abshire",
+    "nickname": "UKLX",
+    "tax_id": 1,
+    "gstn": "54WVRIC7498P2Z4",
+    "pan": "QGFZS0125M",
+    "state_code": "79",
+    "address1": "105 Franecki Track",
+    "address2": "Bode Union",
+    "city": "West Salvatorefurt",
+    "pincode": "366322",
+    "state_id": 2550,
+    "country_id": 156,
+    "contact_name": "Rick Greenfelder",
+    "email": "lehner.krystel@example.net",
+    "department": "Visual Designer",
+    "phone": "3669286475",
+    "mobile": "5574354251",
+    "created_at": "2024-10-03T10:57:13.000000Z",
+    "updated_at": "2024-10-03T10:57:13.000000Z",
+    "enquiry": {
         "id": 6,
-        "name": "Grimes-Stroman",
-        "nickname": "UZNQ",
-        "tax_type": "SaleTax",
-        "gstn": "49XNXAT4340W9ZN",
-        "pan": "FBCHW5424E",
-        "state_code": "93",
-        "country": "Sri Lanka"
-    },
-    {
-        "id": 7,
-        "name": "McCullough, Daugherty And Kilback",
-        "nickname": "OIXY",
-        "tax_type": "SaleTax",
-        "gstn": "37SFJAL8839F9ZA",
-        "pan": "NTXFL9611F",
-        "state_code": "61",
-        "country": "Seychelles"
-    },
-    {
-        "id": 8,
-        "name": "Kreiger And Sons",
-        "nickname": "GRXM",
-        "tax_type": "IGST",
-        "gstn": "28UWONM4495LSZG",
-        "pan": "GFFQS9371F",
-        "state_code": "76",
-        "country": "Saint-Martin (French part)"
-    },
-    {
-        "id": 9,
-        "name": "Rowe-Swaniawski",
-        "nickname": "EWQM",
-        "tax_type": "GST",
-        "gstn": "38MUBPZ8874JSZ9",
-        "pan": "GUPDQ5192Y",
-        "state_code": "16",
-        "country": "Georgia"
-    },
-    {
-        "id": 10,
-        "name": "Schultz-Gusikowski",
-        "nickname": "QWSP",
-        "tax_type": "IGST",
-        "gstn": "25YUNNO9803O5ZQ",
-        "pan": "SIRPK4762E",
-        "state_code": "33",
-        "country": "Syria"
-    },
-    {
-        "id": 11,
-        "name": "Kihn, Goyette And Schinner",
-        "nickname": "RXGW",
-        "tax_type": "GST",
-        "gstn": "11PRGCO1553JTZ3",
-        "pan": "UDKLM2135Y",
-        "state_code": "74",
-        "country": "Iceland"
-    },
-    {
-        "id": 12,
-        "name": "Kuphal LLC",
-        "nickname": "GEFZ",
-        "tax_type": "GST",
-        "gstn": "38ASYEE6810XAZP",
-        "pan": "KHKMR6959P",
-        "state_code": "60",
-        "country": "Georgia"
-    },
-    {
-        "id": 13,
-        "name": "Monahan-Fisher",
-        "nickname": "ORTI",
-        "tax_type": "IGST",
-        "gstn": "81VJWIK9984S8ZU",
-        "pan": "RMGYI0062L",
-        "state_code": "69",
-        "country": null
-    },
-    {
-        "id": 14,
-        "name": "Marquardt-Kunde",
-        "nickname": "BSBC",
-        "tax_type": "IGST",
-        "gstn": "29PLZJK6677H3Z7",
-        "pan": "BYVQB8462L",
-        "state_code": "94",
-        "country": "Saint Helena"
-    },
-    {
-        "id": 15,
-        "name": "Brekke, Rosenbaum And Thompson",
-        "nickname": "NXGF",
-        "tax_type": "SaleTax",
-        "gstn": "21CDLZK4858VBZW",
-        "pan": "MNEPJ3967T",
-        "state_code": "06",
-        "country": null
-    },
-    {
-        "id": 16,
-        "name": "Dare-Jacobi",
-        "nickname": "EYSO",
-        "tax_type": "SaleTax",
-        "gstn": "52TTGWY4029OIZ7",
-        "pan": "OGCJJ7915Z",
-        "state_code": "67",
-        "country": "Tanzania"
-    },
-    {
-        "id": 17,
-        "name": "Hackett-Kilback",
-        "nickname": "VIXS",
-        "tax_type": "IGST",
-        "gstn": "22NXOLC5990OHZD",
-        "pan": "TEILN2199U",
-        "state_code": "48",
-        "country": "Burundi"
-    },
-    {
-        "id": 18,
-        "name": "Tromp, O'Reilly And Christiansen",
-        "nickname": "BYSM",
-        "tax_type": "GST",
-        "gstn": "56XFXGV4686DYZ6",
-        "pan": "QODYH3012B",
-        "state_code": "91",
-        "country": "Cook Islands"
-    },
-    {
-        "id": 19,
-        "name": "Cronin-Murray",
-        "nickname": "QEWC",
-        "tax_type": "IGST",
-        "gstn": "79PXRTY6646M9ZV",
-        "pan": "OGWEJ8247P",
-        "state_code": "68",
-        "country": "Belarus"
-    },
-    {
-        "id": 20,
-        "name": "Kshlerin, Medhurst And Jacobi",
-        "nickname": "XNJN",
-        "tax_type": "GST",
-        "gstn": "16JZTWX6890J6ZC",
-        "pan": "YPNQR5307L",
-        "state_code": "26",
-        "country": "Sweden"
-    },
-    {
-        "id": 21,
-        "name": "Barton-Klocko",
-        "nickname": "XHKN",
-        "tax_type": "GST",
-        "gstn": "33RCAUR0487L6ZH",
-        "pan": "EIRZE2341V",
-        "state_code": "21",
-        "country": null
-    },
-    {
-        "id": 22,
-        "name": "Friesen, Dach And Sporer",
-        "nickname": "NKVW",
-        "tax_type": "IGST",
-        "gstn": "38NTGMH7878HUZG",
-        "pan": "FKXXL1513M",
-        "state_code": "40",
-        "country": "San Marino"
-    },
-    {
-        "id": 23,
-        "name": "Abernathy, Hirthe And Stoltenberg",
-        "nickname": "EGLP",
-        "tax_type": "IGST",
-        "gstn": "27MJGDC0163HBZU",
-        "pan": "FMUOV0057V",
-        "state_code": "08",
-        "country": "British Indian Ocean Territory"
-    },
-    {
-        "id": 24,
-        "name": "Russel, Shanahan And Robel",
-        "nickname": "UATP",
-        "tax_type": "SaleTax",
-        "gstn": "07QSZZU6681FOZC",
-        "pan": "LHIEJ1661L",
-        "state_code": "28",
-        "country": "Syria"
-    },
-    {
-        "id": 25,
-        "name": "Volkman-Pfeffer",
-        "nickname": "RRWO",
-        "tax_type": "GST",
-        "gstn": "35SDDIP1537Z7ZK",
-        "pan": "QBIUP1395Z",
-        "state_code": "21",
-        "country": null
-    },
-    {
-        "id": 26,
-        "name": "Kreiger, Hagenes And Mitchell",
-        "nickname": "SASA",
-        "tax_type": "GST",
-        "gstn": "04WHOGA8266JXZ0",
-        "pan": "FWJEE1721Q",
-        "state_code": "72",
-        "country": "Finland"
-    },
-    {
-        "id": 27,
-        "name": "Schuppe, Daniel And Muller",
-        "nickname": "OTEQ",
-        "tax_type": "GST",
-        "gstn": "38XQRFZ8554N4ZQ",
-        "pan": "ZFJBC6903Y",
-        "state_code": "90",
-        "country": null
-    },
-    {
-        "id": 28,
-        "name": "Torphy LLC",
-        "nickname": "NOUG",
-        "tax_type": "SaleTax",
-        "gstn": "58ZBMRM6757T4ZI",
-        "pan": "KUCXS0588U",
-        "state_code": "18",
-        "country": "Tonga"
-    },
-    {
-        "id": 29,
-        "name": "Daniel, Connelly And Reichel",
-        "nickname": "SBAJ",
-        "tax_type": "IGST",
-        "gstn": "39NZBMP3196XSZE",
-        "pan": "BOZNG2201J",
-        "state_code": "78",
-        "country": null
-    },
-    {
-        "id": 30,
-        "name": "Hintz Ltd",
-        "nickname": "IPPV",
-        "tax_type": "SaleTax",
-        "gstn": "82QNOPB7885V2ZG",
-        "pan": "CZKPY9458L",
-        "state_code": "39",
-        "country": null
-    },
-    {
-        "id": 31,
-        "name": "Kling-Oberbrunner",
-        "nickname": "WEIU",
-        "tax_type": "GST",
-        "gstn": "62EYVCA8082G3ZC",
-        "pan": "PWYEQ3372N",
-        "state_code": "87",
-        "country": "Aland Islands"
-    },
-    {
-        "id": 32,
-        "name": "Senger-Jaskolski",
-        "nickname": "QOUV",
-        "tax_type": "IGST",
-        "gstn": "47GEJCK0501D9Z0",
-        "pan": "VYYQS2278K",
-        "state_code": "03",
-        "country": "Djibouti"
-    },
-    {
-        "id": 33,
-        "name": "Maggio-Boyer",
-        "nickname": "MUVH",
-        "tax_type": "SaleTax",
-        "gstn": "73HZGMM2945C1Z9",
-        "pan": "ELXPR8127M",
-        "state_code": "17",
-        "country": "Dominica"
-    },
-    {
-        "id": 34,
-        "name": "Ritchie Inc",
-        "nickname": "QYUB",
-        "tax_type": "SaleTax",
-        "gstn": "21TBTLG5448Q9ZF",
-        "pan": "RMUIQ4921X",
-        "state_code": "64",
-        "country": "Martinique"
-    },
-    {
-        "id": 35,
-        "name": "Wisoky LLC",
-        "nickname": "SSDD",
-        "tax_type": "IGST",
-        "gstn": "56MIEII1078JKZ7",
-        "pan": "EXHEY1137G",
-        "state_code": "88",
-        "country": null
-    },
-    {
-        "id": 36,
-        "name": "Christiansen, Jones And Dooley",
-        "nickname": "HRZO",
-        "tax_type": "GST",
-        "gstn": "54LVBSW9094B4Z4",
-        "pan": "ZUZGI0877Y",
-        "state_code": "25",
-        "country": "Cook Islands"
-    },
-    {
-        "id": 37,
-        "name": "Stehr-Gleason",
-        "nickname": "VZDX",
-        "tax_type": "GST",
-        "gstn": "29QQQWD3203COZP",
-        "pan": "VKJUU1963W",
-        "state_code": "01",
-        "country": null
-    },
-    {
-        "id": 38,
-        "name": "Hand-Zieme",
-        "nickname": "ALKC",
-        "tax_type": "SaleTax",
-        "gstn": "14COPTJ5755BKZ4",
-        "pan": "NZQFC5459X",
-        "state_code": "48",
-        "country": null
-    },
-    {
-        "id": 39,
-        "name": "Sauer-O'Connell",
-        "nickname": "PWWA",
-        "tax_type": "GST",
-        "gstn": "94TNOCF5071O8Z8",
-        "pan": "RRFDR4321V",
-        "state_code": "97",
-        "country": "Cook Islands"
-    },
-    {
-        "id": 40,
-        "name": "Grimes Inc",
-        "nickname": "OZQC",
-        "tax_type": "IGST",
-        "gstn": "86WBNPM1061MLZQ",
-        "pan": "IXXQJ5390B",
-        "state_code": "30",
-        "country": "Colombia"
-    },
-    {
-        "id": 41,
-        "name": "Champlin-Fisher",
-        "nickname": "XGTF",
-        "tax_type": "SaleTax",
-        "gstn": "39KZHPK0827Y4Z7",
-        "pan": "EUQLD3276J",
-        "state_code": "22",
-        "country": null
-    },
-    {
-        "id": 42,
-        "name": "Sipes, Hansen And Halvorson",
-        "nickname": "MGAN",
-        "tax_type": "GST",
-        "gstn": "79GEMUR1436SMZR",
-        "pan": "HRTKI0143F",
-        "state_code": "57",
-        "country": null
-    },
-    {
-        "id": 43,
-        "name": "Waelchi, Bartell And Wisozk",
-        "nickname": "RRQA",
-        "tax_type": "GST",
-        "gstn": "96EHOSB2113UNZ5",
-        "pan": "LRHLQ3033O",
-        "state_code": "21",
-        "country": "Vanuatu"
-    },
-    {
-        "id": 44,
-        "name": "Lehner PLC",
-        "nickname": "BODU",
-        "tax_type": "GST",
-        "gstn": "94PGKWH3747QLZG",
-        "pan": "OINVZ8894A",
-        "state_code": "97",
-        "country": "Tanzania"
-    },
-    {
-        "id": 45,
-        "name": "Zemlak Group",
-        "nickname": "LDXP",
-        "tax_type": "IGST",
-        "gstn": "54JBVEQ3805FDZP",
-        "pan": "XISLP5468V",
-        "state_code": "43",
-        "country": null
-    },
-    {
-        "id": 46,
-        "name": "Zieme-Satterfield",
-        "nickname": "FIPZ",
-        "tax_type": "IGST",
-        "gstn": "88PVJJO5053YNZU",
-        "pan": "HYWPH7622D",
-        "state_code": "93",
-        "country": null
-    },
-    {
-        "id": 47,
-        "name": "Toy, Kulas And Reynolds",
-        "nickname": "MLUT",
-        "tax_type": "SaleTax",
-        "gstn": "49GPHTE1698SXZ0",
-        "pan": "XEVKV0691V",
-        "state_code": "27",
-        "country": null
-    },
-    {
-        "id": 48,
-        "name": "Lowe, Reilly And Davis",
-        "nickname": "KIDD",
-        "tax_type": "IGST",
-        "gstn": "34DDHOG6866QSZY",
-        "pan": "KDJXU7199H",
-        "state_code": "02",
-        "country": "Colombia"
-    },
-    {
-        "id": 49,
-        "name": "Williamson-Reynolds",
-        "nickname": "HQHD",
-        "tax_type": "GST",
-        "gstn": "62YIHRZ8444U5ZT",
-        "pan": "ZMIZT3088W",
-        "state_code": "44",
-        "country": "Seychelles"
-    },
-    {
-        "id": 50,
-        "name": "Conn Group",
-        "nickname": "JSCI",
-        "tax_type": "SaleTax",
-        "gstn": "86TRZDY7551EQZG",
-        "pan": "LOTNW1704G",
-        "state_code": "30",
-        "country": null
+        "reference": "Email Dated: 03/10/2024",
+        "date": "2024-10-03",
+        "due_date": "2024-10-03",
+        "contact_id": 3,
+        "created_at": "2024-10-03T10:57:13.000000Z",
+        "updated_at": "2024-10-03T10:57:13.000000Z",
+        "contact": {
+            "id": 3,
+            "customer_id": 3,
+            "name": "Rick Greenfelder",
+            "email": "lehner.krystel@example.net",
+            "department": "Visual Designer",
+            "phone": "3669286475",
+            "mobile": "5574354251",
+            "customer": {
+                "id": 3,
+                "name": "Ebert-Abshire",
+                "nickname": "UKLX",
+                "address_id": 3,
+                "tax_id": 1,
+                "gstn": "54WVRIC7498P2Z4",
+                "pan": "QGFZS0125M",
+                "state_code": "79",
+                "tax": { "id": 1, "type": "IGST" },
+                "address": {
+                    "id": 3,
+                    "address1": "105 Franecki Track",
+                    "address2": "Bode Union",
+                    "city": "West Salvatorefurt",
+                    "pincode": "366322",
+                    "state_id": 2550,
+                    "country_id": 156,
+                    "state": {
+                        "id": 2550,
+                        "name": "Ariana",
+                        "country_id": 224,
+                        "country_name": "Tunisia",
+                        "state_code": "12"
+                    },
+                    "country": {
+                        "id": 156,
+                        "name": "Netherlands",
+                        "iso3": "NLD",
+                        "numeric_code": "528",
+                        "phone_code": "31",
+                        "currency": "EUR",
+                        "currency_name": "Euro",
+                        "currency_symbol": "\u20ac"
+                    }
+                }
+            }
+        }
     }
-]
+}

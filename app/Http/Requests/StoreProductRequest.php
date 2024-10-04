@@ -30,7 +30,7 @@ class StoreProductRequest extends FormRequest
             'unit_price' => 'required|min:0|numeric',
             'purchase_price' => 'required|min:0|numeric',
             'sale_price' => 'required|min:0|numeric',
-            'description' => 'required|min:2|max:255|string',
+            'description' => 'required|min:2|max:100|string',
         ];
     }
 

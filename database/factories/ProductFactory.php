@@ -21,9 +21,9 @@ class ProductFactory extends Factory
             'supplier_id' => Supplier::all()->random()->id,
             'part_number' => fake()->ean8(),
             'description' => fake()->sentence(),
-            'unit_price' => fake()->numberBetween(100, 1000),
-            'purchase_price' => fake()->numberBetween(100, 1000),
-            'sale_price' => fake()->numberBetween(100, 1000),
+            'unit_price' => fake()->numberBetween(1, 100),
+            'purchase_price' => fake()->numberBetween(1, 100),
+            'sale_price' => fake()->numberBetween(1, 100),
             'hsn_code' => fake()->ean8(),
         ];
     }

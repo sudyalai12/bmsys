@@ -1,21 +1,21 @@
 <?php
 
 use App\Models\Contact;
-use App\Models\Delivery;
+use App\Models\Country;
 use App\Models\DeliveryTerm;
+use App\Models\Enquiry;
 use App\Models\FreightChargesTerm;
 use App\Models\GstTerm;
 use App\Models\HandlingChargesTerm;
 use App\Models\PaymentTerm;
 use App\Models\PnfChargesTerm;
 use App\Models\PoConditionsTerm;
-use App\Models\PoConditionTerm;
-use App\Models\PoPlaceTerm;
 use App\Models\PriceBasicTerm;
-use App\Models\PriceBasis;
 use App\Models\Product;
 use App\Models\Quote;
 use App\Models\SpecialConditionsTerm;
+use App\Models\State;
+use App\Models\Tax;
 use App\Models\ValidityQuoteTerm;
 use App\Models\WarrantyTerm;
 use Illuminate\Database\Migrations\Migration;
@@ -84,23 +84,55 @@ return new class extends Migration
             $table->string('description');
         });
 
+        Schema::create('enquiries', function (Blueprint $table) {
+            $table->id();
+            $table->string('reference')->default("Email Dated: " . now()->format('d-m-Y'));
+            $table->date('date')->default(now());
+            $table->date('due_date')->default(now());
+            $table->foreignIdFor(Contact::class, 'contact_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
+
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Contact::class, 'contact_id')->constrained()->onDelete('cascade');
-            $table->string('reference')->nullable();
-            $table->date('due_date')->nullable()->default(now());
-            $table->date('enquiry_date')->nullable()->default(now());
-            $table->foreignIdFor(PriceBasicTerm::class, 'price_basic_term_id')->default(1);
-            $table->foreignIdFor(PaymentTerm::class, 'payment_term_id')->default(1);
-            $table->foreignIdFor(HandlingChargesTerm::class, 'handling_charges_term_id')->default(1);
-            $table->foreignIdFor(GstTerm::class, 'gst_term_id')->default(3);
-            $table->foreignIdFor(DeliveryTerm::class, 'delivery_term_id')->default(1);
-            $table->foreignIdFor(PnfChargesTerm::class, 'pnf_charges_term_id')->default(1);
-            $table->foreignIdFor(FreightChargesTerm::class, 'freight_charges_term_id')->default(1);
-            $table->foreignIdFor(WarrantyTerm::class, 'warranty_term_id')->default(1);
-            $table->foreignIdFor(ValidityQuoteTerm::class, 'validity_quote_term_id')->default(1);
-            $table->foreignIdFor(PoConditionsTerm::class, 'po_conditions_term_id')->default(1);
-            $table->foreignIdFor(SpecialConditionsTerm::class, 'special_conditions_term_id')->default(1);
+
+            // Enquiry Information
+            $table->foreignIdFor(Enquiry::class, 'enquiry_id')->constrained()->onDelete('cascade');
+            $table->string('reference');
+            $table->date('date')->default(now());
+
+            // Terms Information
+            $table->string('price_basic_term')->default(PriceBasicTerm::$price_basic_terms[0]['description']);
+            $table->string('payment_term')->default(PaymentTerm::$payment_terms[0]['description']);
+            $table->string('handling_charges_term')->default(HandlingChargesTerm::$handling_charges_terms[0]['description']);
+            $table->string('gst_term')->default(GstTerm::$gst_terms[2]['description']);
+            $table->string('delivery_term')->default(DeliveryTerm::$delivery_terms[0]['description']);
+            $table->string('pnf_charges_term')->default(PnfChargesTerm::$pnf_charges_terms[0]['description']);
+            $table->string('freight_charges_term')->default(FreightChargesTerm::$freight_charges_terms[0]['description']);
+            $table->string('warranty_term')->default(WarrantyTerm::$warranty_terms[0]['description']);
+            $table->string('validity_quote_term')->default(ValidityQuoteTerm::$validity_quote_terms[0]['description']);
+            $table->string('po_conditions_term')->default(PoConditionsTerm::$po_conditions_terms[0]['description']);
+            $table->string('special_conditions_term')->default(SpecialConditionsTerm::$special_conditions_terms[0]['description']);
+
+            // Customer Information
+            $table->string('customer_name')->nullable();
+            $table->string('nickname')->nullable();
+            $table->foreignIdFor(Tax::class, 'tax_id')->default(1)->constrained();
+            $table->string('gstn')->nullable();
+            $table->string('pan')->nullable();
+            $table->string('state_code')->nullable();
+            $table->string('address1')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('pincode')->nullable();
+            $table->foreignIdFor(State::class, 'state_id')->default(4021)->constrained();
+            $table->foreignIdFor(Country::class, 'country_id')->default(101)->constrained();
+            $table->string('contact_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('department')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('mobile')->nullable();
+
             $table->timestamps();
         });
 
@@ -108,7 +140,19 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Quote::class, 'quote_id')->constrained()->onDelete('cascade');
             $table->foreignIdFor(Product::class, 'product_id')->constrained()->onDelete('cascade');
-            $table->float('quantity')->default(1);
+            $table->integer('quantity')->default(1);
+
+            // Product Information
+            $table->string('name')->nullable();
+            $table->string('fullname')->nullable();
+            $table->foreignIdFor(Country::class, 'country_id')->default(101)->constrained();
+            $table->string('part_number')->nullable();
+            $table->string('description')->nullable();
+            $table->float('unit_price')->nullable();
+            $table->float('purchase_price')->nullable();
+            $table->float('sale_price')->nullable();
+            $table->string('hsn_code')->nullable();
+
             $table->timestamps();
         });
     }
@@ -131,5 +175,6 @@ return new class extends Migration
         Schema::dropIfExists('special_conditions_terms');
         Schema::dropIfExists('quotes');
         Schema::dropIfExists('quote_items');
+        Schema::dropIfExists('enquiries');
     }
 };

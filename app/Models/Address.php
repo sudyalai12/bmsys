@@ -10,7 +10,7 @@ class Address extends Model
     use HasFactory;
     protected $table = 'addresses';
     protected $guarded = [];
-    protected $hidden = [];
+    protected $hidden = ['created_at', 'updated_at'];
     protected $with = ['state', 'country'];
 
     public function setAddress1Attribute(string $address1)

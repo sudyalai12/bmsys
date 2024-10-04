@@ -11,7 +11,7 @@ class State extends Model
     protected $table = "states";
     protected $guarded = [];
     protected $hidden = [];
-    protected $with = ['country'];
+    protected $with = [];
 
     public static $states = [
         [

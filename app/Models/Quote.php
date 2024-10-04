@@ -10,83 +10,49 @@ class Quote extends Model
     use HasFactory;
     protected $table = 'quotes';
     protected $guarded = [];
-    protected $with = ['contact'];
+    protected $with = ['enquiry'];
     protected $hidden = [];
 
-    public function contact()
+    public function enquiry()
     {
-        return $this->belongsTo(Contact::class);
+        return $this->belongsTo(Enquiry::class);
+    }
+    public function tax()
+    {
+        return $this->belongsTo(Tax::class);
+    }
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
     public function quoteItems()
     {
         return $this->hasMany(QuoteItem::class);
     }
-    public function generateReference()
-    {
-        $this->reference = $this->contact->customer->generateReference();
-        $this->save();
-    }
     public function total()
     {
         return $this->quoteItems->sum->total();
     }
-    public function tax($tax = 0.18)
+    public function totalFixed()
+    {
+        return $this->quoteItems->sum->totalFixed();
+    }
+    public function taxAmount($tax = 0.18)
     {
         return $this->total() * $tax;
     }
-
-    public function priceBasicTerm()
+    public function taxAmountFixed($tax = 0.18)
     {
-        return $this->belongsTo(PriceBasicTerm::class);
+        return $this->totalFixed() * $tax;
     }
 
-    public function paymentTerm()
+    public function generateReference()
     {
-        return $this->belongsTo(PaymentTerm::class);
-    }
-
-    public function handlingChargesTerm()
-    {
-        return $this->belongsTo(HandlingChargesTerm::class);
-    }
-
-    public function gstTerm()
-    {
-        return $this->belongsTo(GstTerm::class);
-    }
-
-    public function deliveryTerm()
-    {
-        return $this->belongsTo(DeliveryTerm::class);
-    }
-
-    public function pnfChargesTerm()
-    {
-        return $this->belongsTo(PnfChargesTerm::class);
-    }
-
-    public function freightChargesTerm()
-    {
-        return $this->belongsTo(FreightChargesTerm::class);
-    }
-
-    public function warrantyTerm()
-    {
-        return $this->belongsTo(WarrantyTerm::class);
-    }
-
-    public function validityQuoteTerm()
-    {
-        return $this->belongsTo(ValidityQuoteTerm::class);
-    }
-
-    public function poConditionsTerm()
-    {
-        return $this->belongsTo(PoConditionsTerm::class);
-    }
-
-    public function specialConditionsTerm()
-    {
-        return $this->belongsTo(SpecialConditionsTerm::class);
+        $this->reference = $this->enquiry->contact->customer->generateReference();
+        $this->saveQuietly();
     }
 }

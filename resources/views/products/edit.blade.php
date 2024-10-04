@@ -2,6 +2,16 @@
 @section('js')
 @endsection
 @section('content')
+    <div class="floating-panel">
+        <x-button class="products" btntype="secondary">
+            <a href="/products/create">
+                <span class="material-symbols-outlined">
+                    add_shopping_cart
+                </span>
+                Add new Product
+            </a>
+        </x-button>
+    </div>
     <div class="form-box">
         <form method="POST" class="form customer-form" action="/products/{{ $product->id }}">
             @csrf
@@ -24,43 +34,25 @@
                         value="{{ $product->description }}" />
                     <x-form.error name="description" />
                 </x-form.field>
-                <x-form.field class="fb-200">
-                    <x-form.label for="supplier">Supplier Name</x-form.label>
-                    <x-form.input placeholder="Enter Supplier Name" id="supplier" type="text" name="supplier"
-                        value="{{ $product->supplier->name }}" disabled />
-                    <x-form.error name="supplier" />
-                </x-form.field>
-                <x-form.field class="fb-200">
-                    <x-form.label for="supplier_country">Supplier's Country</x-form.label>
-                    <x-form.input placeholder="Enter Supplier Country Name" id="supplier_country" type="text"
-                        name="supplier_country" value="{{ $product->supplier->country->name }}" disabled />
-                    <x-form.error name="supplier_country" />
-                </x-form.field>
-                <x-form.field class="fb-200">
-                    <x-form.label for="supplier_fullname">Supplier Fullname</x-form.label>
-                    <x-form.input placeholder="Enter Supplier Full Name" id="supplier_fullname" type="text"
-                        name="supplier_fullname" value="{{ $product->supplier->fullname }}" disabled />
-                    <x-form.error name="supplier_fullname" />
-                </x-form.field>
-                <x-form.field class="fb-200">
+                <x-form.field class="fb-100">
                     <x-form.label for="hsn_code">HSN Code</x-form.label>
                     <x-form.input placeholder="Enter HSN Code" id="hsn_code" type="text" name="hsn_code"
                         value="{{ $product->hsn_code }}" />
                     <x-form.error name="hsn_code" />
                 </x-form.field>
-                <x-form.field class="fb-200">
+                <x-form.field class="fb-100">
                     <x-form.label for="unit_price">Unit Price</x-form.label>
                     <x-form.input placeholder="Enter Unit Price" id="unit_price" type="number" name="unit_price"
                         value="{{ $product->unit_price }}" />
                     <x-form.error name="unit_price" />
                 </x-form.field>
-                <x-form.field class="fb-200">
+                <x-form.field class="fb-100">
                     <x-form.label for="purchase_price">Purchase Price</x-form.label>
                     <x-form.input placeholder="Enter Purchase Price" id="purchase_price" type="number"
                         name="purchase_price" value="{{ $product->purchase_price }}" />
                     <x-form.error name="purchase_price" />
                 </x-form.field>
-                <x-form.field class="fb-200">
+                <x-form.field class="fb-100">
                     <x-form.label for="sale_price">Sale Price</x-form.label>
                     <x-form.input placeholder="Enter Sale Price" id="sale_price" type="number" name="sale_price"
                         value="{{ $product->sale_price }}" />

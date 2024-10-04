@@ -17,6 +17,10 @@ class Supplier extends Model
     {
         $this->attributes['name'] = ucwords($name);
     }
+    public function setFullNameAttribute(string $fullName)
+    {
+        $this->attributes['fullname'] = ucwords($fullName);
+    }
     public function products()
     {
         return $this->hasMany(Product::class);
