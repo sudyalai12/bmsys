@@ -865,4 +865,10 @@ span.quotes {
   cursor: pointer;
   color: white;
   font-size: 1.5rem;
+}
+
+.update-btn {
+  font-size: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
 }/*# sourceMappingURL=index.css.map */

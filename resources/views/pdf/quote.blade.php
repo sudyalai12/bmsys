@@ -37,321 +37,360 @@
     $pan = 'AADCN9370Q';
     $tin = '7070443384';
 @endphp
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Quote PDF</title>
+    <style>
+        /* Tinos Font  */
+        @font-face {
+            font-family: 'Tinos';
+            src: url({{ storage_path('fonts\Tinos-Regular.ttf') }}) format("truetype");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Tinos';
+            src: url({{ storage_path('fonts\Tinos-Italic.ttf') }}) format("truetype");
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Tinos';
+            src: url({{ storage_path('fonts\Tinos-Bold.ttf') }}) format("truetype");
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Tinos';
+            src: url({{ storage_path('fonts\Tinos-BoldItalic.ttf') }}) format("truetype");
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-size: 12px;
+            line-height: 11px;
+        }
+
+        table,
+        tr,
+        td,
+        th {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+
+        .bold {
+            font-weight: bold !important;
+        }
+
+        .italic {
+            font-style: italic !important;
+        }
+
+        .spacing {
+            letter-spacing: -0.7px !important;
+        }
+
+        .color {
+            color: #4472c4 !important;
+        }
+
+        .dark-color {
+            color: #2d5291 !important;
+        }
+
+        .bg {
+            background-color: #4472c4 !important;
+            color: rgb(255, 255, 255) !important;
+        }
+
+        .mt {
+            margin-top: 20px;
+        }
+
+        .underline {
+            text-decoration: underline;
+            padding-bottom: 2px;
+            /* text-underline-offset: -0.5rem !important; */
+        }
+
+        .lg {
+            font-size: 11px !important;
+        }
+
+        .p {
+            padding: 2px;
+        }
+
+        .oneline {
+            white-space: nowrap;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .text-right {
+            text-align: right !important;
+        }
+
+        .text-left {
+            text-align: left !important;
+        }
+
+        .inline-block {
+            display: inline-block !important;
+        }
+
+        .logo-img {
+            height: 75px;
+        }
+
+        .address-box td {
+            font-size: 11px;
+            line-height: 10px;
+        }
+
+        .msme-box td {
+            line-height: 11px;
+            font-weight: bold !important;
+        }
+
+        .header-bottom td {
+            line-height: 11px;
+            padding: 0px 10px;
+        }
+
+        .header-footer td {}
+
+        .msme-img {
+            height: 46px;
+        }
+
+        .address-box {
+            width: 100%;
+        }
+
+        .msme-box tr td {
+            border: 1px solid rgb(255, 255, 255);
+        }
+
+        .customer-detail {
+            /* border: 1px solid rgb(0, 0, 0); */
+        }
+
+        .border,
+        .border td,
+        .border th {
+            border: 1px solid rgb(172, 166, 166);
+        }
+
+        footer td {
+            line-height: 11px;
+            font-size: 10px !important;
+        }
+
+        .footer-table {
+            border-top: 1px solid #2d5291;
+        }
+
+        .termsnotices {
+            margin-bottom: 22px;
+        }
+
+        .termsnotices td {
+            line-height: 11px !important;
+            padding-top: 6px !important;
+        }
+
+        .termsnotices td {
+            vertical-align: top;
+        }
+
+        .cart {
+            margin-top: 2px;
+        }
+
+        .cart td {
+            font-size: 13px;
+            padding: 4px;
+        }
+
+        .qty {
+            padding: 0 4px;
+        }
+
+        /* #
+        #
+        #
+        #
+        #
+        #
+        #
+        #
+        # */
+        /* Ensure body takes up full page height */
+        body {
+            font-family: 'Tinos';
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header and footer settings */
+        @page {
+            margin: 150px 25px;
+            counter-increment: page;
+        }
+
+        header {
+            position: fixed;
+            top: -125px;
+            left: 0;
+            right: 0;
+            /* border: 1px solid #ddd; */
+        }
+
+        footer {
+            position: fixed;
+            bottom: -130px;
+            left: 0;
+            right: 0;
+            /* border: 1px solid #ddd; */
+        }
+
+        .content {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            /* border: 1px solid #ddd; */
+        }
+
+        /* Add page number to footer */
+        .page-number:after {
+            content: "Page no: " counter(page);
+            line-height: 11px;
+            font-size: 10px !important;
+        }
+
+        /* Page break class */
+        .page-break {
+            page-break-after: always;
+        }
+    </style>
 </head>
-<style>
-    /* Tinos Font  */
-    @font-face {
-        font-family: 'Tinos';
-        src: url({{ storage_path('fonts\Tinos-Regular.ttf') }}) format("truetype");
-        font-weight: 400;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Tinos';
-        src: url({{ storage_path('fonts\Tinos-Italic.ttf') }}) format("truetype");
-        font-weight: 400;
-        font-style: italic;
-    }
-
-    @font-face {
-        font-family: 'Tinos';
-        src: url({{ storage_path('fonts\Tinos-Bold.ttf') }}) format("truetype");
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Tinos';
-        src: url({{ storage_path('fonts\Tinos-BoldItalic.ttf') }}) format("truetype");
-        font-weight: 700;
-        font-style: italic;
-    }
-
-    body {
-        font-family: 'Tinos';
-        color: rgb(0, 0, 0);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-size: 12px;
-        line-height: 11px;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
-
-    .page {
-        background-color: white;
-        position: relative;
-        page-break-after: always;
-        width: 766px;
-        height: 1006px;
-        padding: 25px;
-    }
-
-    .last-page {
-        page-break-after: avoid;
-    }
-
-    .bold {
-        font-weight: bold !important;
-    }
-
-    .italic {
-        font-style: italic !important;
-    }
-
-    .spacing {
-        letter-spacing: -0.7px !important;
-    }
-
-    .color {
-        color: #4472c4 !important;
-    }
-
-    .dark-color {
-        color: #2d5291 !important;
-    }
-
-    .bg {
-        background-color: #4472c4 !important;
-        color: rgb(255, 255, 255) !important;
-    }
-
-    .mt {
-        margin-top: 20px;
-    }
-
-    .underline {
-        text-decoration: underline;
-        padding-bottom: 2px;
-        /* text-underline-offset: -0.5rem !important; */
-    }
-
-    .lg {
-        font-size: 11px !important;
-    }
-
-    .p {
-        padding: 2px;
-    }
-
-    .oneline {
-        white-space: nowrap;
-    }
-
-    .text-center {
-        text-align: center !important;
-    }
-
-    .text-right {
-        text-align: right !important;
-    }
-
-    .text-left {
-        text-align: left !important;
-    }
-
-    .inline-block {
-        display: inline-block !important;
-    }
-
-    header {
-        /* border: 1px solid black; */
-        margin-bottom: 18px;
-    }
-
-    .logo-img {
-        height: 75px;
-    }
-
-    .logo-box,
-    .address-box,
-    .msme-box {
-        /* border: 1px solid black; */
-    }
-
-    .address-box td,
-    .header-footer td,
-    footer td {
-        /* line-height: 11px; */
-    }
-
-    .address-box td {
-        font-size: 11px;
-        line-height: 10px;
-    }
-
-    .msme-box td {
-        line-height: 11px;
-        font-weight: bold !important;
-    }
-
-    .header-bottom td {
-        line-height: 11px;
-        padding: 0px 10px;
-    }
-
-    .header-footer td {}
-
-    .msme-img {
-        height: 46px;
-    }
-
-    .address-box {
-        width: 100%;
-    }
-
-    .msme-box tr td {
-        border: 1px solid rgb(255, 255, 255);
-    }
-
-    .customer-detail {
-        /* border: 1px solid rgb(0, 0, 0); */
-    }
-
-    .customer-detail td,
-    .customer-detail th,
-    .customer-detail a {}
-
-
-
-    .border,
-    .border td,
-    .border th {
-        border: 1px solid rgb(172, 166, 166);
-    }
-
-    footer {
-        font-size: 10px;
-        position: absolute;
-        left: 22px;
-        right: 22px;
-        bottom: 22px;
-    }
-
-    footer td {
-        line-height: 11px;
-        font-size: 10px !important;
-    }
-
-    .footer-table {
-        border-top: 1px solid #2d5291;
-    }
-
-    .termsnotices {
-        margin-bottom: 22px;
-    }
-
-    .termsnotices td {
-        line-height: 11px !important;
-        padding-top: 6px !important;
-    }
-
-    .termsnotices td {
-        vertical-align: top;
-    }
-
-    .cart {
-        margin-top: 2px;
-    }
-
-    .cart td {
-        font-size: 13px;
-        padding: 4px;
-    }
-
-    .qty {
-        padding: 0 4px;
-    }
-</style>
 
 <body>
 
+    <header>
+        <table>
+            <tr>
+                <td class="logo-box"><img class="logo-img" src="{{ $logo }}"></td>
 
+                <td class="address-box" style="padding-left: 2px">
+                    <table>
+                        <tr>
+                            <td class="bold dark-color font-bitter">NEUVIN ELECTRONICS PRIVATE LIMITED</td>
+                        </tr>
+                        <tr>
+                            <td>WZ-1258, Third Floor, Nand Gyan Bhawan</td>
+                        </tr>
+                        <tr>
+                            <td>Ashram Lane, Palam Village, New Delhi - 110045</td>
+                        </tr>
+                        <tr>
+                            <td>Phone/Fax: +91 11-25081947, +91 9910584 666</td>
+                        </tr>
+                        <tr>
+                            <td>E-mail: info@neuvin.com, URL: www.neuvin.com</td>
+                        </tr>
+                        <tr>
+                            <td>GSTIN: 07AADCN9370Q1ZO/PAN: AADCN9370Q</td>
+                        </tr>
+                    </table>
+                </td>
 
-    <div class="page">
-        <header>
-            <table>
-                <tr>
-                    <td class="logo-box"><img class="logo-img" src="{{ $logo }}"></td>
+                <td class="msme-box">
+                    <table>
+                        <tr>
+                            <td><img class="msme-img" src="{{ $msme }}"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg text-center">QUOTATION NO:</td>
+                        </tr>
+                        <tr>
+                            <td class="bg text-center">
+                                {{ date('Ym') . '-' . ($quote->id < 10 ? '00' . $quote->id : ($quote->id < 100 ? '0' . $quote->id : $quote->id)) }}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
 
-                    <td class="address-box" style="padding-left: 2px">
-                        <table>
-                            <tr>
-                                <td class="bold dark-color font-bitter">NEUVIN ELECTRONICS PRIVATE LIMITED</td>
-                            </tr>
-                            <tr>
-                                <td>WZ-1258, Third Floor, Nand Gyan Bhawan</td>
-                            </tr>
-                            <tr>
-                                <td>Ashram Lane, Palam Village, New Delhi - 110045</td>
-                            </tr>
-                            <tr>
-                                <td>Phone/Fax: +91 11-25081947, +91 9910584 666</td>
-                            </tr>
-                            <tr>
-                                <td>E-mail: info@neuvin.com, URL: www.neuvin.com</td>
-                            </tr>
-                            <tr>
-                                <td>GSTIN: 07AADCN9370Q1ZO/PAN: AADCN9370Q</td>
-                            </tr>
-                        </table>
-                    </td>
+        <table class="header-bottom">
+            <tr>
+                <td class="bg text-right bold italic">QUOTATION</td>
+            </tr>
+        </table>
 
-                    <td class="msme-box">
-                        <table>
-                            <tr>
-                                <td><img class="msme-img" src="{{ $msme }}"></td>
-                            </tr>
-                            <tr>
-                                <td class="bg text-center">QUOTATION NO:</td>
-                            </tr>
-                            <tr>
-                                <td class="bg text-center">
-                                    {{ date('Ym') . '-' . ($quote->id < 10 ? '00' . $quote->id : ($quote->id < 100 ? '0' . $quote->id : $quote->id)) }}
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+        <table class="header-footer">
+            <tr>
+                <td class="bold">REF: {{ $quote->reference }}</td>
+                <td class="text-right bold">DATE: {{ date('d/m/Y', strtotime($quote->date)) }}</td>
+            </tr>
+        </table>
+    </header>
 
-            <table class="header-bottom">
-                <tr>
-                    <td class="bg text-right bold italic">QUOTATION</td>
-                </tr>
-            </table>
+    <footer>
+        <table>
+            <tr>
+                <td class="bold dark-color lg">Should have any enquiries concerning this Quote, please contact Mr.
+                    Vinod
+                    Sharma: +91 9910584666</td>
+                <div class="text-right">
+                    <td class="bg bold text-right inline-block p">Thanks for giving us opportunity to quote.</td>
+                </div>
+            </tr>
+        </table>
+        <table class="footer-table">
+            <tr>
+                <td class="bold">CIN:U74900HR2012PTC045440</td>
+                <td class="bold">PAN NUMBER: AADCN9370Q</td>
+                <td class="bold">Registered Office: A-45A First Floor Sai Kunj</td>
+                <td class="bold page-number"></td>
+                <td class="bold text-right">{{ $quote->nickname }}-{{ date('Y/md') }}</td>
+            </tr>
+            <tr>
+                <td class="bold">GSTIN: 07AADCN9370Q1ZO</td>
+                <td class="bold">VAT/CST/TIN: 07070443384</td>
+                <td class="bold">New Palam Vihar Phase-3 Gurgaon - 122017 (HR)</td>
+                <td class="bold">Printed on:</td>
+                <td class="bold text-right">{{ date('Y/m/d H:i:s') }}</td>
+            </tr>
+        </table>
+    </footer>
 
-            <table class="header-footer">
-                <tr>
-                    <td class="bold">REF: {{ $quote->reference }}</td>
-                    <td class="text-right bold">DATE: {{ date('d/m/Y', strtotime($quote->date)) }}</td>
-                </tr>
-            </table>
-        </header>
+    <div class="content">
 
         <table class="customer-detail">
             <tr>
-                <td style="width: 55%" class="bold">{{ Str::upper($quote->customer_name) }}</td>
+                <td style="width: 65%" class="bold">{{ Str::upper($quote->customer_name) }}</td>
                 <td class="bold">Enquiry REF: {{ $quote->enquiry->reference }}</td>
             </tr>
             <tr>
@@ -449,103 +488,14 @@
             </tr>
         </table>
 
-        <footer>
-            <table>
-                <tr>
-                    <td class="bold dark-color lg">Should have any enquiries concerning this Quote, please contact Mr.
-                        Vinod
-                        Sharma: +91 9910584666</td>
-                    <div class="text-right">
-                        <td class="bg bold text-right inline-block p">Thanks for giving us opportunity to quote.</td>
-                    </div>
-                </tr>
-            </table>
-            <table class="footer-table">
-                <tr>
-                    <td class="bold">CIN:U74900HR2012PTC045440</td>
-                    <td class="bold">PAN NUMBER: AADCN9370Q</td>
-                    <td class="bold">Registered Office: A-45A First Floor Sai Kunj</td>
-                    <td class="bold">Page 1 of 2</td>
-                    <td class="bold text-right">{{ $quote->nickname }}-{{ date('Y/md') }}</td>
-                </tr>
-                <tr>
-                    <td class="bold">GSTIN: 07AADCN9370Q1ZO</td>
-                    <td class="bold">VAT/CST/TIN: 07070443384</td>
-                    <td class="bold">New Palam Vihar Phase-3 Gurgaon - 122017 (HR)</td>
-                    <td class="bold">Printed on:</td>
-                    <td class="bold text-right">{{ date('Y/m/d H:i:s') }}</td>
-                </tr>
-            </table>
-        </footer>
-    </div>
-
-    <div class="page last-page">
-        <header>
-            <table>
-                <tr>
-                    <td class="logo-box"><img class="logo-img" src="{{ $logo }}"></td>
-
-                    <td class="address-box" style="padding-left: 2px">
-                        <table>
-                            <tr>
-                                <td class="bold dark-color font-bitter">NEUVIN ELECTRONICS PRIVATE LIMITED</td>
-                            </tr>
-                            <tr>
-                                <td>WZ-1258, Third Floor, Nand Gyan Bhawan</td>
-                            </tr>
-                            <tr>
-                                <td>Ashram Lane, Palam Village, New Delhi - 110045</td>
-                            </tr>
-                            <tr>
-                                <td>Phone/Fax: +91 11-25081947, +91 9910584 666</td>
-                            </tr>
-                            <tr>
-                                <td>E-mail: info@neuvin.com, URL: www.neuvin.com</td>
-                            </tr>
-                            <tr>
-                                <td>GSTIN: 07AADCN9370Q1ZO/PAN: AADCN9370Q</td>
-                            </tr>
-                        </table>
-                    </td>
-
-                    <td class="msme-box">
-                        <table>
-                            <tr>
-                                <td><img class="msme-img" src="{{ $msme }}"></td>
-                            </tr>
-                            <tr>
-                                <td class="bg text-center">QUOTATION NO:</td>
-                            </tr>
-                            <tr>
-                                <td class="bg text-center">
-                                    {{ date('Ym') . '-' . ($quote->id < 10 ? '00' . $quote->id : ($quote->id < 100 ? '0' . $quote->id : $quote->id)) }}
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-
-            <table class="header-bottom">
-                <tr>
-                    <td class="bg text-right bold italic">QUOTATION</td>
-                </tr>
-            </table>
-
-            <table class="header-footer">
-                <tr>
-                    <td class="bold">REF: {{ $quote->reference }}</td>
-                    <td class="text-right bold">DATE: {{ date('d/m/Y') }}</td>
-                </tr>
-            </table>
-        </header>
+        <!-- Add a page break if necessary -->
+        <div class="page-break"></div>
 
         <table>
             <tr>
                 <td class="bold underline italic spacing">ANNEXURE - II: COMMERCIAL TERMS AND CONDITIONS OF SALES:</td>
             </tr>
         </table>
-
 
         <table class="termsnotices">
             <tr>
@@ -677,36 +627,8 @@
                 <td class="bold">E-mail:vinod@neuvin.com</td>
             </tr>
         </table>
-
-        <footer>
-            <table>
-                <tr>
-                    <td class="bold dark-color lg">Should have any enquiries concerning this Quote, please contact Mr.
-                        Vinod
-                        Sharma: +91 9910584666</td>
-                    <div class="text-right p">
-                        <td class="bg bold text-right inline-block p">Thanks for giving us opportunity to quote.</td>
-                    </div>
-                </tr>
-            </table>
-            <table class="footer-table">
-                <tr>
-                    <td class="bold">CIN:U74900HR2012PTC045440</td>
-                    <td class="bold">PAN NUMBER: AADCN9370Q</td>
-                    <td class="bold">Registered Office: A-45A First Floor Sai Kunj</td>
-                    <td class="bold">Page 2 of 2</td>
-                    <td class="bold text-right">{{ $quote->nickname }}-{{ date('Y/md') }}</td>
-                </tr>
-                <tr>
-                    <td class="bold">GSTIN: 07AADCN9370Q1ZO</td>
-                    <td class="bold">VAT/CST/TIN: 07070443384</td>
-                    <td class="bold">New Palam Vihar Phase-3 Gurgaon - 122017 (HR)</td>
-                    <td class="bold">Printed on:</td>
-                    <td class="bold text-right">{{ date('Y/m/d H:i:s') }}</td>
-                </tr>
-            </table>
-        </footer>
     </div>
+
 </body>
 
 </html>

@@ -217,6 +217,8 @@ class QuoteController extends Controller
 
     public function updateItem(Quote $quote, QuoteItem $quoteItem, Request $request)
     {
-        return response($request->all());
+        $quoteItem->quantity = $request->quantity;
+        $quoteItem->save();
+        return redirect("/quotes/{$quote->id}");
     }
 }

@@ -161,8 +161,9 @@
                         <form action="/quotes/{{ $quote->id }}/items/{{ $item->id }}" method="POST">
                             @csrf
                             @method('PATCH')
-                            <input style="width: 60px;" type="number" name="quantity"
-                                class="item-quantity" value="{{ $item->quantity }}">
+                            <input style="width: 60px;" type="number" name="quantity" class="item-quantity"
+                                value="{{ $item->quantity }}">
+                            <input type="submit" name="" id="" value="Update" class="update-btn">
                         </form>
                     </td>
                     <td>{{ number_format($item->sale_price, 2) }}</td>
