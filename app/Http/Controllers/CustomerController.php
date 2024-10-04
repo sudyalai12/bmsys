@@ -66,7 +66,7 @@ class CustomerController extends Controller
                 'state_code' => $request->state_code,
             ]);
             $customer->contacts()->create([
-                'name' => $request->contact,
+                'name' => $name,
                 'email' => $request->email,
                 'department' => $request->department,
                 'phone' => $request->phone,

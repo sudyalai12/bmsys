@@ -1,7 +1,7 @@
 @php
     function formatString($string)
     {
-        return preg_replace('/;/', "\r\n", $string);
+        return preg_replace('/;\s*/', "\r\n", $string);
     }
     $files = [
         'logo' => 'neuvin-logo.png',
@@ -389,12 +389,13 @@
                 <td class="bold">Dear Sir/Madam</td>
             </tr>
             <tr>
-                <td>Thanks for your enquiry with Reference No: <span class="bold italic">{{ $quote->enquiry->reference }}</span></td>
+                <td>Thanks for your enquiry with Reference No: <span
+                        class="bold italic">{{ $quote->enquiry->reference }}</span></td>
             </tr>
             <tr>
                 <td>We are pleased to submit our best Offer on behalf our Principal
-                    <span class="bold italic">{{ strtoupper($quote->quoteItems->first()?->product->supplier->name) }},
-                        {{ strtoupper($quote->quoteItems->first()?->product->supplier->country->iso3) }}</span> with
+                    <span class="bold italic">{{ strtoupper($quote->quoteItems->first()?->name) }},
+                        {{ strtoupper($quote->quoteItems->first()?->country->iso3) }}</span> with
                     Terms and Conditions as follows
                 </td>
             </tr>
@@ -429,7 +430,8 @@
                     <td class="bold p text-center">{{ number_format($item->sale_price, 2) }}</td>
                     <td class="bold p text-center">{{ number_format($item->totalFixed(), 2) }}</td>
                     <td class="bold p text-center">18.00%/<br>{{ number_format($item->taxAmountFixed(), 2) }}</td>
-                    <td class="bold p text-center">{{ number_format($item->totalFixed() + $item->taxAmountFixed(), 2) }}</td>
+                    <td class="bold p text-center">
+                        {{ number_format($item->totalFixed() + $item->taxAmountFixed(), 2) }}</td>
                 </tr>
             @endforeach
             <tr style="background-color: #e2dcdc">
@@ -442,7 +444,8 @@
                 <td class="bold p"></td>
                 <td class="bold p text-center">{{ number_format($quote->totalFixed(), 2) }}</td>
                 <td class="bold p text-center">{{ number_format($quote->taxAmountFixed(), 2) }}</td>
-                <td class="bold p text-center">{{ number_format($quote->totalFixed() + $quote->taxAmountFixed(), 2) }}</td>
+                <td class="bold p text-center">{{ number_format($quote->totalFixed() + $quote->taxAmountFixed(), 2) }}
+                </td>
             </tr>
         </table>
 

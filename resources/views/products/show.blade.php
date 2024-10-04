@@ -1,7 +1,7 @@
 @php
     function formatString($string)
     {
-        return preg_replace('/;/', "\r\n", $string);
+        return preg_replace('/;\s*/', "\r\n", $string);
     }
 @endphp
 

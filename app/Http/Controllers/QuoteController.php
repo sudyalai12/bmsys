@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
-use App\Models\Customer;
 use App\Models\DeliveryTerm;
 use App\Models\Enquiry;
 use App\Models\FreightChargesTerm;
@@ -12,8 +11,6 @@ use App\Models\HandlingChargesTerm;
 use App\Models\PaymentTerm;
 use App\Models\PnfChargesTerm;
 use App\Models\PoConditionsTerm;
-use App\Models\PoConditionTerm;
-use App\Models\PoPlaceTerm;
 use App\Models\PriceBasicTerm;
 use App\Models\Product;
 use App\Models\Quote;
