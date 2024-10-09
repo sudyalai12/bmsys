@@ -283,7 +283,7 @@
 
         /* Add page number to footer */
         .page-number:after {
-            content: "Page no: " counter(page);
+            content: "Page no: 0" counter(page);
             line-height: 11px;
             font-size: 10px !important;
         }

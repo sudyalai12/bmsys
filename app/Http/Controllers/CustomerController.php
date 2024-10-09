@@ -34,7 +34,7 @@ class CustomerController extends Controller
             return back()->withErrors(['contact' => 'contact already present']);
         }
 
-        $customer = Customer::where('name', $request->customer)->first();
+        $customer = Customer::where(['name' => $request->customer, 'nickname' => $request->nickname])->first();
         if ($customer) {
             $customer->contacts()->create([
                 'name' => $name,

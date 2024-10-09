@@ -15,5 +15,8 @@ class WarrantyTerm extends Model
 
     public static $warranty_terms = [
         ['description' => 'As per OEM policy, 12 months warranty against any manufacturing defect.'],
+        ['description' => 'Extended as per OEM policy, 18 months against any manufacturing defect.'],
+        ['description' => 'Extended as per OEM policy, 24 months against any manufacturing defect.'],
+        ['description' => 'Extended as per OEM policy, 36 months against any manufacturing defect.'],
     ];
 }
