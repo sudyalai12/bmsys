@@ -49,28 +49,28 @@
         /* Tinos Font  */
         @font-face {
             font-family: 'Tinos';
-            src: url({{ public_path('fonts\Tinos-Regular.ttf') }}) format("truetype");
+            src: url({{ public_path('fonts/Tinos-Regular.ttf') }}) format("truetype");
             font-weight: 400;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Tinos';
-            src: url({{ public_path('fonts\Tinos-Italic.ttf') }}) format("truetype");
+            src: url({{ public_path('fonts/Tinos-Italic.ttf') }}) format("truetype");
             font-weight: 400;
             font-style: italic;
         }
 
         @font-face {
             font-family: 'Tinos';
-            src: url({{ public_path('fonts\Tinos-Bold.ttf') }}) format("truetype");
+            src: url({{ public_path('fonts/Tinos-Bold.ttf') }}) format("truetype");
             font-weight: 700;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Tinos';
-            src: url({{ public_path('fonts\Tinos-BoldItalic.ttf') }}) format("truetype");
+            src: url({{ public_path('fonts/Tinos-BoldItalic.ttf') }}) format("truetype");
             font-weight: 700;
             font-style: italic;
         }
