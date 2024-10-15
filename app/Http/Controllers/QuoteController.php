@@ -139,6 +139,10 @@ class QuoteController extends Controller
             $quote->enquiry->save();
             $quote->save();
             return response($request->all());
+        }elseif ($request->hide_price) {
+            $quote->show_price = $request->hide_price !== 'true';
+            $quote->save();
+            return response($request->all());
         }
         $priceBasicTerm = $request->price_basic_term;
         $paymentTerm = $request->payment_term;

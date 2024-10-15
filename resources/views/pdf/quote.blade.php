@@ -49,28 +49,28 @@
         /* Tinos Font  */
         @font-face {
             font-family: 'Tinos';
-            src: url({{ storage_path('fonts\Tinos-Regular.ttf') }}) format("truetype");
+            src: url({{ public_path('fonts\Tinos-Regular.ttf') }}) format("truetype");
             font-weight: 400;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Tinos';
-            src: url({{ storage_path('fonts\Tinos-Italic.ttf') }}) format("truetype");
+            src: url({{ public_path('fonts\Tinos-Italic.ttf') }}) format("truetype");
             font-weight: 400;
             font-style: italic;
         }
 
         @font-face {
             font-family: 'Tinos';
-            src: url({{ storage_path('fonts\Tinos-Bold.ttf') }}) format("truetype");
+            src: url({{ public_path('fonts\Tinos-Bold.ttf') }}) format("truetype");
             font-weight: 700;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Tinos';
-            src: url({{ storage_path('fonts\Tinos-BoldItalic.ttf') }}) format("truetype");
+            src: url({{ public_path('fonts\Tinos-BoldItalic.ttf') }}) format("truetype");
             font-weight: 700;
             font-style: italic;
         }
@@ -79,6 +79,13 @@
             box-sizing: border-box;
             font-size: 12px;
             line-height: 11px;
+        }
+
+        /* Ensure body takes up full page height */
+        body {
+            font-family: 'Tinos';
+            margin: 0;
+            padding: 0;
         }
 
         table,
@@ -246,12 +253,7 @@
         #
         #
         # */
-        /* Ensure body takes up full page height */
-        body {
-            font-family: 'Tinos';
-            margin: 0;
-            padding: 0;
-        }
+
 
         /* Header and footer settings */
         @page {
@@ -461,16 +463,27 @@
             @foreach ($quote->quoteItems as $item)
                 <tr>
                     <td class="bold p text-center">{{ $index++ }}</td>
-                    <td class="bold p">{{ $item->part_number }}<br>
-                        {{ $item->name }}, {{ $item->country->iso3 }}</td>
-                    <td class="bold p" style="white-space: pre-wrap;">@php echo formatString($item->description) @endphp</td>
-                    <td class="bold p text-center">{{ $item->quantity < 10 ? '0' . $item->quantity : $item->quantity }}
+                    <td class="bold p">
+                        {{ $item->part_number }}<br>
+                        {{ $item->name }}, {{ $item->country->iso3 }}<br>
+                        {{ $item->hsn_code }}
                     </td>
-                    <td class="bold p text-center">{{ number_format($item->sale_price, 2) }}</td>
-                    <td class="bold p text-center">{{ number_format($item->totalFixed(), 2) }}</td>
-                    <td class="bold p text-center">18.00%/<br>{{ number_format($item->taxAmountFixed(), 2) }}</td>
+                    <td class="bold p" style="white-space: pre-wrap;">@php echo formatString($item->description) @endphp</td>
                     <td class="bold p text-center">
-                        {{ number_format($item->totalFixed() + $item->taxAmountFixed(), 2) }}</td>
+                        {{ $item->quantity < 10 ? '0' . $item->quantity : $item->quantity }}
+                    </td>
+                    <td class="bold p text-center">
+                        {{ $quote->show_price ? number_format($item->sale_price, 2) : '-' }}
+                    </td>
+                    <td class="bold p text-center">
+                        {{ $quote->show_price ? number_format($item->totalFixed(), 2) : '-' }}
+                    </td>
+                    <td class="bold p text-center">
+                        18.00%/<br>{{ $quote->show_price ? number_format($item->taxAmountFixed(), 2) : '' }}
+                    </td>
+                    <td class="bold p text-center">
+                        {{ $quote->show_price ? number_format($item->totalFixed() + $item->taxAmountFixed(), 2) : '-' }}
+                    </td>
                 </tr>
             @endforeach
             <tr style="background-color: #e2dcdc">
@@ -481,9 +494,15 @@
                     {{ $quote->quoteItems->sum('quantity') < 10 ? '0' . $quote->quoteItems->sum('quantity') : $quote->quoteItems->sum('quantity') }}
                 </td>
                 <td class="bold p"></td>
-                <td class="bold p text-center">{{ number_format($quote->totalFixed(), 2) }}</td>
-                <td class="bold p text-center">{{ number_format($quote->taxAmountFixed(), 2) }}</td>
-                <td class="bold p text-center">{{ number_format($quote->totalFixed() + $quote->taxAmountFixed(), 2) }}
+                <td class="bold p text-center">
+                    {{ $quote->show_price ? number_format($quote->totalFixed(), 2) : '-' }}
+                </td>
+                <td class="bold p text-center">
+                    {{ $quote->show_price ? number_format($quote->taxAmountFixed(), 2) : '-' }}
+                </td>
+                <td class="bold p text-center">
+                    {{ $quote->show_price ? number_format($quote->totalFixed() + $quote->taxAmountFixed(), 2) : '-' }}
+                </td>
                 </td>
             </tr>
         </table>

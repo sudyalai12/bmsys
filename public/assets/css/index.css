@@ -108,6 +108,9 @@ a {
 .danger-text {
   color: #dc3545;
 }
+.danger-text input {
+  color: #dc3545;
+}
 
 .oneline {
   white-space: nowrap;

@@ -24,6 +24,22 @@
         #update-quote-form .form-input {
             background-color: rgba(0, 0, 0, 0.05);
         }
+
+        .hide-price {
+            font-size: 0.6rem !important;
+            text-transform: uppercase !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 1px !important;
+            color: #6C757D !important;
+            cursor: pointer;
+            user-select: none;
+
+            label {
+                cursor: pointer;
+            }
+        }
     </style>
 @endsection
 @php
@@ -60,7 +76,7 @@
         <table>
             <tr>
                 <td><strong>REF: {{ $quote->reference }}</strong></td>
-                <td class="text-right"><strong>DATE: <input type="date" id="quote_date"
+                <td class="text-right"><strong>QUOTE DATE: <input type="date" id="quote_date"
                             value="{{ $quote->date }}"></strong></td>
             </tr>
             <tr>
@@ -190,7 +206,12 @@
                 <th>{{ number_format($quote->totalFixed(), 2) }}</th>
                 <th>{{ number_format($quote->taxAmountFixed(), 2) }}</th>
                 <th>{{ number_format($quote->totalFixed() + $quote->taxAmountFixed(), 2) }}</th>
-                <th></th>
+                <th>
+                    <div class="hide-price">
+                        <label for="hide_price">Hide Price</label>
+                        <input id="hide_price" name="hide_price" type="checkbox" {{ $quote->show_price ? '' : 'checked' }}>
+                    </div>
+                </th>
             </tr>
         </tbody>
     </x-table>

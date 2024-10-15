@@ -236,6 +236,26 @@ $(function () {
         $("#update-quote-form").submit();
     });
 
+    $("#hide_price").on("change", function () {
+        console.log(this.checked);
+        $.ajax({
+            url: $("#update-quote-form").attr("action"),
+            data: {
+                hide_price: this.checked,
+                _token: $("#update-quote-form")
+                    .find("input[name=_token]")
+                    .val(),
+            },
+            type: "PATCH",
+            success(data) {
+                console.log(data);
+            },
+            error(error) {
+                console.error(error);
+            },
+        });
+    });
+
     // FORM SUBMISSION
     $("#update-quote-form").on("submit", function (event) {
         event.preventDefault();
@@ -290,9 +310,12 @@ $("#preview-pdf").on("click", function (event) {
         url: `${window.location.href}/pdf`,
         type: "GET",
         success(data) {
-            if(data) {
+            if (data) {
                 console.log(data);
-                $(".pdf-preview-box embed").attr("src", `${window.location.href}/pdf`);
+                $(".pdf-preview-box embed").attr(
+                    "src",
+                    `${window.location.href}/pdf`
+                );
                 $(".pdf-preview-box").show();
             }
         },
@@ -304,9 +327,9 @@ $("#preview-pdf").on("click", function (event) {
 
 $("#close-pdf-preview").on("click", function () {
     $(".pdf-preview-box").hide();
-})
+});
 
 $(".item-quantity").on("input", function () {
     console.log(this.value);
     // $("#update-quote-form").submit();
-})
+});

@@ -100,6 +100,7 @@ return new class extends Migration
             $table->foreignIdFor(Enquiry::class, 'enquiry_id')->constrained()->onDelete('cascade');
             $table->string('reference');
             $table->date('date')->default(now());
+            $table->boolean('show_price')->default(true);
 
             // Terms Information
             $table->string('price_basic_term')->default(PriceBasicTerm::$price_basic_terms[0]['description']);

@@ -30,11 +30,6 @@ class Address extends Model
         $this->attributes['pincode'] = strtoupper($pincode);
     }
 
-    public function contacts()
-    {
-        return $this->hasMany(Contact::class);
-    }
-
     public function state()
     {
         return $this->belongsTo(State::class);
@@ -43,5 +38,10 @@ class Address extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function customers()
+    {
+        return $this->hasMany(Customer::class);
     }
 }

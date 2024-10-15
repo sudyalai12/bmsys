@@ -40,8 +40,8 @@ class DatabaseSeeder extends Seeder
         DB::table('states')->insert(State::$states);
         DB::table('taxes')->insert(Tax::$taxes);
 
-        // Supplier::factory(5)->create();
-        // Product::factory(10)->create();
+        Supplier::factory(5)->create();
+        Product::factory(10)->create();
 
         DB::table('price_basic_terms')->insert(PriceBasicTerm::$price_basic_terms);
         DB::table('payment_terms')->insert(PaymentTerm::$payment_terms);
@@ -55,11 +55,11 @@ class DatabaseSeeder extends Seeder
         DB::table('po_conditions_terms')->insert(PoConditionsTerm::$po_conditions_terms);
         DB::table('special_conditions_terms')->insert(SpecialConditionsTerm::$special_conditions_terms);
 
-        // Quote::factory(5)->create();
-        // foreach (Quote::all() as $quote) {
-        //     $quote->generateReference();
-        // }
-        // QuoteItem::factory(20)->create();
+        Quote::factory(5)->create();
+        foreach (Quote::all() as $quote) {
+            $quote->generateReference();
+        }
+        QuoteItem::factory(20)->create();
 
         User::factory()->create([
             'name' => 'Neuvin',

@@ -13,11 +13,6 @@ class Product extends Model
     protected $hidden = ['created_at', 'updated_at'];
     protected $with = ['supplier'];
 
-    public function setDescriptionAttribute(string $description)
-    {
-        $this->attributes['description'] = ucwords($description);
-    }
-
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
